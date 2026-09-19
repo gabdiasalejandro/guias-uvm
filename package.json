@@ -1,0 +1,10 @@
+{
+  "name": "archivo-de-estudio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test scripts/*.test.mjs",
+    "preview": "npm run build && python3 -m http.server 4173 --directory dist"
+  }
+}

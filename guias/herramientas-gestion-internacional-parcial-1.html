@@ -1,0 +1,1167 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Guía interactiva y examen simulado de Herramientas para la Gestión Internacional.">
+  <title>Atlas internacional | Guía de estudio</title>
+  <style>
+    :root {
+      --ink: #202b30;
+      --ink-2: #34443f;
+      --teal: #667c70;
+      --teal-dark: #445b50;
+      --teal-soft: #e9eee9;
+      --gold: #a69b7f;
+      --gold-soft: #eeeae0;
+      --ivory: #f7f6f2;
+      --paper: #fff;
+      --line: #d9ddd9;
+      --muted: #667177;
+      --danger: #b74444;
+      --success: #147d64;
+      --shadow: 0 12px 30px rgba(32, 43, 48, .07);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 0;
+      color: var(--ink);
+      background: var(--ivory);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.62;
+    }
+
+    button, input { font: inherit; }
+    p, h1, h2, h3, a, button, summary, td, th { overflow-wrap: anywhere; }
+    .study-layout > *, .exam-workspace > *, .exam-start > *, .route-content,
+    .card-top > *, .exam-option > *, .score-row > * { min-width: 0; }
+    .study-card { scroll-margin-top: 100px; }
+    button:focus-visible, a:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+    button { cursor: pointer; }
+    a { color: var(--teal-dark); }
+    [hidden] { display: none !important; }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 8px;
+      left: 8px;
+      padding: 10px 14px;
+      color: white;
+      background: var(--ink);
+      border-radius: 10px;
+      transform: translateY(-150%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .topbar {
+      position: sticky;
+      z-index: 30;
+      top: 0;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      background: rgba(32,43,48,.97);
+      backdrop-filter: blur(14px);
+      color: white;
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 50%;
+      color: var(--gold-soft);
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+    .brand strong { display: block; font-size: .98rem; letter-spacing: .01em; }
+    .brand span { display: block; color: #c8d9e4; font-size: .74rem; line-height: 1.25; }
+
+    .view-switch {
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 4px;
+      background: rgba(255,255,255,.10);
+      border-radius: 14px;
+    }
+    .view-button {
+      min-height: 42px;
+      padding: 8px 18px;
+      border: 0;
+      border-radius: 10px;
+      color: #d9e5eb;
+      background: transparent;
+      font-weight: 750;
+    }
+    .view-button[aria-selected="true"] {
+      color: var(--ink);
+      background: white;
+      box-shadow: 0 4px 14px rgba(0,0,0,.12);
+    }
+
+    .page { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 36px 0 80px; }
+
+    .course-intro {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+      border-radius: 18px;
+      color: white;
+      background: #2e3e3a;
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--gold-soft);
+      font-size: .75rem;
+      font-weight: 850;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .course-intro h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.12;
+      letter-spacing: -.025em;
+    }
+    .course-intro .lede {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 18px 0 0;
+      color: #dce8ee;
+      font-size: 1.04rem;
+    }
+    .intro-meta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 36px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,.20);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: #edf6f7;
+      font-size: .82rem;
+      font-weight: 700;
+    }
+
+    .study-layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 34px;
+      align-items: start;
+      margin-top: 34px;
+    }
+    .route-panel {
+      position: sticky;
+      top: 102px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,253,248,.85);
+      box-shadow: 0 10px 30px rgba(16,42,67,.06);
+    }
+    .route-panel h2 { margin: 0 0 8px; font-size: .84rem; text-transform: uppercase; letter-spacing: .1em; }
+    .route-panel p { margin: 0 0 14px; color: var(--muted); font-size: .82rem; }
+    .progress-track { height: 8px; overflow: hidden; border-radius: 999px; background: #e5ecea; }
+    .progress-fill { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width .35s ease; }
+    .progress-label { display: flex; justify-content: space-between; gap: 10px; margin-top: 7px; color: var(--muted); font-size: .78rem; font-weight: 700; }
+    .route-links { display: grid; gap: 3px; margin-top: 17px; }
+    .route-links a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 8px;
+      border-radius: 9px;
+      color: var(--ink-2);
+      text-decoration: none;
+      font-size: .83rem;
+      font-weight: 650;
+    }
+    .route-links a:hover, .route-links a:focus-visible { background: var(--teal-soft); }
+    .dot { width: 8px; height: 8px; flex: 0 0 auto; border: 2px solid var(--teal); border-radius: 50%; background: var(--paper); }
+
+    .route-content { position: relative; display: grid; gap: 18px; }
+    .route-content::before {
+      content: "";
+      position: absolute;
+      top: 24px;
+      bottom: 24px;
+      left: 27px;
+      width: 2px;
+      background: linear-gradient(var(--teal), var(--gold), var(--teal));
+      opacity: .32;
+    }
+
+    .study-card {
+      position: relative;
+      padding: 26px 28px 24px 72px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,253,248,.94);
+      box-shadow: 0 8px 26px rgba(16,42,67,.06);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .study-card:hover { transform: translateY(-2px); border-color: #b5ceca; box-shadow: 0 15px 36px rgba(16,42,67,.09); }
+    .study-card.completed { border-color: rgba(20,140,140,.48); }
+    .step-number {
+      position: absolute;
+      z-index: 2;
+      top: 22px;
+      left: 12px;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--ivory);
+      border-radius: 50%;
+      color: white;
+      background: var(--teal);
+      box-shadow: 0 0 0 2px var(--teal);
+      font-size: .76rem;
+      font-weight: 850;
+    }
+    .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+    .topic-tag { margin: 0 0 5px; color: var(--teal-dark); font-size: .72rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .study-card h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.35rem, 2.5vw, 1.85rem); line-height: 1.15; letter-spacing: -.015em; }
+    .complete-button {
+      flex: 0 0 auto;
+      min-width: 104px;
+      padding: 8px 11px;
+      border: 1px solid #bdd3d0;
+      border-radius: 11px;
+      color: var(--teal-dark);
+      background: white;
+      font-size: .78rem;
+      font-weight: 800;
+    }
+    .complete-button[aria-pressed="true"] { color: white; border-color: var(--teal); background: var(--teal); }
+    .core-idea { margin: 16px 0 0; font-size: 1.03rem; }
+    .memory-hook, .exam-clue, .warning, .case-box {
+      margin-top: 17px;
+      padding: 14px 16px;
+      border-radius: 14px;
+    }
+    .memory-hook { border-left: 4px solid var(--gold); background: var(--gold-soft); }
+    .exam-clue { border-left: 4px solid var(--teal); background: var(--teal-soft); }
+    .warning { border-left: 4px solid #b55e4a; background: #fff0ea; }
+    .case-box { border: 1px dashed #a9c4c0; background: #f4fbfa; }
+    .memory-hook strong, .exam-clue strong, .warning strong, .case-box strong { display: block; margin-bottom: 2px; font-size: .8rem; letter-spacing: .05em; text-transform: uppercase; }
+
+    .contrast-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin-top: 18px; }
+    .contrast, .mini-fact { padding: 15px; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+    .contrast h3, .mini-fact h3 { margin: 0 0 6px; font-size: .95rem; }
+    .contrast p, .mini-fact p { margin: 0; color: #465d6b; font-size: .9rem; }
+    .fact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+    .fact-grid .mini-fact { border-top: 3px solid var(--teal); }
+    .clean-list { margin: 12px 0 0; padding-left: 20px; }
+    .clean-list li + li { margin-top: 6px; }
+
+    .table-wrap { overflow-x: auto; margin-top: 18px; border: 1px solid var(--line); border-radius: 15px; }
+    table { width: 100%; border-collapse: collapse; background: white; font-size: .88rem; }
+    th, td { padding: 12px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { color: white; background: var(--ink-2); font-size: .78rem; letter-spacing: .04em; }
+    tr:last-child td { border-bottom: 0; }
+
+    .quick-check { margin-top: 18px; padding-top: 17px; border-top: 1px solid var(--line); }
+    .quick-check > p { margin: 0 0 10px; font-weight: 780; }
+    .check-options { display: grid; gap: 8px; }
+    .check-option {
+      width: 100%;
+      padding: 11px 13px;
+      border: 1px solid #c9d5d4;
+      border-radius: 11px;
+      color: var(--ink);
+      background: white;
+      text-align: left;
+    }
+    .check-option:hover:not(:disabled) { border-color: var(--teal); background: #f4fbfa; }
+    .check-option.correct { color: #0b604c; border-color: #56a895; background: #e6f6ef; }
+    .check-option.incorrect { color: #8f3030; border-color: #d59797; background: #fff0f0; }
+    .check-feedback { margin: 10px 0 0; padding: 10px 12px; border-radius: 10px; background: #edf4f3; font-size: .88rem; }
+
+    .sources { margin-top: 26px; padding: 22px 24px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.66); }
+    .sources summary { cursor: pointer; font-weight: 800; }
+    .sources ul { margin-bottom: 0; }
+    .sources li + li { margin-top: 8px; }
+
+    /* Exam */
+    .exam-shell { min-height: calc(100vh - 150px); }
+    .exam-start {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .exam-start-main { padding: clamp(28px, 6vw, 62px); }
+    .exam-start-main h1, .result-card h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.02; letter-spacing: -.04em; }
+    .exam-start-main > p { max-width: 650px; color: var(--muted); }
+    .exam-specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 24px 0; }
+    .exam-spec { padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: white; }
+    .exam-spec strong { display: block; font-size: 1.35rem; line-height: 1.1; }
+    .exam-spec span { color: var(--muted); font-size: .78rem; }
+    .primary-button, .secondary-button, .danger-button {
+      min-height: 46px;
+      padding: 11px 18px;
+      border-radius: 12px;
+      font-weight: 820;
+    }
+    .primary-button { border: 1px solid var(--teal); color: white; background: var(--teal); }
+    .primary-button:hover { background: var(--teal-dark); }
+    .secondary-button { border: 1px solid #b8c8c8; color: var(--ink); background: white; }
+    .danger-button { border: 1px solid #d8a3a3; color: #8e3030; background: #fff7f7; }
+    .exam-start-side {
+      min-height: 430px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: white;
+      background:
+        #34443f;
+    }
+    .exam-start-side .compass { width: 96px; height: 96px; display: grid; place-items: center; margin-bottom: auto; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; box-shadow: 0 0 0 14px rgba(255,255,255,.05); font-family: Georgia, serif; font-size: 2rem; }
+    .exam-start-side h2 { margin: 0; font-family: Georgia, serif; font-size: 1.7rem; }
+    .exam-start-side p { margin-bottom: 0; color: #d5e8e7; }
+
+    .exam-workspace { display: grid; grid-template-columns: minmax(0,1fr) 260px; gap: 20px; align-items: start; }
+    .question-panel, .exam-sidebar, .result-card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); box-shadow: 0 10px 30px rgba(16,42,67,.07); }
+    .question-panel { overflow: hidden; }
+    .exam-statusbar { display: flex; justify-content: space-between; gap: 16px; padding: 13px 22px; color: white; background: var(--ink); font-size: .83rem; font-weight: 800; }
+    .question-progress { height: 5px; background: #dce7e5; }
+    .question-progress > div { width: 0; height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width .25s ease; }
+    .question-body { padding: clamp(24px, 5vw, 48px); }
+    .question-category { display: inline-block; margin-bottom: 12px; padding: 5px 10px; border-radius: 999px; color: var(--teal-dark); background: var(--teal-soft); font-size: .72rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+    .question-body h2 { margin: 0 0 22px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.3; }
+    .exam-options { display: grid; gap: 10px; }
+    .exam-option {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 15px;
+      border: 1px solid #cbd7d6;
+      border-radius: 13px;
+      color: var(--ink);
+      background: white;
+      text-align: left;
+    }
+    .exam-option:hover { border-color: var(--teal); background: #f5fbfa; }
+    .exam-option.selected { border-color: var(--teal); background: var(--teal-soft); box-shadow: inset 4px 0 var(--teal); }
+    .option-letter { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid #b9c8c7; border-radius: 9px; background: white; font-size: .8rem; font-weight: 850; }
+    .question-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .action-group { display: flex; gap: 8px; }
+    .mark-button[aria-pressed="true"] { color: #775207; border-color: var(--gold); background: var(--gold-soft); }
+
+    .exam-sidebar { position: sticky; top: 104px; padding: 18px; }
+    .exam-sidebar h3 { margin: 0 0 12px; font-size: .9rem; }
+    .question-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+    .question-jump { aspect-ratio: 1; border: 1px solid #c8d4d3; border-radius: 8px; color: var(--ink); background: white; font-size: .76rem; font-weight: 800; }
+    .question-jump.answered { color: white; border-color: var(--teal); background: var(--teal); }
+    .question-jump.marked { color: var(--ink); outline: 3px solid var(--gold-soft); border-color: var(--gold); }
+    .question-jump.current { box-shadow: 0 0 0 2px var(--ink); }
+    .exam-legend { display: grid; gap: 7px; margin: 14px 0 18px; color: var(--muted); font-size: .76rem; }
+    .exam-legend span { display: flex; align-items: center; gap: 8px; }
+    .legend-box { width: 13px; height: 13px; border: 1px solid #c8d4d3; border-radius: 4px; background: white; }
+    .legend-box.done { background: var(--teal); }
+    .legend-box.flag { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-soft); }
+    .finish-button { width: 100%; }
+
+    .result-card { padding: clamp(25px, 5vw, 54px); }
+    .score-row { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; margin: 26px 0; }
+    .score-ring {
+      --score: 0;
+      width: 128px;
+      height: 128px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: conic-gradient(var(--teal) calc(var(--score) * 1%), #dfe8e6 0);
+    }
+    .score-ring::before { content: attr(data-score) "%"; width: 96px; height: 96px; display: grid; place-items: center; border-radius: 50%; background: var(--paper); font-size: 1.45rem; font-weight: 900; }
+    .result-summary h2 { margin: 0 0 3px; font-size: 1.35rem; }
+    .result-summary p { margin: 0; color: var(--muted); }
+    .breakdown { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin: 22px 0; }
+    .breakdown-card { padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: white; }
+    .breakdown-card strong { display: block; font-size: 1.25rem; }
+    .breakdown-card span { color: var(--muted); font-size: .76rem; }
+    .review-list { display: grid; gap: 10px; margin-top: 20px; }
+    .review-item { border: 1px solid var(--line); border-radius: 13px; background: white; }
+    .review-item summary { cursor: pointer; padding: 13px 15px; font-weight: 750; }
+    .review-content { padding: 0 15px 15px; color: #435968; font-size: .9rem; }
+    .review-content p { margin: 6px 0; }
+    .result-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    @media (max-width: 900px) {
+      .study-layout { grid-template-columns: 1fr; }
+      .route-panel { position: static; }
+      .route-links { grid-template-columns: repeat(3, minmax(0,1fr)); }
+      .exam-workspace { grid-template-columns: 1fr; }
+      .exam-sidebar { position: static; order: 2; }
+      .question-grid { grid-template-columns: repeat(10, 1fr); }
+      .breakdown { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .topbar-inner { min-height: 64px; }
+      .brand span { display: none; }
+      .view-button { min-height: 38px; padding: 7px 11px; font-size: .82rem; }
+      .page { width: min(100% - 20px, 1180px); padding-top: 20px; }
+      .course-intro { padding: 27px 22px; border-radius: 22px; }
+      .study-layout { margin-top: 20px; }
+      .route-links { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .study-card { padding: 23px 18px 20px 58px; border-radius: 18px; }
+      .step-number { left: 10px; }
+      .card-top { display: block; }
+      .complete-button { margin-top: 12px; }
+      .contrast-grid, .fact-grid { grid-template-columns: 1fr; }
+      .exam-start { grid-template-columns: 1fr; }
+      .exam-start-side { min-height: 280px; }
+      .exam-specs { grid-template-columns: 1fr; }
+      .question-grid { grid-template-columns: repeat(5, 1fr); }
+      .score-row { grid-template-columns: 1fr; }
+      .score-ring { width: 112px; height: 112px; }
+      .breakdown { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .topbar-inner {
+        width: calc(100% - 24px);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 12px 0;
+      }
+      .brand { gap: 10px; }
+      .brand-mark { width: 30px; height: 30px; font-size: .8rem; }
+      .brand strong { font-size: 1rem; }
+      .view-switch { width: 100%; }
+      .view-button { min-height: 44px; font-size: .94rem; }
+      .page { width: calc(100% - 24px); padding: 16px 0 40px; }
+      .course-intro { padding: 22px 18px; border-radius: 18px; }
+      .course-intro h1, .exam-start-main h1, .result-card h1 {
+        font-size: clamp(1.65rem, 7.4vw, 2.4rem);
+        line-height: 1.15;
+        letter-spacing: -.02em;
+      }
+      .course-intro .lede { font-size: 1rem; }
+      .intro-meta { gap: 8px; margin-top: 18px; }
+      .meta-pill { border-radius: 10px; padding: 6px 9px; font-size: .875rem; }
+      .route-panel { padding: 16px; }
+      .route-panel p, .progress-label, .route-links a { font-size: .875rem; }
+      .route-links { gap: 4px; }
+      .route-links a { min-height: 44px; padding: 6px; gap: 6px; }
+      .route-content { gap: 16px; }
+      .route-content::before { display: none; }
+      .study-card { padding: 18px 16px; scroll-margin-top: 132px; }
+      .step-number { position: static; margin: 0 0 16px 3px; }
+      .study-card h2 { font-size: 1.4rem; line-height: 1.22; }
+      .topic-tag, .eyebrow { font-size: .8rem; letter-spacing: .06em; }
+      .complete-button { min-height: 44px; font-size: .875rem; }
+      .memory-hook, .exam-clue, .warning, .case-box { padding: 12px; }
+      .contrast, .mini-fact { padding: 12px; }
+      .check-option { min-height: 44px; }
+      .table-wrap { overflow: visible; border: 0; border-radius: 0; }
+      .table-wrap table, .table-wrap tbody { display: block; background: transparent; }
+      .table-wrap thead {
+        position: absolute; width: 1px; height: 1px; overflow: hidden;
+        clip-path: inset(50%); white-space: nowrap;
+      }
+      .table-wrap tr { display: block; margin-bottom: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: white; }
+      .table-wrap td { display: block; padding: 0; border: 0; font-size: .94rem; }
+      .table-wrap td:first-child { font-weight: 800; color: var(--ink); }
+      .table-wrap td + td { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
+      .table-wrap td[data-label]::before { content: attr(data-label); display: block; margin-bottom: 3px; font-size: .875rem; font-weight: 800; color: var(--teal-dark); }
+      .sources { padding: 18px 16px; }
+      .sources ul { padding-left: 20px; }
+      .exam-start { border-radius: 18px; }
+      .exam-start-main, .question-body, .result-card { padding: 22px 16px; }
+      .exam-start-side { min-height: 0; padding: 20px 16px; }
+      .exam-start-side .compass { display: none; }
+      .exam-start-side h2 { font-size: 1.3rem; }
+      .exam-specs { gap: 8px; }
+      .exam-spec { display: flex; align-items: baseline; gap: 10px; }
+      .exam-spec span { font-size: .875rem; }
+      .exam-statusbar { padding: 12px 14px; flex-wrap: wrap; font-size: .875rem; }
+      .question-category { font-size: .8rem; }
+      .question-body h2 { font-size: 1.35rem; }
+      .exam-option { grid-template-columns: 30px minmax(0,1fr); gap: 9px; padding: 12px; align-items: start; }
+      .question-actions { align-items: stretch; flex-direction: column; }
+      .action-group { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .action-group button { min-width: 0; padding: 10px 6px; font-size: .875rem; }
+      .question-grid { grid-template-columns: repeat(auto-fit,minmax(44px,1fr)); }
+      .question-jump { min-height: 44px; aspect-ratio: auto; font-size: .875rem; }
+      .exam-legend, .breakdown-card span { font-size: .875rem; }
+      .result-actions { flex-direction: column; }
+      .result-actions button { width: 100%; }
+    }
+    @media (max-width: 350px) {
+      .route-links { grid-template-columns: minmax(0,1fr); }
+      .action-group { grid-template-columns: minmax(0,1fr); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" aria-label="Atlas internacional">
+        <div class="brand-mark" aria-hidden="true">AI</div>
+        <div><strong>Atlas internacional</strong><span>Herramientas para la Gestión Internacional</span></div>
+      </div>
+      <nav class="view-switch" aria-label="Cambiar de pantalla" role="tablist">
+        <button class="view-button" id="study-tab" role="tab" aria-selected="true" aria-controls="study-view" data-view="study">Estudiar</button>
+        <button class="view-button" id="exam-tab" role="tab" aria-selected="false" aria-controls="exam-view" data-view="exam">Examen</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section id="study-view" class="page" role="tabpanel" aria-labelledby="study-tab">
+      <header class="course-intro">
+        <p class="eyebrow">Guía de estudio</p>
+        <h1>Herramientas para la Gestión Internacional</h1>
+        <p class="lede">Síntesis de los contenidos abordados en las actividades del curso: globalización, teorías del comercio, organismos internacionales y participación de México. Incluye ejercicios de aplicación y un examen simulado para la autoevaluación.</p>
+        <div class="intro-meta">
+          <span class="meta-pill">17 bloques breves</span>
+          <span class="meta-pill">4 núcleos temáticos</span>
+          <span class="meta-pill">Casos aplicados a México</span>
+          <span class="meta-pill">Simulador de 25 reactivos</span>
+        </div>
+      </header>
+
+      <div class="study-layout">
+        <aside class="route-panel" aria-label="Índice y progreso">
+          <h2>Índice de contenidos</h2>
+          <p>Registra el avance de estudio al concluir la revisión de cada bloque.</p>
+          <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="study-progress-fill"></div></div>
+          <div class="progress-label"><span id="study-progress-text">0 de 17</span><span id="study-progress-percent">0%</span></div>
+          <nav class="route-links">
+            <a href="#block-1"><span class="dot"></span>Mapa</a>
+            <a href="#block-2"><span class="dot"></span>Globalización</a>
+            <a href="#block-3"><span class="dot"></span>Empresas</a>
+            <a href="#block-4"><span class="dot"></span>Hume</a>
+            <a href="#block-5"><span class="dot"></span>Smith y Ricardo</a>
+            <a href="#block-6"><span class="dot"></span>Mill y Porter</a>
+            <a href="#block-7"><span class="dot"></span>Krugman</a>
+            <a href="#block-8"><span class="dot"></span>Organismos</a>
+            <a href="#block-9"><span class="dot"></span>FMI</a>
+            <a href="#block-10"><span class="dot"></span>Banco Mundial</a>
+            <a href="#block-11"><span class="dot"></span>OMC</a>
+            <a href="#block-12"><span class="dot"></span>México</a>
+            <a href="#block-13"><span class="dot"></span>Especialización</a>
+            <a href="#block-14"><span class="dot"></span>Balance crítico</a>
+            <a href="#block-15"><span class="dot"></span>Acuerdos</a>
+            <a href="#block-16"><span class="dot"></span>Decisiones</a>
+            <a href="#block-17"><span class="dot"></span>Estrategia</a>
+          </nav>
+        </aside>
+
+        <div class="route-content">
+          <article class="study-card" id="block-1" data-block="1">
+            <span class="step-number">01</span>
+            <div class="card-top"><div><p class="topic-tag">Orientación</p><h2>El mapa completo del curso</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Los trabajos apuntan a una secuencia: <strong>cómo funciona el comercio</strong> → <strong>qué organizaciones lo ordenan o financian</strong> → <strong>cómo participa México</strong> → <strong>qué decisión corresponde a cada caso</strong>.</p>
+            <div class="fact-grid">
+              <div class="mini-fact"><h3>Teorías</h3><p>Hume, Smith, Ricardo, Mill, Porter y Krugman.</p></div>
+              <div class="mini-fact"><h3>Instituciones</h3><p>FMI, Grupo Banco Mundial y OMC.</p></div>
+              <div class="mini-fact"><h3>Aplicación</h3><p>Empresas, México, financiamiento, garantías y tratados.</p></div>
+            </div>
+            <div class="exam-clue"><strong>Aspectos susceptibles de evaluación</strong>Identificación de conceptos, comparación de enfoques y aplicación de teorías u organismos a situaciones concretas. Estos ejes se derivan de las actividades revisadas; no constituyen una especificación del examen del curso.</div>
+          </article>
+
+          <article class="study-card" id="block-2" data-block="2">
+            <span class="step-number">02</span>
+            <div class="card-top"><div><p class="topic-tag">Globalización</p><h2>Integración con efectos desiguales</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">La globalización integra mercados, producción, capital, información y reglas entre países. Puede ampliar comercio, inversión y acceso a tecnología, pero también expone a crisis externas y distribuye los beneficios de forma desigual.</p>
+            <div class="contrast-grid">
+              <div class="contrast"><h3>Impulsores</h3><p>Tecnología, transporte, liberalización comercial, inversión extranjera, tratados y cadenas globales de valor.</p></div>
+              <div class="contrast"><h3>Tensiones</h3><p>Dependencia externa, presión competitiva, contagio de crisis, pérdida de margen regulatorio y desigualdad regional.</p></div>
+            </div>
+            <div class="memory-hook"><strong>Regla mental</strong>Integración no significa beneficio automático: importa quién gana, quién se ajusta y qué política interna acompaña la apertura.</div>
+            <div class="quick-check" data-correct="1" data-feedback="La globalización aumenta la interdependencia; no elimina automáticamente las diferencias nacionales.">
+              <p>¿Cuál afirmación es más precisa?</p>
+              <div class="check-options"><button class="check-option">La globalización elimina las diferencias económicas entre países.</button><button class="check-option">La globalización aumenta la interdependencia, pero sus efectos dependen de instituciones y políticas internas.</button></div>
+              <p class="check-feedback" hidden></p>
+            </div>
+          </article>
+
+          <article class="study-card" id="block-3" data-block="3">
+            <span class="step-number">03</span>
+            <div class="card-top"><div><p class="topic-tag">Estrategia empresarial</p><h2>Multinacional o globalizada</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">La diferencia principal es el equilibrio entre <strong>adaptación local</strong> y <strong>estandarización mundial</strong>.</p>
+            <div class="table-wrap"><table><thead><tr><th>Dimensión</th><th>Multinacional</th><th>Globalizada</th></tr></thead><tbody>
+              <tr><td>Estrategia</td><td>Adapta decisiones a cada mercado.</td><td>Coordina una estrategia mundial uniforme.</td></tr>
+              <tr><td>Cultura</td><td>Ajusta producto, publicidad e idioma.</td><td>Busca una marca y producto universales.</td></tr>
+              <tr><td>Finanzas</td><td>Diversifica ingresos y fuentes de financiamiento.</td><td>Distribuye costos mediante grandes volúmenes.</td></tr>
+              <tr><td>Geografía</td><td>Se acerca al consumidor y a insumos regionales.</td><td>Concentra producción donde es más eficiente.</td></tr>
+              <tr><td>Fortaleza</td><td>Sensibilidad local.</td><td>Economías de escala y replicabilidad.</td></tr>
+            </tbody></table></div>
+            <div class="warning"><strong>Precisiones conceptuales</strong>Ninguno de los modelos es superior en todos los contextos. Las diferencias culturales y la regulación local favorecen la adaptación; los productos homogéneos y sensibles al costo favorecen la estandarización.</div>
+            <div class="quick-check" data-correct="0" data-feedback="Una campaña y producto ajustados a cada cultura describen una lógica multinacional.">
+              <p>Una empresa adapta sabores, empaque y publicidad en cada país. ¿Qué lógica sigue?</p>
+              <div class="check-options"><button class="check-option">Multinacional</button><button class="check-option">Global estandarizada</button></div><p class="check-feedback" hidden></p>
+            </div>
+          </article>
+
+          <article class="study-card" id="block-4" data-block="4">
+            <span class="step-number">04</span>
+            <div class="card-top"><div><p class="topic-tag">Teoría clásica</p><h2>Hume y el flujo especie-dinero</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Hume refuta la idea mercantilista de acumular metales preciosos indefinidamente. Un superávit persistente atrae oro o plata, eleva la cantidad de dinero y los precios internos, encarece las exportaciones y abarata relativamente las importaciones.</p>
+            <div class="case-box"><strong>Cadena causal</strong>Superávit → entrada de metales → inflación interna → exportaciones menos competitivas → más importaciones → corrección del superávit.</div>
+            <div class="memory-hook"><strong>Conceptos de referencia</strong>La relación entre metales preciosos, precios internos y ajuste automático de la balanza comercial corresponde al mecanismo de <em>Hume</em>.</div>
+            <div class="quick-check" data-correct="1" data-feedback="En el mecanismo de Hume, la entrada de metales eleva precios y reduce la competitividad exportadora.">
+              <p>¿Qué impide mantener un superávit comercial indefinido según Hume?</p>
+              <div class="check-options"><button class="check-option">La prohibición de exportar.</button><button class="check-option">El aumento de precios internos provocado por la entrada de metales.</button></div><p class="check-feedback" hidden></p>
+            </div>
+          </article>
+
+          <article class="study-card" id="block-5" data-block="5">
+            <span class="step-number">05</span>
+            <div class="card-top"><div><p class="topic-tag">Teoría clásica</p><h2>Smith y Ricardo: eficiencia vs. costo de oportunidad</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <div class="contrast-grid">
+              <div class="contrast"><h3>Ventaja absoluta · Smith</h3><p>Produce un bien con menos recursos, horas o costo directo que otro país. Pregunta: “¿quién es más eficiente?”.</p></div>
+              <div class="contrast"><h3>Ventaja comparativa · Ricardo</h3><p>Produce con menor costo de oportunidad. Pregunta: “¿a qué renuncia menos?”.</p></div>
+            </div>
+            <p class="core-idea">Un país puede ser mejor produciendo todo y aun así beneficiarse del comercio: debe especializarse donde su superioridad relativa sea mayor. El otro país se especializa donde su desventaja relativa sea menor.</p>
+            <div class="case-box"><strong>Mini ejemplo</strong>Si producir 1 auto obliga a A a renunciar a 2 toneladas de trigo y a B a renunciar a 5, A tiene ventaja comparativa en autos, aunque todavía falten datos para saber quién tiene ventaja absoluta.</div>
+            <div class="quick-check" data-correct="1" data-feedback="La ventaja comparativa se determina comparando costos de oportunidad, no productividad aislada.">
+              <p>¿Qué dato necesitas para encontrar una ventaja comparativa?</p>
+              <div class="check-options"><button class="check-option">Sólo el volumen total producido.</button><button class="check-option">Cuánto del otro bien se sacrifica al producir una unidad.</button></div><p class="check-feedback" hidden></p>
+            </div>
+          </article>
+
+          <article class="study-card" id="block-6" data-block="6">
+            <span class="step-number">06</span>
+            <div class="card-top"><div><p class="topic-tag">Intercambio y competitividad</p><h2>Mill y Porter responden preguntas distintas</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <div class="contrast-grid">
+              <div class="contrast"><h3>Demanda recíproca · J. S. Mill</h3><p>Explica los términos de intercambio según cuánto demanda cada país los productos del otro. Ayuda a entender el precio internacional.</p></div>
+              <div class="contrast"><h3>Ventaja competitiva · Porter</h3><p>La competitividad se crea mediante productividad, innovación, empresas exigentes y un entorno industrial dinámico.</p></div>
+            </div>
+            <div class="table-wrap"><table><thead><tr><th colspan="2">Diamante de Porter</th></tr></thead><tbody>
+              <tr><td>Condiciones de los factores</td><td>Talento, infraestructura, conocimiento y recursos especializados.</td></tr>
+              <tr><td>Condiciones de la demanda</td><td>Clientes locales exigentes que impulsan mejora.</td></tr>
+              <tr><td>Sectores relacionados y de apoyo</td><td>Proveedores, clústeres e industrias complementarias.</td></tr>
+              <tr><td>Estrategia, estructura y rivalidad</td><td>Competencia interna que eleva productividad e innovación.</td></tr>
+            </tbody></table></div>
+            <div class="memory-hook"><strong>Separación rápida</strong>Mill = demanda entre países y términos de comercio. Porter = entorno que construye competitividad.</div>
+          </article>
+
+          <article class="study-card" id="block-7" data-block="7">
+            <span class="step-number">07</span>
+            <div class="card-top"><div><p class="topic-tag">Teoría moderna</p><h2>Krugman y la nueva teoría del comercio</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">La nueva teoría explica por qué países parecidos comercian productos similares. Las <strong>economías de escala</strong>, la <strong>diferenciación</strong> y la <strong>competencia imperfecta</strong> generan comercio intraindustrial.</p>
+            <div class="case-box"><strong>Ejemplo</strong>Alemania exporta automóviles a Francia y Francia exporta automóviles a Alemania. No es necesario que uno tenga una dotación radicalmente distinta: existen variedades, marcas y rendimientos crecientes.</div>
+            <div class="exam-clue"><strong>Conceptos de referencia</strong>Países similares, diferenciación de productos, economías de escala y comercio intraindustrial: elementos centrales de la teoría de Krugman.</div>
+            <div class="quick-check" data-correct="0" data-feedback="El intercambio de variedades dentro del mismo sector es comercio intraindustrial.">
+              <p>Dos economías desarrolladas intercambian distintos modelos de automóvil. ¿Qué concepto encaja mejor?</p>
+              <div class="check-options"><button class="check-option">Comercio intraindustrial.</button><button class="check-option">Mecanismo especie-dinero.</button></div><p class="check-feedback" hidden></p>
+            </div>
+          </article>
+
+          <article class="study-card" id="block-8" data-block="8">
+            <span class="step-number">08</span>
+            <div class="card-top"><div><p class="topic-tag">Gobernanza internacional</p><h2>Tres organismos, tres funciones</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <div class="fact-grid">
+              <div class="mini-fact"><h3>FMI</h3><p>Estabilidad macroeconómica, cambiaria y financiera; apoyo ante problemas externos.</p></div>
+              <div class="mini-fact"><h3>Banco Mundial</h3><p>Financiamiento y asistencia para desarrollo, infraestructura, sector público y privado.</p></div>
+              <div class="mini-fact"><h3>OMC</h3><p>Reglas del comercio, negociación, transparencia y solución de diferencias.</p></div>
+            </div>
+            <div class="memory-hook"><strong>Síntesis funcional</strong>FMI: estabilidad. Banco Mundial: desarrollo. OMC: reglas comerciales.</div>
+            <div class="warning"><strong>Distinción clave</strong>La OMC no presta dinero para construir proyectos; el Banco Mundial no sustituye el sistema multilateral de reglas comerciales.</div>
+          </article>
+
+          <article class="study-card" id="block-9" data-block="9">
+            <span class="step-number">09</span>
+            <div class="card-top"><div><p class="topic-tag">FMI</p><h2>La Línea de Crédito Flexible funciona antes de usarse</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">La LCF es un respaldo precautorio para países con fundamentos y políticas muy sólidos. Tenerla disponible reduce el riesgo percibido y proporciona liquidez rápida ante una crisis, aunque no se retiren recursos.</p>
+            <div class="contrast-grid">
+              <div class="contrast"><h3>Beneficio inmediato</h3><p>Confianza, señal de solvencia, menor incertidumbre y defensa ante choques externos.</p></div>
+              <div class="contrast"><h3>No significa</h3><p>Que el gobierno ya gastó el monto, que el país está insolvente o que deba utilizarlo de inmediato.</p></div>
+            </div>
+            <div class="case-box"><strong>Caso México de los trabajos</strong>Se analiza un acuerdo precautorio por alrededor de USD 24 mil millones: su valor reside en la disponibilidad y la señal al mercado, no sólo en el desembolso.</div>
+            <div class="quick-check" data-correct="1" data-feedback="Una línea precautoria puede estabilizar expectativas aun sin desembolso.">
+              <p>¿Cómo beneficia una LCF no utilizada?</p>
+              <div class="check-options"><button class="check-option">Porque aumenta automáticamente el gasto público.</button><button class="check-option">Porque ofrece respaldo inmediato y mejora la confianza ante choques.</button></div><p class="check-feedback" hidden></p>
+            </div>
+          </article>
+
+          <article class="study-card" id="block-10" data-block="10">
+            <span class="step-number">10</span>
+            <div class="card-top"><div><p class="topic-tag">Grupo Banco Mundial</p><h2>BIRF, CFI y MIGA por tipo de necesidad</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <div class="table-wrap"><table><thead><tr><th>Institución</th><th>Cliente o necesidad</th><th>Caso de los trabajos</th></tr></thead><tbody>
+              <tr><td><strong>BIRF</strong></td><td>Gobiernos de países de ingreso medio y países solventes; proyectos y políticas de desarrollo.</td><td>Crédito al gobierno federal para escuelas públicas.</td></tr>
+              <tr><td><strong>CFI / IFC</strong></td><td>Empresas y proyectos privados; inversión, préstamos y movilización de capital.</td><td>Financiamiento directo a planta privada de reciclaje y biogás.</td></tr>
+              <tr><td><strong>MIGA</strong></td><td>Inversionistas y prestamistas que enfrentan riesgos no comerciales.</td><td>Garantía para atraer inversión extranjera a un puerto concesionado.</td></tr>
+            </tbody></table></div>
+            <div class="exam-clue"><strong>Árbol de decisión</strong>¿Gobierno? BIRF. ¿Empresa privada? CFI. ¿Temor a expropiación, guerra, restricción de transferencias o incumplimiento estatal? MIGA.</div>
+            <div class="quick-check" data-correct="2" data-feedback="MIGA cubre riesgos políticos o no comerciales de una inversión.">
+              <p>Una empresa extranjera teme que el gobierno incumpla una concesión portuaria. ¿Quién encaja?</p>
+              <div class="check-options"><button class="check-option">BIRF</button><button class="check-option">CFI</button><button class="check-option">MIGA</button></div><p class="check-feedback" hidden></p>
+            </div>
+          </article>
+
+          <article class="study-card" id="block-11" data-block="11">
+            <span class="step-number">11</span>
+            <div class="card-top"><div><p class="topic-tag">OMC</p><h2>Reglas previsibles para comerciar</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">La OMC proporciona un marco multilateral para negociar compromisos, vigilar políticas comerciales y resolver diferencias. Para México, la previsibilidad favorece exportaciones, inversión y acceso a mercados.</p>
+            <div class="contrast-grid">
+              <div class="contrast"><h3>Beneficio</h3><p>Menor arbitrariedad, reglas conocidas, mecanismos institucionales y mayor certidumbre.</p></div>
+              <div class="contrast"><h3>Límite</h3><p>La apertura también puede presionar a productores pequeños o sectores menos productivos; la política interna sigue siendo decisiva.</p></div>
+            </div>
+            <div class="memory-hook"><strong>Idea exacta</strong>La OMC no fija un precio mundial único: establece reglas y procedimientos bajo los cuales ocurre el comercio.</div>
+          </article>
+
+          <article class="study-card" id="block-12" data-block="12">
+            <span class="step-number">12</span>
+            <div class="card-top"><div><p class="topic-tag">México</p><h2>Ficha socioeconómica que debes saber interpretar</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">El proyecto integrador pide conectar datos básicos del país con su posición internacional. Más que memorizar una cifra cambiante, entiende qué mide cada indicador y cuál es su fuente.</p>
+            <div class="table-wrap"><table><thead><tr><th>Dato</th><th>Qué expresa</th><th>Fuente institucional sugerida</th></tr></thead><tbody>
+              <tr><td>Nombre oficial y capital</td><td>Identidad constitucional y sede de poderes federales.</td><td>Constitución Política de los Estados Unidos Mexicanos.</td></tr>
+              <tr><td>Población</td><td>Tamaño y estructura demográfica.</td><td>INEGI y proyecciones de CONAPO.</td></tr>
+              <tr><td>Lenguas</td><td>Diversidad lingüística y derechos de pueblos indígenas.</td><td>Constitución, INALI y legislación lingüística.</td></tr>
+              <tr><td>Moneda</td><td>Peso mexicano y marco monetario.</td><td>Banco de México y Ley Monetaria.</td></tr>
+              <tr><td>PIB</td><td>Valor total producido en la economía.</td><td>INEGI, Banco Mundial o FMI.</td></tr>
+              <tr><td>PIB per cápita</td><td>PIB dividido entre población; no equivale a ingreso individual ni a distribución justa.</td><td>INEGI, Banco Mundial o FMI.</td></tr>
+            </tbody></table></div>
+            <div class="warning"><strong>Consideración metodológica</strong>Un PIB alto no demuestra por sí solo un bienestar elevado; se deben considerar población, distribución, precios y estructura productiva.</div>
+          </article>
+
+          <article class="study-card" id="block-13" data-block="13">
+            <span class="step-number">13</span>
+            <div class="card-top"><div><p class="topic-tag">México y comercio</p><h2>Especialización, exportación e importación</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Para analizar ventajas mexicanas, distingue entre productividad absoluta, costo de oportunidad y competitividad construida mediante cadenas productivas, ubicación, acuerdos e infraestructura.</p>
+            <ul class="clean-list">
+              <li><strong>Ventaja absoluta:</strong> México usa menos recursos que otro país para un producto concreto.</li>
+              <li><strong>Ventaja comparativa:</strong> México sacrifica menos producción alternativa al especializarse.</li>
+              <li><strong>Ventaja competitiva:</strong> empresas, clústeres, innovación, talento e infraestructura sostienen el desempeño.</li>
+              <li><strong>Importar racionalmente:</strong> permite acceder a bienes que otro país produce con menor costo de oportunidad.</li>
+            </ul>
+            <div class="exam-clue"><strong>Cómo contestar un caso</strong>No afirmes que “exportar siempre es bueno” o “importar siempre es malo”. Compara costos de oportunidad, empleo, encadenamientos, resiliencia y distribución de beneficios.</div>
+          </article>
+
+          <article class="study-card" id="block-14" data-block="14">
+            <span class="step-number">14</span>
+            <div class="card-top"><div><p class="topic-tag">Evaluación crítica</p><h2>Beneficios y perjuicios de la integración</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <div class="contrast-grid">
+              <div class="contrast"><h3>Beneficios posibles</h3><p>Estabilidad financiera, confianza, inversión, acceso a capital, mercados de exportación, empleo, tecnología y reglas previsibles.</p></div>
+              <div class="contrast"><h3>Costos o riesgos</h3><p>Condicionalidad, menor margen de política, competencia desigual, vulnerabilidad externa y concentración regional de ganancias.</p></div>
+            </div>
+            <p class="core-idea">Una respuesta fuerte evita extremos: reconoce que FMI, Banco Mundial y OMC pueden ampliar capacidad y certidumbre, pero exige políticas internas para proteger sectores vulnerables y convertir apertura en desarrollo.</p>
+            <div class="memory-hook"><strong>Fórmula para conclusión</strong>Beneficio institucional + riesgo distributivo + condición de política interna = análisis equilibrado.</div>
+          </article>
+
+          <article class="study-card" id="block-15" data-block="15">
+            <span class="step-number">15</span>
+            <div class="card-top"><div><p class="topic-tag">Acuerdos comerciales</p><h2>Qué revisar en un acuerdo actual</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">El proyecto integrador menciona acuerdos del año actual. La evidencia más clara para 2026 es la firma, el 22 de mayo, del <strong>Acuerdo Global Modernizado México–Unión Europea</strong> y su acuerdo comercial interino.</p>
+            <div class="fact-grid">
+              <div class="mini-fact"><h3>Acceso</h3><p>Aranceles, servicios, contratación pública y facilitación para empresas.</p></div>
+              <div class="mini-fact"><h3>Reglas</h3><p>Origen, propiedad intelectual, inversión y mecanismos de cumplimiento.</p></div>
+              <div class="mini-fact"><h3>Sostenibilidad</h3><p>Compromisos laborales, ambientales y cooperación.</p></div>
+            </div>
+            <div class="warning"><strong>Precisión temporal</strong>“Firmado” no equivale necesariamente a “plenamente vigente”. Distingue negociación, firma, aprobación, ratificación y entrada en vigor.</div>
+          </article>
+
+          <article class="study-card" id="block-16" data-block="16">
+            <span class="step-number">16</span>
+            <div class="card-top"><div><p class="topic-tag">Aplicación</p><h2>Matriz para resolver casos</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <div class="table-wrap"><table><thead><tr><th>Si el caso menciona…</th><th>Piensa primero en…</th></tr></thead><tbody>
+              <tr><td>Oro, inflación y corrección automática del superávit</td><td>Hume</td></tr>
+              <tr><td>Menos recursos o mayor productividad física</td><td>Ventaja absoluta</td></tr>
+              <tr><td>Menor sacrificio de otro bien</td><td>Ventaja comparativa</td></tr>
+              <tr><td>Demanda mutua y términos de intercambio</td><td>Mill</td></tr>
+              <tr><td>Clúster, rivalidad, innovación y proveedores</td><td>Porter</td></tr>
+              <tr><td>Variedades, escala y comercio entre países similares</td><td>Krugman</td></tr>
+              <tr><td>Estabilidad cambiaria o respaldo precautorio</td><td>FMI / LCF</td></tr>
+              <tr><td>Proyecto público, empresa privada o riesgo político</td><td>BIRF, CFI o MIGA</td></tr>
+              <tr><td>Reglas comerciales y solución de diferencias</td><td>OMC</td></tr>
+            </tbody></table></div>
+          </article>
+
+          <article class="study-card" id="block-17" data-block="17">
+            <span class="step-number">17</span>
+            <div class="card-top"><div><p class="topic-tag">Cierre</p><h2>Estrategia para el examen</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <ol class="clean-list">
+              <li><strong>Subraya el actor:</strong> gobierno, empresa privada, inversionista o país.</li>
+              <li><strong>Ubica el problema:</strong> eficiencia, oportunidad, precios, financiamiento, riesgo político o reglas.</li>
+              <li><strong>Identifica los conceptos de referencia</strong> en la matriz anterior.</li>
+              <li><strong>Descarta por función:</strong> la OMC no financia; MIGA no construye la escuela; el FMI no sustituye a la CFI.</li>
+              <li><strong>En preguntas críticas, equilibra:</strong> beneficio, riesgo y política interna necesaria.</li>
+            </ol>
+            <div class="exam-clue"><strong>Listo para simular</strong>Cuando puedas explicar la diferencia entre Ricardo y Smith, y elegir BIRF/CFI/MIGA sin mirar, pasa a la pantalla Examen.</div>
+          </article>
+        </div>
+      </div>
+
+      <details class="sources">
+        <summary>Alcance y fuentes de la guía</summary>
+        <p>El temario se infirió de los seis trabajos proporcionados; no sustituye un temario oficial del docente. Se priorizaron los conceptos repetidos y los tipos de aplicación presentes en las actividades.</p>
+        <ul>
+          <li>Cuadro comparativo de empresa multinacional y globalizada.</li>
+          <li>Cuadro sinóptico de teorías económicas internacionales.</li>
+          <li>Caso sobre la Línea de Crédito Flexible.</li>
+          <li>Tabla de proyectos con BIRF, CFI y MIGA.</li>
+          <li>Proyecto integrador sobre características socioeconómicas y globalización de México.</li>
+          <li>Ensayo sobre México, FMI, Banco Mundial y OMC.</li>
+          <li><a href="https://www.worldbank.org/en/who-we-are/ibrd" target="_blank" rel="noreferrer">Banco Mundial: función del BIRF</a>.</li>
+          <li><a href="https://policy.trade.ec.europa.eu/eu-trade-relationships-country-and-region/countries-and-regions/mexico/eu-mexico-agreement/factsheet-eu-mexico-modernised-global-agreement-general-benefits_en" target="_blank" rel="noreferrer">Unión Europea: Acuerdo Global Modernizado con México</a>.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="exam-view" class="page exam-shell" role="tabpanel" aria-labelledby="exam-tab" hidden>
+      <div id="exam-start" class="exam-start">
+        <div class="exam-start-main">
+          <p class="eyebrow" style="color:var(--teal-dark)">Autoevaluación de contenidos</p>
+          <h1>Examen de gestión internacional</h1>
+          <p>El simulador presenta una selección de preguntas conceptuales y casos de aplicación basados en las actividades del curso. Las respuestas y sus fundamentos se muestran al finalizar. El número de reactivos y la duración son parámetros de práctica, no del examen oficial.</p>
+          <div class="exam-specs">
+            <div class="exam-spec"><strong>25</strong><span>reactivos aleatorios</span></div>
+            <div class="exam-spec"><strong>35 min</strong><span>cuenta regresiva</span></div>
+            <div class="exam-spec"><strong>70%</strong><span>mínimo sugerido</span></div>
+          </div>
+          <button class="primary-button" id="start-exam">Iniciar simulador</button>
+        </div>
+        <div class="exam-start-side" aria-hidden="true">
+          <div class="compass">N</div>
+          <h2>Lee el caso antes de buscar el concepto.</h2>
+          <p>Puedes marcar preguntas y regresar antes de entregar.</p>
+        </div>
+      </div>
+
+      <div id="exam-workspace" class="exam-workspace" hidden>
+        <section class="question-panel" aria-live="polite">
+          <div class="exam-statusbar"><span id="question-counter">Pregunta 1 de 25</span><span id="timer">35:00</span></div>
+          <div class="question-progress"><div id="question-progress-fill"></div></div>
+          <div class="question-body">
+            <span class="question-category" id="question-category"></span>
+            <h2 id="question-text"></h2>
+            <div class="exam-options" id="exam-options"></div>
+            <div class="question-actions">
+              <button class="secondary-button mark-button" id="mark-question" aria-pressed="false">Marcar para revisar</button>
+              <div class="action-group"><button class="secondary-button" id="prev-question">Anterior</button><button class="primary-button" id="next-question">Siguiente</button></div>
+            </div>
+          </div>
+        </section>
+        <aside class="exam-sidebar">
+          <h3>Navegación</h3>
+          <div class="question-grid" id="question-grid"></div>
+          <div class="exam-legend"><span><i class="legend-box done"></i>Respondida</span><span><i class="legend-box flag"></i>Marcada</span></div>
+          <button class="danger-button finish-button" id="finish-exam">Entregar examen</button>
+        </aside>
+      </div>
+
+      <section id="exam-results" class="result-card" hidden>
+        <p class="eyebrow" style="color:var(--teal-dark)">Resultado</p>
+        <h1>Resultados de la autoevaluación</h1>
+        <div class="score-row">
+          <div class="score-ring" id="score-ring" data-score="0"></div>
+          <div class="result-summary"><h2 id="result-heading"></h2><p id="result-detail"></p></div>
+        </div>
+        <div class="breakdown" id="category-breakdown"></div>
+        <h2>Revisión de reactivos</h2>
+        <div class="review-list" id="review-list"></div>
+        <div class="result-actions"><button class="primary-button" id="retry-exam">Nuevo simulador</button><button class="secondary-button" id="back-to-study">Volver a estudiar</button></div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    // Preserve each column's context when tables reflow into mobile records.
+    document.querySelectorAll('.table-wrap table').forEach(table => {
+      const headings = [...table.querySelectorAll('thead th')];
+      if (headings.length < 2) return;
+      table.querySelectorAll('tbody tr').forEach(row => {
+        [...row.cells].forEach((cell, index) => {
+          if (index > 0 && headings[index]) cell.dataset.label = headings[index].textContent.trim();
+        });
+      });
+    });
+    const questionBank = [
+      {cat:'Globalización',q:'¿Qué describe mejor la globalización económica?',o:['La eliminación total del Estado nacional.','La integración creciente de mercados, capital, producción e información entre países.','La obligación de usar una sola moneda.','El cierre de los mercados internos.'],a:1,r:'La globalización aumenta la interdependencia; no elimina automáticamente al Estado ni uniforma todas las instituciones.'},
+      {cat:'Globalización',q:'¿Cuál es un riesgo posible de una economía muy integrada?',o:['Que deje de existir el comercio.','Que desaparezca toda competencia.','Mayor exposición al contagio de crisis externas.','Imposibilidad de recibir inversión.'],a:2,r:'La interdependencia transmite oportunidades, pero también choques financieros, productivos o comerciales.'},
+      {cat:'Empresas',q:'Una empresa cambia sabores, publicidad e idioma según cada país. ¿Qué modelo representa mejor?',o:['Empresa multinacional con adaptación local.','Empresa global plenamente estandarizada.','Organismo multilateral.','Empresa exclusivamente exportadora sin presencia local.'],a:0,r:'La adaptación del producto y la comunicación a cada mercado es característica del enfoque multinacional.'},
+      {cat:'Empresas',q:'¿Qué ventaja financiera se asocia especialmente con una empresa globalizada?',o:['Eliminar todo riesgo cambiario.','Economías de escala y distribución de costos entre grandes volúmenes.','No pagar impuestos en ningún país.','Depender de un solo mercado.'],a:1,r:'La estandarización permite producir grandes volúmenes y reducir el costo medio.'},
+      {cat:'Empresas',q:'¿Cuál conclusión es más sólida al comparar empresa multinacional y globalizada?',o:['La globalizada siempre es mejor.','La multinacional siempre es mejor.','La conveniencia depende de la necesidad de adaptación local frente a la eficiencia por estandarización.','Ambas son exactamente iguales.'],a:2,r:'La elección es contingente al sector, el producto, la cultura, la regulación y la estrategia.'},
+      {cat:'Teorías',q:'Según Hume, ¿qué ocurre después de una entrada persistente de metales por superávit comercial?',o:['Bajan los precios internos indefinidamente.','Suben los precios internos y se debilita la competitividad exportadora.','Se prohíben las importaciones automáticamente.','Desaparece la demanda de dinero.'],a:1,r:'El flujo especie-dinero eleva precios, encarece exportaciones y favorece una corrección del superávit.'},
+      {cat:'Teorías',q:'Un país produce una tonelada de acero usando menos horas de trabajo que otro. Esto muestra:',o:['Ventaja comparativa necesariamente.','Demanda recíproca.','Ventaja absoluta.','Riesgo político.'],a:2,r:'Menor uso directo de recursos indica ventaja absoluta; para la comparativa falta conocer el costo de oportunidad.'},
+      {cat:'Teorías',q:'¿Qué pregunta permite identificar una ventaja comparativa?',o:['¿Quién tiene más población?','¿Quién sacrifica menos del otro bien al producir éste?','¿Quién posee más oro?','¿Quién cobra más aranceles?'],a:1,r:'La ventaja comparativa depende del costo de oportunidad.'},
+      {cat:'Teorías',q:'A renuncia a 2 toneladas de trigo por producir un auto; B renuncia a 5. ¿Quién tiene ventaja comparativa en autos?',o:['A','B','Ambos por igual','No puede saberse ni siquiera con esos datos.'],a:0,r:'A tiene el menor costo de oportunidad: sacrifica 2 toneladas frente a 5.'},
+      {cat:'Teorías',q:'¿Qué teoría vincula los términos de intercambio con la intensidad de la demanda mutua entre países?',o:['Mecanismo de Hume.','Demanda recíproca de Mill.','Diamante de Porter.','Ventaja absoluta de Smith.'],a:1,r:'Mill explica el precio o términos de intercambio mediante la demanda recíproca.'},
+      {cat:'Teorías',q:'Proveedores especializados, demanda local exigente y fuerte rivalidad interna apuntan a:',o:['Diamante de Porter.','Línea de Crédito Flexible.','Mecanismo especie-dinero.','BIRF.'],a:0,r:'Esos son componentes del entorno nacional que crea ventaja competitiva según Porter.'},
+      {cat:'Teorías',q:'Dos países similares se exportan mutuamente distintas marcas de automóviles. ¿Qué teoría lo explica mejor?',o:['Mercantilismo puro.','Nueva teoría del comercio de Krugman.','Sólo ventaja absoluta.','Línea de Crédito Flexible.'],a:1,r:'La diferenciación de producto y las economías de escala generan comercio intraindustrial.'},
+      {cat:'Teorías',q:'¿Qué distingue mejor ventaja competitiva de ventaja comparativa?',o:['La competitiva se construye con innovación y productividad; la comparativa se basa en costo de oportunidad.','La comparativa pertenece sólo a empresas.','La competitiva depende únicamente de recursos naturales.','No existe diferencia.'],a:0,r:'Porter enfatiza capacidades creadas; Ricardo compara costos de oportunidad.'},
+      {cat:'Organismos',q:'¿Cuál es la asociación correcta?',o:['FMI—reglas comerciales; OMC—créditos de estabilización.','FMI—estabilidad macrofinanciera; OMC—reglas del comercio.','Banco Mundial—solución exclusiva de disputas arancelarias.','MIGA—política monetaria.'],a:1,r:'El FMI atiende estabilidad macrofinanciera; la OMC administra el marco multilateral de comercio.'},
+      {cat:'Organismos',q:'¿Por qué una Línea de Crédito Flexible puede beneficiar a México sin desembolso?',o:['Porque el dinero se convierte automáticamente en gasto.','Porque sirve como respaldo, reduce incertidumbre y permite liquidez rápida ante choques.','Porque elimina la deuda pública.','Porque fija permanentemente el tipo de cambio.'],a:1,r:'La disponibilidad y la señal de solidez pueden estabilizar expectativas incluso sin uso inmediato.'},
+      {cat:'Organismos',q:'Una LCF aprobada implica necesariamente que:',o:['El país ya gastó todos los recursos.','El país está en suspensión de pagos.','Existe acceso precautorio a recursos bajo la evaluación del FMI.','La OMC administrará el presupuesto.'],a:2,r:'Es acceso precautorio; aprobación y desembolso no son lo mismo.'},
+      {cat:'Organismos',q:'El gobierno federal solicita financiamiento para construir escuelas públicas. ¿Qué institución encaja mejor?',o:['CFI','MIGA','BIRF','OMC'],a:2,r:'El BIRF trabaja principalmente con gobiernos y entidades públicas de países de ingreso medio o solventes.'},
+      {cat:'Organismos',q:'Una empresa privada mexicana desea ampliar una planta de reciclaje y biogás. ¿Qué institución puede financiar directamente al sector privado?',o:['CFI / IFC','BIRF','OMC','Secretaría de la OMC'],a:0,r:'La CFI es el brazo del Grupo Banco Mundial orientado al sector privado.'},
+      {cat:'Organismos',q:'Inversionistas extranjeros temen expropiación y restricciones para transferir dinero. ¿Qué institución es la más pertinente?',o:['BIRF','MIGA','FMI','OMC'],a:1,r:'MIGA ofrece garantías contra riesgos políticos o no comerciales.'},
+      {cat:'Organismos',q:'¿Qué función corresponde principalmente a la OMC?',o:['Financiar plantas privadas.','Asegurar proyectos contra guerra civil.','Administrar reglas comerciales y procedimientos de solución de diferencias.','Emitir la moneda mexicana.'],a:2,r:'La OMC organiza el marco multilateral del comercio; no es un banco de desarrollo.'},
+      {cat:'Organismos',q:'¿Cuál riesgo NO es típicamente político para una garantía de MIGA?',o:['Expropiación.','Guerra o disturbios civiles.','Restricción de transferencias.','Baja demanda comercial ordinaria del producto.'],a:3,r:'MIGA cubre riesgos no comerciales definidos; el riesgo comercial normal de vender poco corresponde a la empresa.'},
+      {cat:'Organismos',q:'¿Cuál diferencia general entre FMI y Banco Mundial es correcta?',o:['El FMI se centra en estabilidad macroeconómica; el Banco Mundial en desarrollo y proyectos de más largo plazo.','El Banco Mundial fija aranceles y el FMI asegura puertos.','Ambos tienen funciones idénticas.','El FMI financia exclusivamente empresas privadas.'],a:0,r:'Aunque pueden coordinarse, su misión central y sus instrumentos son distintos.'},
+      {cat:'México',q:'¿Qué mide el PIB?',o:['La igualdad en la distribución del ingreso.','El valor de los bienes y servicios finales producidos en una economía durante un periodo.','La riqueza personal de cada habitante.','Sólo las exportaciones.'],a:1,r:'El PIB mide producción agregada, no bienestar ni distribución por sí solo.'},
+      {cat:'México',q:'¿Qué interpretación del PIB per cápita es correcta?',o:['Es el ingreso exacto de cada persona.','Es PIB dividido entre población; es un promedio y no describe por sí solo la desigualdad.','Mide únicamente comercio exterior.','Es igual al salario mínimo.'],a:1,r:'Es un promedio útil para comparaciones, pero no muestra distribución individual.'},
+      {cat:'México',q:'¿Qué institución es la fuente natural para información sobre la moneda y el marco monetario mexicano?',o:['MIGA','Banco de México','OMC','CFI'],a:1,r:'Banco de México es el banco central; la Ley Monetaria complementa el marco jurídico.'},
+      {cat:'México',q:'¿Cuál es un beneficio potencial de la integración de México con organismos internacionales?',o:['Garantía de que nunca habrá crisis.','Mayor certidumbre, acceso a financiamiento y reglas para comerciar.','Eliminación automática de desigualdad.','Desaparición de toda competencia externa.'],a:1,r:'La integración puede aportar confianza, financiamiento y previsibilidad, sin garantizar resultados perfectos.'},
+      {cat:'México',q:'¿Cuál es un posible costo distributivo de la apertura comercial?',o:['Que todos los sectores ganen exactamente lo mismo.','Que productores pequeños compitan en condiciones difíciles frente a firmas más productivas.','Que se eliminen todas las importaciones.','Que desaparezca la inversión.'],a:1,r:'Los beneficios pueden concentrarse y algunos sectores enfrentar costos de ajuste.'},
+      {cat:'México',q:'¿Qué formulación presenta una conclusión equilibrada sobre FMI, Banco Mundial y OMC?',o:['Todo vínculo internacional es perjudicial.','Todo vínculo internacional es beneficioso sin condiciones.','Pueden aportar estabilidad, financiamiento y reglas, pero requieren políticas internas para distribuir beneficios y proteger sectores vulnerables.','Su efecto es irrelevante para México.'],a:2,r:'La evidencia de los trabajos favorece un análisis de beneficios, riesgos y respuesta interna.'},
+      {cat:'México',q:'En 2026, México y la Unión Europea firmaron:',o:['Una moneda común.','El Acuerdo Global Modernizado y un acuerdo comercial interino.','La salida de México de la OMC.','Una prohibición permanente de contratación pública.'],a:1,r:'La firma ocurrió el 22 de mayo de 2026; firma y plena entrada en vigor son etapas distintas.'},
+      {cat:'México',q:'¿Cuál secuencia jurídica es la más cuidadosa al hablar de un tratado?',o:['Firma = vigencia automática en todos los casos.','Negociación → firma → aprobaciones o ratificación → entrada en vigor, según el acuerdo.','Exportación → inflación → firma.','Crédito → expropiación → arancel.'],a:1,r:'Los acuerdos atraviesan etapas distintas; confundir firma con vigencia produce errores.'},
+      {cat:'Casos',q:'Una compañía vende el mismo componente electrónico mundialmente y busca reducir costos unitarios mediante gran escala. ¿Qué modelo favorece el caso?',o:['Estrategia global estandarizada.','Adaptación multinacional extrema.','MIGA.','Demanda recíproca.'],a:0,r:'Producto homogéneo y presión de costos favorecen estandarización y escala.'},
+      {cat:'Casos',q:'Una compañía opera de forma diferenciada en varios países; una recesión regional no elimina sus ingresos de otros mercados. ¿Qué ventaja muestra?',o:['Diversificación geográfica de ingresos.','Ausencia total de riesgo.','Solución de diferencias de la OMC.','Flujo especie-dinero.'],a:0,r:'La presencia en varias regiones puede reducir dependencia de un solo mercado.'},
+      {cat:'Casos',q:'El problema central es proteger a un inversionista de que un gobierno incumpla un contrato de concesión. ¿Qué opción elegirías?',o:['LCF del FMI','MIGA','OMC','Ventaja absoluta'],a:1,r:'Es un caso prototípico de garantía contra riesgo político o incumplimiento contractual estatal.'},
+      {cat:'Casos',q:'Un análisis pregunta a qué precio relativo se intercambiarán textiles y vino cuando cada país demanda el producto del otro. ¿Qué autor es central?',o:['Hume','Smith','Mill','Porter'],a:2,r:'La demanda recíproca de Mill contribuye a determinar los términos de intercambio.'},
+      {cat:'Casos',q:'Un clúster aeronáutico mejora por proveedores especializados, ingenieros capacitados y competencia local intensa. ¿Qué marco lo explica?',o:['Diamante de Porter.','Mecanismo de Hume.','LCF.','BIRF.'],a:0,r:'Los factores especializados, proveedores y rivalidad son elementos del diamante.'},
+      {cat:'Casos',q:'Una respuesta afirma: “México debe exportar todo aquello que produce con menos horas”. ¿Qué le falta para hablar de ventaja comparativa?',o:['Conocer el costo de oportunidad respecto de otros bienes.','Conocer sólo la capital del país.','Calcular reservas de oro exclusivamente.','Preguntar a la OMC por un préstamo.'],a:0,r:'Menos horas identifica eficiencia absoluta; la comparativa requiere sacrificio relativo.'},
+      {cat:'Casos',q:'Un país recibe oro por años debido a su superávit. Después sus exportaciones pierden competitividad. ¿Qué variable intermedia completa la explicación?',o:['Caída automática de salarios a cero.','Aumento de precios internos.','Garantía de MIGA.','Desaparición de importaciones.'],a:1,r:'La entrada monetaria eleva precios; ése es el mecanismo corrector de Hume.'},
+      {cat:'Casos',q:'Una disputa surge porque un país aplica un arancel contrario a sus compromisos multilaterales. ¿Qué foro institucional es el más relacionado?',o:['OMC','CFI','MIGA','Banco de México'],a:0,r:'La OMC administra compromisos comerciales y mecanismos para abordar diferencias entre miembros.'},
+      {cat:'Casos',q:'Una empresa privada necesita capital para un proyecto rentable de energía limpia, no una garantía política. ¿Qué opción es la más directa?',o:['CFI','MIGA','OMC','FMI'],a:0,r:'CFI financia y moviliza inversión privada; MIGA se centra en garantías contra riesgos no comerciales.'},
+      {cat:'Casos',q:'¿Qué respuesta muestra mejor juicio crítico sobre un acuerdo comercial?',o:['Sólo contar cuántos aranceles baja.','Evaluar acceso a mercados, reglas, sectores ganadores y perdedores, implementación y sostenibilidad.','Suponer que toda importación destruye valor.','Asumir que la firma prueba vigencia inmediata.'],a:1,r:'Un acuerdo debe evaluarse por alcance, reglas, distribución de efectos y etapa jurídica.'}
+    ];
+
+    const state = { questions: [], answers: [], marked: [], current: 0, seconds: 35 * 60, timer: null };
+    const viewButtons = document.querySelectorAll('.view-button');
+    const studyView = document.getElementById('study-view');
+    const examView = document.getElementById('exam-view');
+
+    function showView(view) {
+      const studying = view === 'study';
+      studyView.hidden = !studying;
+      examView.hidden = studying;
+      viewButtons.forEach(btn => btn.setAttribute('aria-selected', String(btn.dataset.view === view)));
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+    viewButtons.forEach(btn => btn.addEventListener('click', () => showView(btn.dataset.view)));
+
+    const completeButtons = [...document.querySelectorAll('.complete-button')];
+    const progressKey = `atlasCompleted:${location.pathname.replace(/\/index\.html$/, '/')}`;
+    let completed = new Set();
+    try { completed = new Set(JSON.parse(localStorage.getItem(progressKey) || '[]')); } catch (_) {}
+    function renderStudyProgress() {
+      completeButtons.forEach((button, index) => {
+        const done = completed.has(index + 1);
+        button.setAttribute('aria-pressed', String(done));
+        button.textContent = done ? 'Listo ✓' : 'Marcar listo';
+        button.closest('.study-card').classList.toggle('completed', done);
+      });
+      const n = completed.size;
+      const pct = Math.round(n / completeButtons.length * 100);
+      document.getElementById('study-progress-fill').style.width = pct + '%';
+      document.getElementById('study-progress-text').textContent = `${n} de ${completeButtons.length}`;
+      document.getElementById('study-progress-percent').textContent = pct + '%';
+    }
+    completeButtons.forEach((button, index) => button.addEventListener('click', () => {
+      const id = index + 1;
+      completed.has(id) ? completed.delete(id) : completed.add(id);
+      try { localStorage.setItem(progressKey, JSON.stringify([...completed])); } catch (_) {}
+      renderStudyProgress();
+    }));
+    renderStudyProgress();
+
+    document.querySelectorAll('.quick-check').forEach(check => {
+      const options = [...check.querySelectorAll('.check-option')];
+      options.forEach((button, index) => button.addEventListener('click', () => {
+        const correct = Number(check.dataset.correct);
+        options.forEach((option, i) => {
+          option.disabled = true;
+          if (i === correct) option.classList.add('correct');
+          if (i === index && i !== correct) option.classList.add('incorrect');
+        });
+        const feedback = check.querySelector('.check-feedback');
+        feedback.textContent = (index === correct ? 'Correcto. ' : 'Todavía no. ') + check.dataset.feedback;
+        feedback.hidden = false;
+      }));
+    });
+
+    function shuffle(list) {
+      const copy = [...list];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+    function buildBalancedExam() {
+      const categories = ['Globalización','Empresas','Teorías','Organismos','México','Casos'];
+      const quotas = [2,2,5,5,5,6];
+      return categories.flatMap((cat, i) => shuffle(questionBank.filter(q => q.cat === cat)).slice(0, quotas[i]));
+    }
+    function startExam() {
+      clearInterval(state.timer);
+      state.questions = shuffle(buildBalancedExam());
+      state.answers = Array(state.questions.length).fill(null);
+      state.marked = Array(state.questions.length).fill(false);
+      state.current = 0;
+      state.seconds = 35 * 60;
+      document.getElementById('exam-start').hidden = true;
+      document.getElementById('exam-results').hidden = true;
+      document.getElementById('exam-workspace').hidden = false;
+      buildQuestionGrid();
+      renderQuestion();
+      updateTimer();
+      state.timer = setInterval(() => {
+        state.seconds--;
+        updateTimer();
+        if (state.seconds <= 0) finishExam(true);
+      }, 1000);
+    }
+    function updateTimer() {
+      const min = Math.floor(Math.max(0,state.seconds) / 60).toString().padStart(2,'0');
+      const sec = (Math.max(0,state.seconds) % 60).toString().padStart(2,'0');
+      const timer = document.getElementById('timer');
+      timer.textContent = `${min}:${sec}`;
+      timer.style.color = state.seconds < 300 ? '#ffd8a8' : 'white';
+    }
+    function buildQuestionGrid() {
+      const grid = document.getElementById('question-grid');
+      grid.innerHTML = '';
+      state.questions.forEach((_, i) => {
+        const b = document.createElement('button');
+        b.className = 'question-jump';
+        b.textContent = i + 1;
+        b.setAttribute('aria-label', `Ir a la pregunta ${i + 1}`);
+        b.addEventListener('click', () => { state.current = i; renderQuestion(); });
+        grid.appendChild(b);
+      });
+    }
+    function updateQuestionGrid() {
+      [...document.querySelectorAll('.question-jump')].forEach((b, i) => {
+        b.classList.toggle('answered', state.answers[i] !== null);
+        b.classList.toggle('marked', state.marked[i]);
+        b.classList.toggle('current', state.current === i);
+      });
+    }
+    function renderQuestion() {
+      const q = state.questions[state.current];
+      document.getElementById('question-counter').textContent = `Pregunta ${state.current + 1} de ${state.questions.length}`;
+      document.getElementById('question-progress-fill').style.width = ((state.current + 1) / state.questions.length * 100) + '%';
+      document.getElementById('question-category').textContent = q.cat;
+      document.getElementById('question-text').textContent = q.q;
+      const options = document.getElementById('exam-options');
+      options.innerHTML = '';
+      q.o.forEach((text, i) => {
+        const b = document.createElement('button');
+        b.className = 'exam-option' + (state.answers[state.current] === i ? ' selected' : '');
+        b.innerHTML = `<span class="option-letter">${String.fromCharCode(65+i)}</span><span>${text}</span>`;
+        b.addEventListener('click', () => { state.answers[state.current] = i; renderQuestion(); });
+        options.appendChild(b);
+      });
+      const mark = document.getElementById('mark-question');
+      mark.setAttribute('aria-pressed', String(state.marked[state.current]));
+      mark.textContent = state.marked[state.current] ? 'Marcada para revisar ★' : 'Marcar para revisar';
+      document.getElementById('prev-question').disabled = state.current === 0;
+      document.getElementById('next-question').textContent = state.current === state.questions.length - 1 ? 'Ir a entregar' : 'Siguiente';
+      updateQuestionGrid();
+    }
+    function navigate(delta) {
+      if (delta > 0 && state.current === state.questions.length - 1) {
+        document.getElementById('finish-exam').focus();
+        return;
+      }
+      state.current = Math.max(0, Math.min(state.questions.length - 1, state.current + delta));
+      renderQuestion();
+    }
+    function finishExam(auto = false) {
+      const unanswered = state.answers.filter(a => a === null).length;
+      if (!auto && !confirm(unanswered ? `Quedan ${unanswered} preguntas sin responder. ¿Entregar de todas formas?` : '¿Entregar el examen y ver resultados?')) return;
+      clearInterval(state.timer);
+      const correct = state.questions.reduce((sum, q, i) => sum + (state.answers[i] === q.a ? 1 : 0), 0);
+      const pct = Math.round(correct / state.questions.length * 100);
+      document.getElementById('exam-workspace').hidden = true;
+      const results = document.getElementById('exam-results');
+      results.hidden = false;
+      const ring = document.getElementById('score-ring');
+      ring.style.setProperty('--score', pct);
+      ring.dataset.score = pct;
+      const heading = pct >= 85 ? 'Dominio sólido' : pct >= 70 ? 'Base suficiente, falta precisión' : pct >= 50 ? 'Aún hay huecos importantes' : 'Conviene volver a la ruta';
+      document.getElementById('result-heading').textContent = heading;
+      document.getElementById('result-detail').textContent = `${correct} respuestas correctas de ${state.questions.length}. ${auto ? 'El tiempo terminó y el examen se entregó automáticamente.' : ''}`;
+      renderBreakdown();
+      renderReview();
+      results.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+    function renderBreakdown() {
+      const holder = document.getElementById('category-breakdown');
+      holder.innerHTML = '';
+      [...new Set(state.questions.map(q => q.cat))].forEach(cat => {
+        const indices = state.questions.map((q,i) => q.cat === cat ? i : -1).filter(i => i >= 0);
+        const right = indices.filter(i => state.answers[i] === state.questions[i].a).length;
+        const card = document.createElement('div');
+        card.className = 'breakdown-card';
+        card.innerHTML = `<strong>${right}/${indices.length}</strong><span>${cat}</span>`;
+        holder.appendChild(card);
+      });
+    }
+    function renderReview() {
+      const holder = document.getElementById('review-list');
+      holder.innerHTML = '';
+      state.questions.forEach((q,i) => {
+        const ok = state.answers[i] === q.a;
+        const item = document.createElement('details');
+        item.className = 'review-item';
+        const selected = state.answers[i] === null ? 'Sin respuesta' : q.o[state.answers[i]];
+        item.innerHTML = `<summary>${ok ? '✓' : '✕'} ${i+1}. ${q.q}</summary><div class="review-content"><p><strong>Tu respuesta:</strong> ${selected}</p><p><strong>Respuesta correcta:</strong> ${q.o[q.a]}</p><p>${q.r}</p></div>`;
+        holder.appendChild(item);
+      });
+    }
+    function resetExamScreen() {
+      clearInterval(state.timer);
+      document.getElementById('exam-start').hidden = false;
+      document.getElementById('exam-workspace').hidden = true;
+      document.getElementById('exam-results').hidden = true;
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    document.getElementById('start-exam').addEventListener('click', startExam);
+    document.getElementById('retry-exam').addEventListener('click', startExam);
+    document.getElementById('back-to-study').addEventListener('click', () => showView('study'));
+    document.getElementById('prev-question').addEventListener('click', () => navigate(-1));
+    document.getElementById('next-question').addEventListener('click', () => navigate(1));
+    document.getElementById('mark-question').addEventListener('click', () => { state.marked[state.current] = !state.marked[state.current]; renderQuestion(); });
+    document.getElementById('finish-exam').addEventListener('click', () => finishExam(false));
+    window.addEventListener('beforeunload', () => clearInterval(state.timer));
+  </script>
+</body>
+</html>
