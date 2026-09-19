@@ -1,4 +1,4 @@
-# Archivo de estudio
+# Guías de estudio
 
 Biblioteca de guías HTML, completamente estática. Cada archivo en `guias/` se convierte al compilar en una página propia y una entrada del índice.
 

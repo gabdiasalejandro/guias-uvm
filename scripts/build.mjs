@@ -70,15 +70,13 @@ function addReturnLink(html) {
     .archivo-return:hover, .archivo-return:focus-visible { background:#34443f; color:#fff; }
   </style>`;
   return html.replace(/<\/head>/i, `${style}\n</head>`)
-    .replace(/(<body\b[^>]*>)/i, '$1\n  <a class="archivo-return" href="../../" aria-label="Volver al índice de guías">← Volver al archivo de estudio</a>');
+    .replace(/(<body\b[^>]*>)/i, '$1\n  <a class="archivo-return" href="../../" aria-label="Volver al índice de guías">← Volver al índice</a>');
 }
 
-function renderCard(guide, index) {
+function renderCard(guide) {
   return `<article class="guide-card">
           <a href="./guias/${encodeURIComponent(guide.slug)}/" aria-label="Abrir ${escapeHtml(guide.title)}">
-            <span class="guide-number">${String(index + 1).padStart(2, '0')}</span>
             <span class="guide-body">
-              <span class="guide-type">Guía de estudio</span>
               <h3>${escapeHtml(guide.title)}</h3>
               <p>${escapeHtml(guide.description)}</p>
             </span>
@@ -113,7 +111,7 @@ export async function buildSite(root = projectRoot) {
   await mkdir(output, { recursive: true });
   const cards = guides.length
     ? guides.map(renderCard).join('\n        ')
-    : '<p class="empty-search">Aún no hay guías. Agrega un archivo HTML a la carpeta guias/.</p>';
+    : '<p class="empty-search">No hay guías disponibles.</p>';
   const index = template.replace('{{GUIDE_COUNT}}', String(guides.length)).replace('{{GUIDE_CARDS}}', cards);
   await writeFile(path.join(output, 'index.html'), index);
   await copyFile(path.join(root, 'src', 'styles.css'), path.join(output, 'styles.css'));

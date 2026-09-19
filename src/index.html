@@ -3,65 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Una colección de guías de estudio interactivas, reunidas en un solo lugar.">
+  <meta name="description" content="Índice de guías de estudio.">
   <meta name="theme-color" content="#202b30">
-  <title>Archivo de estudio | Guías</title>
+  <title>Guías de estudio</title>
   <link rel="stylesheet" href="./styles.css">
   <script src="./catalog.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#coleccion">Saltar a las guías</a>
+  <a class="skip-link" href="#coleccion">Saltar al índice</a>
   <header class="site-header">
     <div class="header-inner">
-      <a class="identity" href="./" aria-label="Archivo de estudio, inicio">
+      <a class="identity" href="./" aria-label="Guías de estudio, inicio">
         <span class="identity-mark" aria-hidden="true">A<span class="mark-dot">.</span></span>
-        <span class="identity-name">Archivo <small>de estudio</small></span>
+        <span class="identity-name">Guías <small>de estudio</small></span>
       </a>
-      <nav aria-label="Navegación principal"><a href="#coleccion">Colección <span aria-hidden="true">↗</span></a></nav>
     </div>
   </header>
 
-  <main>
-    <section class="intro" aria-labelledby="page-title">
-      <div class="intro-copy">
-        <p class="eyebrow"><span class="eyebrow-rule"></span> Biblioteca personal</p>
-        <h1 id="page-title">Un espacio para<br><em>estudiar mejor.</em></h1>
-        <p class="intro-description">Guías claras, ejercicios y recursos de repaso en una colección que crece con cada materia.</p>
-        <a class="intro-link" href="#coleccion">Explorar guías <span aria-hidden="true">↘</span></a>
-      </div>
-      <div class="intro-aside" aria-label="Acerca de la colección">
-        <span class="aside-index">01 / ARCHIVO</span>
-        <div class="aside-line"></div>
-        <p>Aprender también es saber dónde encontrar lo importante.</p>
-        <span class="aside-bottom">Una guía a la vez.</span>
-      </div>
-    </section>
-
-    <section class="collection" id="coleccion" aria-labelledby="collection-title">
+  <main id="coleccion">
+    <section class="collection" aria-labelledby="collection-title">
       <div class="section-heading">
-        <div>
-          <p class="section-kicker">Colección</p>
-          <h2 id="collection-title">Guías disponibles<span class="collection-count">{{GUIDE_COUNT}}</span></h2>
-        </div>
-        <p>Selecciona una guía para comenzar.</p>
+        <h1 id="collection-title">Guías disponibles</h1>
+        <span class="collection-count">{{GUIDE_COUNT}} en total</span>
       </div>
       <div class="collection-tools">
         <label class="search-field" for="guide-search">
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
           <input id="guide-search" type="search" placeholder="Buscar una guía" autocomplete="off" aria-controls="guide-list">
         </label>
-        <span class="tool-note">Archivos HTML · acceso directo</span>
       </div>
       <div class="guide-list" id="guide-list">
         {{GUIDE_CARDS}}
       </div>
-      <p class="empty-search" id="empty-search" hidden>No encontramos guías con ese nombre. Intenta otra búsqueda.</p>
+      <p class="empty-search" id="empty-search" hidden>No hay resultados.</p>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <span>Archivo de estudio</span>
-    <span>Hecho para volver a lo esencial.</span>
-  </footer>
 </body>
 </html>

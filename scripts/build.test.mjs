@@ -35,7 +35,9 @@ test('cada archivo HTML produce una ruta física, tarjeta y regreso al índice',
   const index = await readFile(path.join(directory, 'dist', 'index.html'), 'utf8');
   assert.match(index, /\.\/guias\/algebra-basica\//);
   assert.match(index, /Álgebra &amp; números/);
-  assert.match(index, /collection-count">2/);
+  assert.match(index, /collection-count">2 en total/);
+  assert.match(index, /<h1 id="collection-title">Guías disponibles<\/h1>/);
+  assert.doesNotMatch(index, /Un espacio para|Aprender también|Hecho para volver/);
   const guide = await readFile(path.join(directory, 'dist', 'guias', 'algebra-basica', 'index.html'), 'utf8');
   assert.match(guide, /href="\.\.\/\.\.\/"/);
   assert.match(guide, /<h1>Álgebra &amp; números<\/h1>/);
