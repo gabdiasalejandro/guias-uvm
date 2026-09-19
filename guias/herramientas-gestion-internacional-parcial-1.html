@@ -400,7 +400,7 @@
     .legend-box.flag { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-soft); }
     .finish-button { width: 100%; }
 
-    .result-card { padding: clamp(25px, 5vw, 54px); }
+    .result-card { padding: clamp(25px, 5vw, 54px); scroll-margin-top: 100px; }
     .score-row { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; margin: 26px 0; }
     .score-ring {
       --score: 0;
@@ -414,15 +414,35 @@
     .score-ring::before { content: attr(data-score) "%"; width: 96px; height: 96px; display: grid; place-items: center; border-radius: 50%; background: var(--paper); font-size: 1.45rem; font-weight: 900; }
     .result-summary h2 { margin: 0 0 3px; font-size: 1.35rem; }
     .result-summary p { margin: 0; color: var(--muted); }
+    .result-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 26px 0; }
+    .result-stat { padding: 15px; border: 1px solid var(--line); border-radius: 14px; background: white; }
+    .result-stat strong { display: block; font-size: 1.7rem; line-height: 1.1; }
+    .result-stat span { display: block; margin-top: 4px; color: var(--muted); font-size: .84rem; }
+    .result-stat.correct { border-left: 4px solid var(--success); }
+    .result-stat.incorrect { border-left: 4px solid var(--danger); }
+    .result-stat.unanswered { border-left: 4px solid var(--gold); }
     .breakdown { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin: 22px 0; }
     .breakdown-card { padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: white; }
     .breakdown-card strong { display: block; font-size: 1.25rem; }
     .breakdown-card span { color: var(--muted); font-size: .76rem; }
-    .review-list { display: grid; gap: 10px; margin-top: 20px; }
-    .review-item { border: 1px solid var(--line); border-radius: 13px; background: white; }
-    .review-item summary { cursor: pointer; padding: 13px 15px; font-weight: 750; }
-    .review-content { padding: 0 15px 15px; color: #435968; font-size: .9rem; }
-    .review-content p { margin: 6px 0; }
+    .review-group { margin-top: 30px; }
+    .review-group h2 { margin: 0 0 15px; font-size: 1.25rem; }
+    .review-group h2 span { color: var(--muted); font-weight: 550; }
+    .review-list { display: grid; gap: 10px; }
+    .review-item { padding: 18px 20px; border: 1px solid var(--line); border-left-width: 4px; border-radius: 13px; background: white; }
+    .review-item.correct { border-left-color: var(--success); }
+    .review-item.incorrect { border-left-color: var(--danger); }
+    .review-item.unanswered { border-left-color: var(--gold); }
+    .review-head { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-bottom: 9px; }
+    .review-number { color: var(--muted); font-size: .82rem; font-weight: 750; }
+    .review-status { padding: 3px 9px; border-radius: 999px; font-size: .78rem; font-weight: 800; }
+    .review-item.correct .review-status { color: #0b604c; background: #e6f6ef; }
+    .review-item.incorrect .review-status { color: #8f3030; background: #fff0f0; }
+    .review-item.unanswered .review-status { color: #6a510e; background: #fff4d9; }
+    .review-item h3 { margin: 0 0 13px; font-size: 1.02rem; line-height: 1.45; }
+    .review-item p { margin: 8px 0 0; line-height: 1.55; }
+    .review-item p strong { color: var(--ink); }
+    .review-explanation { padding: 12px 14px; border-radius: 10px; background: #f2f4f1; }
     .result-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
@@ -454,6 +474,9 @@
       .exam-specs { grid-template-columns: 1fr; }
       .question-grid { grid-template-columns: repeat(5, 1fr); }
       .score-row { grid-template-columns: 1fr; }
+      .result-stats { gap: 6px; }
+      .result-stat { padding: 12px 10px; }
+      .result-stat strong { font-size: 1.4rem; }
       .score-ring { width: 112px; height: 112px; }
       .breakdown { grid-template-columns: 1fr; }
     }
@@ -509,6 +532,8 @@
       .table-wrap td[data-label]::before { content: attr(data-label); display: block; margin-bottom: 3px; font-size: .875rem; font-weight: 800; color: var(--teal-dark); }
       .exam-start { border-radius: 18px; }
       .exam-start-main, .question-body, .result-card { padding: 22px 16px; }
+      .result-card { scroll-margin-top: 135px; }
+      .review-item { padding: 15px; }
       .exam-start-side { min-height: 0; padding: 20px 16px; }
       .exam-start-side .compass { display: none; }
       .exam-start-side h2 { font-size: 1.3rem; }
@@ -524,7 +549,7 @@
       .action-group button { min-width: 0; padding: 10px 6px; font-size: .875rem; }
       .question-grid { grid-template-columns: repeat(auto-fit,minmax(44px,1fr)); }
       .question-jump { min-height: 44px; aspect-ratio: auto; font-size: .875rem; }
-      .exam-legend, .breakdown-card span { font-size: .875rem; }
+      .exam-legend, .breakdown-card span, .result-stat span { font-size: .875rem; }
       .result-actions { flex-direction: column; }
       .result-actions button { width: 100%; }
     }
@@ -916,9 +941,21 @@
           <div class="score-ring" id="score-ring" data-score="0"></div>
           <div class="result-summary"><h2 id="result-heading"></h2><p id="result-detail"></p></div>
         </div>
+        <div class="result-stats" aria-label="Resumen de respuestas">
+          <div class="result-stat correct"><strong id="correct-count">0</strong><span>Correctas</span></div>
+          <div class="result-stat incorrect"><strong id="incorrect-count">0</strong><span>Incorrectas</span></div>
+          <div class="result-stat unanswered"><strong id="unanswered-count">0</strong><span>Sin responder</span></div>
+        </div>
+        <h2>Resultados por tema</h2>
         <div class="breakdown" id="category-breakdown"></div>
-        <h2>Revisión de reactivos</h2>
-        <div class="review-list" id="review-list"></div>
+        <section class="review-group" id="needs-review-group" aria-labelledby="needs-review-heading">
+          <h2 id="needs-review-heading">Incorrectas y sin responder <span id="needs-review-count"></span></h2>
+          <div class="review-list" id="needs-review-list"></div>
+        </section>
+        <section class="review-group" id="correct-review-group" aria-labelledby="correct-review-heading">
+          <h2 id="correct-review-heading">Correctas <span id="correct-review-count"></span></h2>
+          <div class="review-list" id="correct-review-list"></div>
+        </section>
         <div class="result-actions"><button class="primary-button" id="retry-exam">Nuevo simulador</button><button class="secondary-button" id="back-to-study">Volver a estudiar</button></div>
       </section>
     </section>
@@ -1133,6 +1170,7 @@
       if (!auto && !confirm(unanswered ? `Quedan ${unanswered} preguntas sin responder. ¿Entregar de todas formas?` : '¿Entregar el examen y ver resultados?')) return;
       clearInterval(state.timer);
       const correct = state.questions.reduce((sum, q, i) => sum + (state.answers[i] === q.a ? 1 : 0), 0);
+      const incorrect = state.questions.length - correct - unanswered;
       const pct = Math.round(correct / state.questions.length * 100);
       document.getElementById('exam-workspace').hidden = true;
       const results = document.getElementById('exam-results');
@@ -1140,9 +1178,11 @@
       const ring = document.getElementById('score-ring');
       ring.style.setProperty('--score', pct);
       ring.dataset.score = pct;
-      const heading = pct >= 85 ? 'Dominio sólido' : pct >= 70 ? 'Base suficiente, falta precisión' : pct >= 50 ? 'Aún hay huecos importantes' : 'Conviene volver a la ruta';
-      document.getElementById('result-heading').textContent = heading;
-      document.getElementById('result-detail').textContent = `${correct} respuestas correctas de ${state.questions.length}. ${auto ? 'El tiempo terminó y el examen se entregó automáticamente.' : ''}`;
+      document.getElementById('result-heading').textContent = `${correct} de ${state.questions.length} correctas`;
+      document.getElementById('result-detail').textContent = auto ? 'El tiempo terminó y el examen se entregó automáticamente.' : '';
+      document.getElementById('correct-count').textContent = correct;
+      document.getElementById('incorrect-count').textContent = incorrect;
+      document.getElementById('unanswered-count').textContent = unanswered;
       renderBreakdown();
       renderReview();
       results.scrollIntoView({behavior:'smooth', block:'start'});
@@ -1155,21 +1195,61 @@
         const right = indices.filter(i => state.answers[i] === state.questions[i].a).length;
         const card = document.createElement('div');
         card.className = 'breakdown-card';
-        card.innerHTML = `<strong>${right}/${indices.length}</strong><span>${cat}</span>`;
+        card.innerHTML = `<strong>${right} de ${indices.length}</strong><span>${cat} · correctas</span>`;
         holder.appendChild(card);
       });
     }
+    function makeReviewItem(q, index, answer) {
+      const status = answer === null ? 'unanswered' : answer === q.a ? 'correct' : 'incorrect';
+      const item = document.createElement('article');
+      item.className = `review-item ${status}`;
+      item.dataset.status = status;
+
+      const head = document.createElement('div');
+      head.className = 'review-head';
+      const number = document.createElement('span');
+      number.className = 'review-number';
+      number.textContent = `Pregunta ${index + 1}`;
+      const badge = document.createElement('span');
+      badge.className = 'review-status';
+      badge.textContent = status === 'correct' ? 'Correcta' : status === 'incorrect' ? 'Incorrecta' : 'Sin responder';
+      head.append(number, badge);
+      item.appendChild(head);
+
+      const question = document.createElement('h3');
+      question.textContent = q.q;
+      item.appendChild(question);
+
+      function addRow(label, value, className = '') {
+        const row = document.createElement('p');
+        row.className = className;
+        const strong = document.createElement('strong');
+        strong.textContent = label;
+        row.append(strong, document.createTextNode(` ${value}`));
+        item.appendChild(row);
+      }
+      addRow('Tu respuesta:', answer === null ? 'No respondiste esta pregunta.' : q.o[answer]);
+      if (status !== 'correct') {
+        addRow('Respuesta correcta:', q.o[q.a]);
+        addRow('Por qué:', q.r, 'review-explanation');
+      }
+      return item;
+    }
     function renderReview() {
-      const holder = document.getElementById('review-list');
-      holder.innerHTML = '';
-      state.questions.forEach((q,i) => {
-        const ok = state.answers[i] === q.a;
-        const item = document.createElement('details');
-        item.className = 'review-item';
-        const selected = state.answers[i] === null ? 'Sin respuesta' : q.o[state.answers[i]];
-        item.innerHTML = `<summary>${ok ? '✓' : '✕'} ${i+1}. ${q.q}</summary><div class="review-content"><p><strong>Tu respuesta:</strong> ${selected}</p><p><strong>Respuesta correcta:</strong> ${q.o[q.a]}</p><p>${q.r}</p></div>`;
-        holder.appendChild(item);
+      const needsReview = document.getElementById('needs-review-list');
+      const correctList = document.getElementById('correct-review-list');
+      needsReview.replaceChildren();
+      correctList.replaceChildren();
+      state.questions.forEach((q, i) => {
+        const item = makeReviewItem(q, i, state.answers[i]);
+        (item.dataset.status === 'correct' ? correctList : needsReview).appendChild(item);
       });
+      const needsCount = needsReview.children.length;
+      const correctCount = correctList.children.length;
+      document.getElementById('needs-review-count').textContent = `(${needsCount})`;
+      document.getElementById('correct-review-count').textContent = `(${correctCount})`;
+      document.getElementById('needs-review-group').hidden = needsCount === 0;
+      document.getElementById('correct-review-group').hidden = correctCount === 0;
     }
     function resetExamScreen() {
       clearInterval(state.timer);

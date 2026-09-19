@@ -68,3 +68,70 @@ test('el progreso funciona con datos ausentes, corruptos o almacenamiento bloque
   }
   assert.deepEqual(loadProgress('[1]', true), []);
 });
+
+class TestNode {
+  constructor(tagName) {
+    this.tagName = tagName;
+    this.children = [];
+    this.dataset = {};
+    this.style = { setProperty() {} };
+    this._text = '';
+    this.hidden = false;
+  }
+  set textContent(value) { this._text = String(value); this.children = []; }
+  get textContent() { return this._text + this.children.map(child => child.textContent).join(''); }
+  append(...nodes) { this.children.push(...nodes); }
+  appendChild(node) { this.children.push(node); }
+  replaceChildren() { this.children = []; }
+  scrollIntoView() {}
+}
+
+function examContext(answers) {
+  const nodes = new Map();
+  const document = {
+    createElement: tag => new TestNode(tag),
+    createTextNode: value => { const node = new TestNode('#text'); node.textContent = value; return node; },
+    getElementById: id => {
+      if (!nodes.has(id)) nodes.set(id, new TestNode('div'));
+      return nodes.get(id);
+    }
+  };
+  const questions = [
+    { q: 'Pregunta uno', o: ['A', 'B'], a: 0, r: 'A es la opción correcta.' },
+    { q: 'Pregunta dos', o: ['C', 'D'], a: 1, r: 'D responde al caso.' },
+    { q: 'Pregunta tres', o: ['E', 'F'], a: 0, r: 'E explica el concepto.' }
+  ];
+  const context = vm.createContext({ document, state: { questions, answers, timer: null }, confirm: () => true, clearInterval() {} });
+  return { context, nodes };
+}
+
+test('la revisión separa correctas, incorrectas y sin respuesta con explicación visible', () => {
+  const { context, nodes } = examContext([0, 0, null]);
+  const reviewCode = script.slice(script.indexOf('    function makeReviewItem('), script.indexOf('    function resetExamScreen()'));
+  vm.runInContext(`${reviewCode}\nrenderReview();`, context);
+
+  const needs = nodes.get('needs-review-list').children;
+  const correct = nodes.get('correct-review-list').children;
+  assert.equal(needs.length, 2);
+  assert.equal(correct.length, 1);
+  assert.deepEqual(needs.map(item => item.dataset.status), ['incorrect', 'unanswered']);
+  assert.match(needs[0].textContent, /Incorrecta.*Tu respuesta: C.*Respuesta correcta: D.*Por qué: D responde al caso/s);
+  assert.match(needs[1].textContent, /Sin responder.*No respondiste.*Respuesta correcta: E.*Por qué: E explica el concepto/s);
+  assert.match(correct[0].textContent, /Correcta.*Tu respuesta: A/s);
+  assert.doesNotMatch(correct[0].textContent, /Por qué:|Respuesta correcta:/);
+  assert.equal(nodes.get('needs-review-count').textContent, '(2)');
+  assert.equal(nodes.get('correct-review-count').textContent, '(1)');
+});
+
+test('el resumen distingue errores de preguntas no respondidas', () => {
+  const { context, nodes } = examContext([0, 0, null]);
+  const finishCode = script.slice(script.indexOf('    function finishExam('), script.indexOf('    function renderBreakdown()'));
+  vm.runInContext(`${finishCode}\nfunction renderBreakdown() {}\nfunction renderReview() {}\nfinishExam(true);`, context);
+
+  assert.equal(nodes.get('correct-count').textContent, '1');
+  assert.equal(nodes.get('incorrect-count').textContent, '1');
+  assert.equal(nodes.get('unanswered-count').textContent, '1');
+  assert.equal(nodes.get('result-heading').textContent, '1 de 3 correctas');
+  assert.match(nodes.get('result-detail').textContent, /El tiempo terminó/);
+  assert.equal(nodes.get('score-ring').dataset.score, 33);
+});
