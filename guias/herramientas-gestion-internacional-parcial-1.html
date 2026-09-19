@@ -279,11 +279,13 @@
     .warning { border-left: 4px solid #b55e4a; background: #fff0ea; }
     .case-box { border: 1px dashed #a9c4c0; background: #f4fbfa; }
     .memory-hook strong, .exam-clue strong, .warning strong, .case-box strong { display: block; margin-bottom: 2px; font-size: .8rem; letter-spacing: .05em; text-transform: uppercase; }
+    .case-box .clean-list { margin-top: 8px; }
 
     .contrast-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin-top: 18px; }
     .contrast, .mini-fact { padding: 15px; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
     .contrast h3, .mini-fact h3 { margin: 0 0 6px; font-size: .95rem; }
     .contrast p, .mini-fact p { margin: 0; color: #465d6b; font-size: .9rem; }
+    .contrast p + p { margin-top: 12px; }
     .fact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
     .fact-grid .mini-fact { border-top: 3px solid var(--teal); }
     .clean-list { margin: 12px 0 0; padding-left: 20px; }
@@ -311,11 +313,6 @@
     .check-option.correct { color: #0b604c; border-color: #56a895; background: #e6f6ef; }
     .check-option.incorrect { color: #8f3030; border-color: #d59797; background: #fff0f0; }
     .check-feedback { margin: 10px 0 0; padding: 10px 12px; border-radius: 10px; background: #edf4f3; font-size: .88rem; }
-
-    .sources { margin-top: 26px; padding: 22px 24px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.66); }
-    .sources summary { cursor: pointer; font-weight: 800; }
-    .sources ul { margin-bottom: 0; }
-    .sources li + li { margin-top: 8px; }
 
     /* Exam */
     .exam-shell { min-height: calc(100vh - 150px); }
@@ -496,6 +493,8 @@
       .complete-button { min-height: 44px; font-size: .875rem; }
       .memory-hook, .exam-clue, .warning, .case-box { padding: 12px; }
       .contrast, .mini-fact { padding: 12px; }
+      .contrast p, .mini-fact p, .check-feedback { font-size: 1rem; }
+      .clean-list li + li { margin-top: 10px; }
       .check-option { min-height: 44px; }
       .table-wrap { overflow: visible; border: 0; border-radius: 0; }
       .table-wrap table, .table-wrap tbody { display: block; background: transparent; }
@@ -504,12 +503,10 @@
         clip-path: inset(50%); white-space: nowrap;
       }
       .table-wrap tr { display: block; margin-bottom: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: white; }
-      .table-wrap td { display: block; padding: 0; border: 0; font-size: .94rem; }
+      .table-wrap td { display: block; padding: 0; border: 0; font-size: 1rem; }
       .table-wrap td:first-child { font-weight: 800; color: var(--ink); }
       .table-wrap td + td { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
       .table-wrap td[data-label]::before { content: attr(data-label); display: block; margin-bottom: 3px; font-size: .875rem; font-weight: 800; color: var(--teal-dark); }
-      .sources { padding: 18px 16px; }
-      .sources ul { padding-left: 20px; }
       .exam-start { border-radius: 18px; }
       .exam-start-main, .question-body, .result-card { padding: 22px 16px; }
       .exam-start-side { min-height: 0; padding: 20px 16px; }
@@ -561,9 +558,9 @@
       <header class="course-intro">
         <p class="eyebrow">Guía de estudio</p>
         <h1>Herramientas para la Gestión Internacional</h1>
-        <p class="lede">Síntesis de los contenidos abordados en las actividades del curso: globalización, teorías del comercio, organismos internacionales y participación de México. Incluye ejercicios de aplicación y un examen simulado para la autoevaluación.</p>
+        <p class="lede">Globalización, comercio, organismos internacionales y participación de México. Incluye ejemplos y preguntas de repaso.</p>
         <div class="intro-meta">
-          <span class="meta-pill">17 bloques breves</span>
+          <span class="meta-pill">16 bloques</span>
           <span class="meta-pill">4 núcleos temáticos</span>
           <span class="meta-pill">Casos aplicados a México</span>
           <span class="meta-pill">Simulador de 25 reactivos</span>
@@ -573,11 +570,11 @@
       <div class="study-layout">
         <aside class="route-panel" aria-label="Índice y progreso">
           <h2>Índice de contenidos</h2>
-          <p>Registra el avance de estudio al concluir la revisión de cada bloque.</p>
+          <p>Marca los bloques que ya revisaste.</p>
           <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="study-progress-fill"></div></div>
-          <div class="progress-label"><span id="study-progress-text">0 de 17</span><span id="study-progress-percent">0%</span></div>
+          <div class="progress-label"><span id="study-progress-text">0 de 16</span><span id="study-progress-percent">0%</span></div>
           <nav class="route-links">
-            <a href="#block-1"><span class="dot"></span>Mapa</a>
+            <a href="#block-1"><span class="dot"></span>Contenido</a>
             <a href="#block-2"><span class="dot"></span>Globalización</a>
             <a href="#block-3"><span class="dot"></span>Empresas</a>
             <a href="#block-4"><span class="dot"></span>Hume</a>
@@ -592,33 +589,35 @@
             <a href="#block-13"><span class="dot"></span>Especialización</a>
             <a href="#block-14"><span class="dot"></span>Balance crítico</a>
             <a href="#block-15"><span class="dot"></span>Acuerdos</a>
-            <a href="#block-16"><span class="dot"></span>Decisiones</a>
-            <a href="#block-17"><span class="dot"></span>Estrategia</a>
+            <a href="#block-16"><span class="dot"></span>Resumen</a>
           </nav>
         </aside>
 
         <div class="route-content">
           <article class="study-card" id="block-1" data-block="1">
             <span class="step-number">01</span>
-            <div class="card-top"><div><p class="topic-tag">Orientación</p><h2>El mapa completo del curso</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <p class="core-idea">Los trabajos apuntan a una secuencia: <strong>cómo funciona el comercio</strong> → <strong>qué organizaciones lo ordenan o financian</strong> → <strong>cómo participa México</strong> → <strong>qué decisión corresponde a cada caso</strong>.</p>
-            <div class="fact-grid">
-              <div class="mini-fact"><h3>Teorías</h3><p>Hume, Smith, Ricardo, Mill, Porter y Krugman.</p></div>
-              <div class="mini-fact"><h3>Instituciones</h3><p>FMI, Grupo Banco Mundial y OMC.</p></div>
-              <div class="mini-fact"><h3>Aplicación</h3><p>Empresas, México, financiamiento, garantías y tratados.</p></div>
-            </div>
-            <div class="exam-clue"><strong>Aspectos susceptibles de evaluación</strong>Identificación de conceptos, comparación de enfoques y aplicación de teorías u organismos a situaciones concretas. Estos ejes se derivan de las actividades revisadas; no constituyen una especificación del examen del curso.</div>
+            <div class="card-top"><div><p class="topic-tag">Contenido</p><h2>Qué estudia la gestión internacional</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Estudia cómo los países y las empresas producen, compran, venden y consiguen financiamiento fuera de sus fronteras.</p>
+            <ul class="clean-list">
+              <li><strong>Comercio:</strong> por qué conviene producir unos bienes y comprar otros.</li>
+              <li><strong>Empresas:</strong> cómo cambian sus productos y operaciones entre países.</li>
+              <li><strong>Organismos:</strong> quién presta dinero, protege inversiones o establece reglas.</li>
+              <li><strong>México:</strong> cómo participa en estos intercambios y qué efectos recibe.</li>
+            </ul>
+            <div class="case-box"><strong>Ejemplo</strong>Una empresa mexicana vende café en otro país. Debe decidir cuánto producir, adaptar el empaque y revisar los impuestos de entrada. Son decisiones de producción, mercado y reglas comerciales.</div>
+
           </article>
 
           <article class="study-card" id="block-2" data-block="2">
             <span class="step-number">02</span>
-            <div class="card-top"><div><p class="topic-tag">Globalización</p><h2>Integración con efectos desiguales</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <p class="core-idea">La globalización integra mercados, producción, capital, información y reglas entre países. Puede ampliar comercio, inversión y acceso a tecnología, pero también expone a crisis externas y distribuye los beneficios de forma desigual.</p>
+            <div class="card-top"><div><p class="topic-tag">Globalización</p><h2>Cómo se conectan las economías</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">La <strong>globalización</strong> es la conexión creciente entre países mediante productos, dinero, tecnología e información. Lo que ocurre en una economía puede afectar a las demás.</p>
+            <div class="case-box"><strong>Ejemplo</strong>Un teléfono se diseña en un país, usa piezas de otros y se ensambla en un tercero. Si una fábrica deja de producir una pieza, puede retrasar la venta del teléfono en varios países.</div>
             <div class="contrast-grid">
-              <div class="contrast"><h3>Impulsores</h3><p>Tecnología, transporte, liberalización comercial, inversión extranjera, tratados y cadenas globales de valor.</p></div>
-              <div class="contrast"><h3>Tensiones</h3><p>Dependencia externa, presión competitiva, contagio de crisis, pérdida de margen regulatorio y desigualdad regional.</p></div>
+              <div class="contrast"><h3>Qué facilita</h3><p>Vender en más mercados, recibir inversiones y acceder a tecnología. El transporte, internet y los acuerdos comerciales hacen posibles esas conexiones.</p></div>
+              <div class="contrast"><h3>Qué riesgos genera</h3><p>Depender de proveedores externos o perder ventas si otro país entra en crisis. Algunos sectores ganan más que otros.</p></div>
             </div>
-            <div class="memory-hook"><strong>Regla mental</strong>Integración no significa beneficio automático: importa quién gana, quién se ajusta y qué política interna acompaña la apertura.</div>
+            <div class="memory-hook"><strong>Interdependencia</strong>Significa que unos países dependen de otros. Más conexión no significa que todos reciban el mismo beneficio.</div>
             <div class="quick-check" data-correct="1" data-feedback="La globalización aumenta la interdependencia; no elimina automáticamente las diferencias nacionales.">
               <p>¿Cuál afirmación es más precisa?</p>
               <div class="check-options"><button class="check-option">La globalización elimina las diferencias económicas entre países.</button><button class="check-option">La globalización aumenta la interdependencia, pero sus efectos dependen de instituciones y políticas internas.</button></div>
@@ -628,16 +627,18 @@
 
           <article class="study-card" id="block-3" data-block="3">
             <span class="step-number">03</span>
-            <div class="card-top"><div><p class="topic-tag">Estrategia empresarial</p><h2>Multinacional o globalizada</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <p class="core-idea">La diferencia principal es el equilibrio entre <strong>adaptación local</strong> y <strong>estandarización mundial</strong>.</p>
-            <div class="table-wrap"><table><thead><tr><th>Dimensión</th><th>Multinacional</th><th>Globalizada</th></tr></thead><tbody>
-              <tr><td>Estrategia</td><td>Adapta decisiones a cada mercado.</td><td>Coordina una estrategia mundial uniforme.</td></tr>
-              <tr><td>Cultura</td><td>Ajusta producto, publicidad e idioma.</td><td>Busca una marca y producto universales.</td></tr>
-              <tr><td>Finanzas</td><td>Diversifica ingresos y fuentes de financiamiento.</td><td>Distribuye costos mediante grandes volúmenes.</td></tr>
-              <tr><td>Geografía</td><td>Se acerca al consumidor y a insumos regionales.</td><td>Concentra producción donde es más eficiente.</td></tr>
-              <tr><td>Fortaleza</td><td>Sensibilidad local.</td><td>Economías de escala y replicabilidad.</td></tr>
-            </tbody></table></div>
-            <div class="warning"><strong>Precisiones conceptuales</strong>Ninguno de los modelos es superior en todos los contextos. Las diferencias culturales y la regulación local favorecen la adaptación; los productos homogéneos y sensibles al costo favorecen la estandarización.</div>
+            <div class="card-top"><div><p class="topic-tag">Empresas</p><h2>Adaptar el producto o venderlo igual</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Una empresa que opera en varios países puede <strong>adaptarse a cada mercado</strong> o <strong>usar una estrategia mundial similar</strong>.</p>
+            <div class="contrast-grid">
+              <div class="contrast"><h3>Enfoque multinacional</h3><p>Cambia productos, publicidad y decisiones según el país. Busca responder a gustos y reglas locales.</p><p><b>Ejemplo:</b> una cadena de comida cambia su menú y sus anuncios en cada país.</p></div>
+              <div class="contrast"><h3>Enfoque global estandarizado</h3><p>Vende productos similares y coordina operaciones a escala mundial. Busca reducir costos al producir grandes cantidades.</p><p><b>Ejemplo:</b> un fabricante vende el mismo modelo de audífonos en varios países.</p></div>
+            </div>
+            <ul class="clean-list">
+              <li><strong>Diversificar ingresos:</strong> vender en varios países reduce la dependencia de uno solo, aunque no elimina los riesgos.</li>
+              <li><strong>Economías de escala:</strong> producir más puede reducir el costo por unidad al repartir gastos como maquinaria o diseño.</li>
+              <li><strong>Ubicación:</strong> una empresa puede instalarse cerca de sus clientes o donde obtiene insumos y produce a menor costo.</li>
+            </ul>
+            <div class="memory-hook"><strong>La diferencia</strong>Se comparan dos enfoques. Una misma empresa puede estandarizar una parte del producto y adaptar otra.</div>
             <div class="quick-check" data-correct="0" data-feedback="Una campaña y producto ajustados a cada cultura describen una lógica multinacional.">
               <p>Una empresa adapta sabores, empaque y publicidad en cada país. ¿Qué lógica sigue?</p>
               <div class="check-options"><button class="check-option">Multinacional</button><button class="check-option">Global estandarizada</button></div><p class="check-feedback" hidden></p>
@@ -646,10 +647,16 @@
 
           <article class="study-card" id="block-4" data-block="4">
             <span class="step-number">04</span>
-            <div class="card-top"><div><p class="topic-tag">Teoría clásica</p><h2>Hume y el flujo especie-dinero</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <p class="core-idea">Hume refuta la idea mercantilista de acumular metales preciosos indefinidamente. Un superávit persistente atrae oro o plata, eleva la cantidad de dinero y los precios internos, encarece las exportaciones y abarata relativamente las importaciones.</p>
-            <div class="case-box"><strong>Cadena causal</strong>Superávit → entrada de metales → inflación interna → exportaciones menos competitivas → más importaciones → corrección del superávit.</div>
-            <div class="memory-hook"><strong>Conceptos de referencia</strong>La relación entre metales preciosos, precios internos y ajuste automático de la balanza comercial corresponde al mecanismo de <em>Hume</em>.</div>
+            <div class="card-top"><div><p class="topic-tag">Hume</p><h2>Por qué la entrada de oro puede reducir las exportaciones</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Hume explicó un mecanismo de ajuste en una economía donde el dinero estaba ligado al oro o la plata. Cuestionó que un país pudiera acumular metales vendiendo siempre más de lo que compra.</p>
+            <ol class="clean-list">
+              <li>El país exporta más de lo que importa: tiene <strong>superávit comercial</strong>.</li>
+              <li>Recibe oro o plata como pago. Aumenta el dinero que circula.</li>
+              <li>En el modelo de Hume, los precios internos suben: hay <strong>inflación</strong>.</li>
+              <li>Sus productos resultan más caros para otros países. Los productos extranjeros se vuelven relativamente más baratos.</li>
+              <li>Tienden a bajar las exportaciones y a subir las importaciones. El superávit se reduce.</li>
+            </ol>
+            <div class="case-box"><strong>Ejemplo simplificado</strong>Una tela nacional pasa de costar 10 a 12 monedas, mientras una tela extranjera comparable sigue en 10. La nacional pierde compradores y la extranjera se vuelve más atractiva.</div>
             <div class="quick-check" data-correct="1" data-feedback="En el mecanismo de Hume, la entrada de metales eleva precios y reduce la competitividad exportadora.">
               <p>¿Qué impide mantener un superávit comercial indefinido según Hume?</p>
               <div class="check-options"><button class="check-option">La prohibición de exportar.</button><button class="check-option">El aumento de precios internos provocado por la entrada de metales.</button></div><p class="check-feedback" hidden></p>
@@ -658,13 +665,20 @@
 
           <article class="study-card" id="block-5" data-block="5">
             <span class="step-number">05</span>
-            <div class="card-top"><div><p class="topic-tag">Teoría clásica</p><h2>Smith y Ricardo: eficiencia vs. costo de oportunidad</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <div class="card-top"><div><p class="topic-tag">Smith y Ricardo</p><h2>Producir con menos recursos no es lo mismo que renunciar a menos</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
             <div class="contrast-grid">
-              <div class="contrast"><h3>Ventaja absoluta · Smith</h3><p>Produce un bien con menos recursos, horas o costo directo que otro país. Pregunta: “¿quién es más eficiente?”.</p></div>
-              <div class="contrast"><h3>Ventaja comparativa · Ricardo</h3><p>Produce con menor costo de oportunidad. Pregunta: “¿a qué renuncia menos?”.</p></div>
+              <div class="contrast"><h3>Ventaja absoluta · Smith</h3><p>Usar menos recursos para producir lo mismo. Si A hace una camisa en 2 horas y B en 4, A tiene ventaja absoluta en camisas.</p></div>
+              <div class="contrast"><h3>Ventaja comparativa · Ricardo</h3><p>Dejar de producir menos de otro bien. Eso que se deja de producir es el <b>costo de oportunidad</b>.</p></div>
             </div>
-            <p class="core-idea">Un país puede ser mejor produciendo todo y aun así beneficiarse del comercio: debe especializarse donde su superioridad relativa sea mayor. El otro país se especializa donde su desventaja relativa sea menor.</p>
-            <div class="case-box"><strong>Mini ejemplo</strong>Si producir 1 auto obliga a A a renunciar a 2 toneladas de trigo y a B a renunciar a 5, A tiene ventaja comparativa en autos, aunque todavía falten datos para saber quién tiene ventaja absoluta.</div>
+            <div class="case-box"><strong>Ejemplo de costo de oportunidad</strong>
+              <ul class="clean-list">
+                <li>Para fabricar 1 auto, A deja de producir 2 toneladas de trigo.</li>
+                <li>Para fabricar 1 auto, B deja de producir 5 toneladas de trigo.</li>
+                <li>A renuncia a menos trigo: tiene ventaja comparativa en autos.</li>
+              </ul>
+            </div>
+            <p class="core-idea">Si A vende un auto a B por 3 toneladas de trigo, ambos pueden ganar: A obtiene 3 en lugar de las 2 que sacrificó; B entrega 3 en lugar de las 5 que perdería fabricando el auto.</p>
+            <div class="memory-hook"><strong>La diferencia</strong>Smith compara recursos usados. Ricardo compara lo que se sacrifica. Un país puede producir todo con menos recursos y aun así beneficiarse del intercambio.</div>
             <div class="quick-check" data-correct="1" data-feedback="La ventaja comparativa se determina comparando costos de oportunidad, no productividad aislada.">
               <p>¿Qué dato necesitas para encontrar una ventaja comparativa?</p>
               <div class="check-options"><button class="check-option">Sólo el volumen total producido.</button><button class="check-option">Cuánto del otro bien se sacrifica al producir una unidad.</button></div><p class="check-feedback" hidden></p>
@@ -673,26 +687,32 @@
 
           <article class="study-card" id="block-6" data-block="6">
             <span class="step-number">06</span>
-            <div class="card-top"><div><p class="topic-tag">Intercambio y competitividad</p><h2>Mill y Porter responden preguntas distintas</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <div class="card-top"><div><p class="topic-tag">Mill y Porter</p><h2>El precio del intercambio y la capacidad de competir</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
             <div class="contrast-grid">
-              <div class="contrast"><h3>Demanda recíproca · J. S. Mill</h3><p>Explica los términos de intercambio según cuánto demanda cada país los productos del otro. Ayuda a entender el precio internacional.</p></div>
-              <div class="contrast"><h3>Ventaja competitiva · Porter</h3><p>La competitividad se crea mediante productividad, innovación, empresas exigentes y un entorno industrial dinámico.</p></div>
+              <div class="contrast"><h3>Demanda recíproca · Mill</h3><p>Cuánto quiere cada país los productos del otro ayuda a determinar la proporción en que los intercambian. Esa proporción se llama <b>términos de intercambio</b>.</p><p><b>Ejemplo:</b> A vende café y B vende tela. Intercambiar 1 saco de café por 2 rollos de tela es una proporción de intercambio. Si aumenta la demanda de café, A podría obtener más tela por cada saco.</p></div>
+              <div class="contrast"><h3>Ventaja competitiva · Porter</h3><p>La capacidad de competir también se construye: mejores trabajadores, proveedores, tecnología y competencia local pueden mejorar lo que produce una empresa.</p><p><b>Ejemplo:</b> una fábrica de autopartes mejora porque tiene ingenieros preparados, proveedores cercanos y clientes que exigen menos fallas.</p></div>
             </div>
-            <div class="table-wrap"><table><thead><tr><th colspan="2">Diamante de Porter</th></tr></thead><tbody>
-              <tr><td>Condiciones de los factores</td><td>Talento, infraestructura, conocimiento y recursos especializados.</td></tr>
-              <tr><td>Condiciones de la demanda</td><td>Clientes locales exigentes que impulsan mejora.</td></tr>
-              <tr><td>Sectores relacionados y de apoyo</td><td>Proveedores, clústeres e industrias complementarias.</td></tr>
-              <tr><td>Estrategia, estructura y rivalidad</td><td>Competencia interna que eleva productividad e innovación.</td></tr>
-            </tbody></table></div>
-            <div class="memory-hook"><strong>Separación rápida</strong>Mill = demanda entre países y términos de comercio. Porter = entorno que construye competitividad.</div>
+            <p class="core-idea">El <strong>diamante de Porter</strong> reúne cuatro condiciones que ayudan a explicar esa capacidad:</p>
+            <ul class="clean-list">
+              <li><strong>Factores:</strong> personal capacitado, infraestructura y conocimiento.</li>
+              <li><strong>Demanda:</strong> clientes locales que exigen calidad y mejoras.</li>
+              <li><strong>Sectores de apoyo:</strong> proveedores e industrias que colaboran. Si se concentran en una zona, pueden formar un <strong>clúster</strong>.</li>
+              <li><strong>Estrategia y rivalidad:</strong> cómo se organizan las empresas y cómo la competencia las impulsa a mejorar.</li>
+            </ul>
+
           </article>
 
           <article class="study-card" id="block-7" data-block="7">
             <span class="step-number">07</span>
-            <div class="card-top"><div><p class="topic-tag">Teoría moderna</p><h2>Krugman y la nueva teoría del comercio</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <p class="core-idea">La nueva teoría explica por qué países parecidos comercian productos similares. Las <strong>economías de escala</strong>, la <strong>diferenciación</strong> y la <strong>competencia imperfecta</strong> generan comercio intraindustrial.</p>
-            <div class="case-box"><strong>Ejemplo</strong>Alemania exporta automóviles a Francia y Francia exporta automóviles a Alemania. No es necesario que uno tenga una dotación radicalmente distinta: existen variedades, marcas y rendimientos crecientes.</div>
-            <div class="exam-clue"><strong>Conceptos de referencia</strong>Países similares, diferenciación de productos, economías de escala y comercio intraindustrial: elementos centrales de la teoría de Krugman.</div>
+            <div class="card-top"><div><p class="topic-tag">Krugman</p><h2>Por qué dos países se venden productos del mismo tipo</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Dos países pueden fabricar autos y comprárselos entre sí. Krugman ayuda a explicar este <strong>comercio intraindustrial</strong>: intercambio de productos de un mismo sector.</p>
+            <ul class="clean-list">
+              <li><strong>Diferenciación:</strong> los productos no son idénticos. Cambian la marca, el diseño o las prestaciones.</li>
+              <li><strong>Economías de escala:</strong> producir muchas unidades puede bajar el costo de cada una.</li>
+              <li><strong>Competencia imperfecta:</strong> las empresas no venden productos idénticos a un precio que no controlan; sus diferencias les dan cierto margen para fijarlo.</li>
+            </ul>
+            <div class="case-box"><strong>Ejemplo</strong>Un país vende autos compactos a otro y le compra camionetas. Cada fabricante puede producir más de su modelo y los consumidores tienen más opciones.</div>
+            <div class="memory-hook"><strong>La diferencia con Ricardo</strong>No todo intercambio se explica por distintos costos de oportunidad. También puede haber comercio entre países parecidos por la variedad de productos y la producción a gran escala.</div>
             <div class="quick-check" data-correct="0" data-feedback="El intercambio de variedades dentro del mismo sector es comercio intraindustrial.">
               <p>Dos economías desarrolladas intercambian distintos modelos de automóvil. ¿Qué concepto encaja mejor?</p>
               <div class="check-options"><button class="check-option">Comercio intraindustrial.</button><button class="check-option">Mecanismo especie-dinero.</button></div><p class="check-feedback" hidden></p>
@@ -701,153 +721,150 @@
 
           <article class="study-card" id="block-8" data-block="8">
             <span class="step-number">08</span>
-            <div class="card-top"><div><p class="topic-tag">Gobernanza internacional</p><h2>Tres organismos, tres funciones</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <div class="card-top"><div><p class="topic-tag">Organismos</p><h2>FMI, Grupo Banco Mundial y OMC: qué hace cada uno</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Los tres participan en la economía internacional, pero atienden problemas distintos.</p>
             <div class="fact-grid">
-              <div class="mini-fact"><h3>FMI</h3><p>Estabilidad macroeconómica, cambiaria y financiera; apoyo ante problemas externos.</p></div>
-              <div class="mini-fact"><h3>Banco Mundial</h3><p>Financiamiento y asistencia para desarrollo, infraestructura, sector público y privado.</p></div>
-              <div class="mini-fact"><h3>OMC</h3><p>Reglas del comercio, negociación, transparencia y solución de diferencias.</p></div>
+              <div class="mini-fact"><h3>Fondo Monetario Internacional · FMI</h3><p>Apoya la estabilidad económica y financiera de los países, por ejemplo cuando tienen dificultades para realizar pagos al exterior.</p></div>
+              <div class="mini-fact"><h3>Grupo Banco Mundial</h3><p>Apoya el desarrollo con financiamiento y asesoría. Sus instituciones trabajan con gobiernos, empresas e inversionistas.</p></div>
+              <div class="mini-fact"><h3>Organización Mundial del Comercio · OMC</h3><p>Es el marco donde sus miembros negocian reglas de comercio y atienden diferencias sobre su cumplimiento. No es un banco.</p></div>
             </div>
-            <div class="memory-hook"><strong>Síntesis funcional</strong>FMI: estabilidad. Banco Mundial: desarrollo. OMC: reglas comerciales.</div>
-            <div class="warning"><strong>Distinción clave</strong>La OMC no presta dinero para construir proyectos; el Banco Mundial no sustituye el sistema multilateral de reglas comerciales.</div>
+            <div class="case-box"><strong>Ejemplo</strong>Un país necesita respaldo para sus pagos externos: FMI. Un gobierno busca financiar escuelas: una institución del Grupo Banco Mundial. Dos países discuten una restricción comercial: OMC.</div>
+
           </article>
 
           <article class="study-card" id="block-9" data-block="9">
             <span class="step-number">09</span>
-            <div class="card-top"><div><p class="topic-tag">FMI</p><h2>La Línea de Crédito Flexible funciona antes de usarse</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <p class="core-idea">La LCF es un respaldo precautorio para países con fundamentos y políticas muy sólidos. Tenerla disponible reduce el riesgo percibido y proporciona liquidez rápida ante una crisis, aunque no se retiren recursos.</p>
+            <div class="card-top"><div><p class="topic-tag">FMI</p><h2>Línea de Crédito Flexible: dinero disponible como respaldo</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">La <strong>Línea de Crédito Flexible (LCF)</strong> permite a un país acceder a recursos del FMI si los necesita. Está dirigida a países con una economía y políticas consideradas muy sólidas por el organismo.</p>
             <div class="contrast-grid">
-              <div class="contrast"><h3>Beneficio inmediato</h3><p>Confianza, señal de solvencia, menor incertidumbre y defensa ante choques externos.</p></div>
-              <div class="contrast"><h3>No significa</h3><p>Que el gobierno ya gastó el monto, que el país está insolvente o que deba utilizarlo de inmediato.</p></div>
+              <div class="contrast"><h3>Tener la línea aprobada</h3><p>El respaldo está disponible. Puede dar confianza aunque el país todavía no haya retirado dinero.</p></div>
+              <div class="contrast"><h3>Usar la línea</h3><p>El país recibe recursos. Ese retiro se llama <b>desembolso</b>; no ocurre automáticamente al aprobarse la línea.</p></div>
             </div>
-            <div class="case-box"><strong>Caso México de los trabajos</strong>Se analiza un acuerdo precautorio por alrededor de USD 24 mil millones: su valor reside en la disponibilidad y la señal al mercado, no sólo en el desembolso.</div>
-            <div class="quick-check" data-correct="1" data-feedback="Una línea precautoria puede estabilizar expectativas aun sin desembolso.">
+            <div class="case-box"><strong>Ejemplo: México</strong>El 13 de noviembre de 2025, el FMI aprobó una LCF por unos 24 mil millones de dólares. México anunció que la mantendría como respaldo: tener acceso no significa haber gastado esa cantidad. <a href="https://www.imf.org/en/news/articles/2025/11/14/pr-25374-mexico-imf-approves-new-2-year-us-24-billion-flexible-credit-line-arrangement" target="_blank" rel="noreferrer">Comunicado del FMI</a>.</div>
+            <div class="memory-hook"><strong>Precautorio</strong>Significa que sirve como prevención ante una dificultad, no que ya haya ocurrido una crisis o que el país deba usar el dinero.</div>
+            <div class="quick-check" data-correct="1" data-feedback="Saber que el país puede acceder a recursos en caso de necesitarlos puede dar confianza, aunque no haya retirado dinero.">
               <p>¿Cómo beneficia una LCF no utilizada?</p>
-              <div class="check-options"><button class="check-option">Porque aumenta automáticamente el gasto público.</button><button class="check-option">Porque ofrece respaldo inmediato y mejora la confianza ante choques.</button></div><p class="check-feedback" hidden></p>
+              <div class="check-options"><button class="check-option">Porque aumenta automáticamente el gasto público.</button><button class="check-option">Porque hay recursos disponibles si el país llega a necesitarlos.</button></div><p class="check-feedback" hidden></p>
             </div>
           </article>
 
           <article class="study-card" id="block-10" data-block="10">
             <span class="step-number">10</span>
-            <div class="card-top"><div><p class="topic-tag">Grupo Banco Mundial</p><h2>BIRF, CFI y MIGA por tipo de necesidad</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <div class="table-wrap"><table><thead><tr><th>Institución</th><th>Cliente o necesidad</th><th>Caso de los trabajos</th></tr></thead><tbody>
-              <tr><td><strong>BIRF</strong></td><td>Gobiernos de países de ingreso medio y países solventes; proyectos y políticas de desarrollo.</td><td>Crédito al gobierno federal para escuelas públicas.</td></tr>
-              <tr><td><strong>CFI / IFC</strong></td><td>Empresas y proyectos privados; inversión, préstamos y movilización de capital.</td><td>Financiamiento directo a planta privada de reciclaje y biogás.</td></tr>
-              <tr><td><strong>MIGA</strong></td><td>Inversionistas y prestamistas que enfrentan riesgos no comerciales.</td><td>Garantía para atraer inversión extranjera a un puerto concesionado.</td></tr>
+            <div class="card-top"><div><p class="topic-tag">Grupo Banco Mundial</p><h2>BIRF presta a gobiernos; CFI financia empresas; MIGA ofrece garantías</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Estas instituciones se distinguen por <strong>a quién apoyan</strong> y <strong>qué tipo de apoyo ofrecen</strong>.</p>
+            <div class="table-wrap"><table><thead><tr><th>Institución</th><th>Qué hace</th><th>Ejemplo</th></tr></thead><tbody>
+              <tr><td><strong>BIRF</strong><br>Banco Internacional de Reconstrucción y Fomento</td><td>Financia desarrollo a través de gobiernos de países de ingreso medio y de ingreso bajo con capacidad de pago.</td><td>Un préstamo al gobierno para construir escuelas públicas.</td></tr>
+              <tr><td><strong>CFI / IFC</strong><br>Corporación Financiera Internacional</td><td>Ofrece préstamos e inversión a empresas privadas y moviliza financiamiento.</td><td>Financiar la ampliación de una planta privada de reciclaje.</td></tr>
+              <tr><td><strong>MIGA</strong><br>Organismo Multilateral de Garantía de Inversiones</td><td>Ofrece garantías frente a ciertos riesgos políticos o no comerciales de una inversión.</td><td>Proteger una inversión extranjera ante una expropiación o restricciones para transferir dinero.</td></tr>
             </tbody></table></div>
-            <div class="exam-clue"><strong>Árbol de decisión</strong>¿Gobierno? BIRF. ¿Empresa privada? CFI. ¿Temor a expropiación, guerra, restricción de transferencias o incumplimiento estatal? MIGA.</div>
+            <div class="memory-hook"><strong>Préstamo y garantía no son lo mismo</strong>Un préstamo entrega dinero que debe devolverse. Una garantía cubre determinadas pérdidas si ocurre un riesgo pactado. MIGA no cubre simplemente que un producto se venda poco.</div>
             <div class="quick-check" data-correct="2" data-feedback="MIGA cubre riesgos políticos o no comerciales de una inversión.">
-              <p>Una empresa extranjera teme que el gobierno incumpla una concesión portuaria. ¿Quién encaja?</p>
+              <p>Una empresa extranjera teme que el gobierno le quite su planta: una expropiación. ¿Quién puede ofrecer una garantía?</p>
               <div class="check-options"><button class="check-option">BIRF</button><button class="check-option">CFI</button><button class="check-option">MIGA</button></div><p class="check-feedback" hidden></p>
             </div>
           </article>
 
           <article class="study-card" id="block-11" data-block="11">
             <span class="step-number">11</span>
-            <div class="card-top"><div><p class="topic-tag">OMC</p><h2>Reglas previsibles para comerciar</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <p class="core-idea">La OMC proporciona un marco multilateral para negociar compromisos, vigilar políticas comerciales y resolver diferencias. Para México, la previsibilidad favorece exportaciones, inversión y acceso a mercados.</p>
+            <div class="card-top"><div><p class="topic-tag">OMC</p><h2>Reglas para el comercio entre países</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Los miembros de la <strong>OMC</strong> negocian compromisos comerciales, revisan sus políticas y cuentan con procedimientos para tratar desacuerdos.</p>
+            <div class="case-box"><strong>Ejemplo</strong>Un país considera que otro cobra un impuesto a sus productos contrario a lo pactado. Puede recurrir a los procedimientos de la OMC. Un impuesto que se cobra al importar se llama <b>arancel</b>.</div>
             <div class="contrast-grid">
-              <div class="contrast"><h3>Beneficio</h3><p>Menor arbitrariedad, reglas conocidas, mecanismos institucionales y mayor certidumbre.</p></div>
-              <div class="contrast"><h3>Límite</h3><p>La apertura también puede presionar a productores pequeños o sectores menos productivos; la política interna sigue siendo decisiva.</p></div>
+              <div class="contrast"><h3>Qué aporta</h3><p>Reglas conocidas: una empresa puede planear mejor una venta si sabe qué requisitos e impuestos debe cumplir.</p></div>
+              <div class="contrast"><h3>Qué no hace</h3><p>No presta dinero para fábricas, no fija un precio mundial único y no garantiza que todos los productores se beneficien igual.</p></div>
             </div>
-            <div class="memory-hook"><strong>Idea exacta</strong>La OMC no fija un precio mundial único: establece reglas y procedimientos bajo los cuales ocurre el comercio.</div>
+
           </article>
 
           <article class="study-card" id="block-12" data-block="12">
             <span class="step-number">12</span>
-            <div class="card-top"><div><p class="topic-tag">México</p><h2>Ficha socioeconómica que debes saber interpretar</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <p class="core-idea">El proyecto integrador pide conectar datos básicos del país con su posición internacional. Más que memorizar una cifra cambiante, entiende qué mide cada indicador y cuál es su fuente.</p>
-            <div class="table-wrap"><table><thead><tr><th>Dato</th><th>Qué expresa</th><th>Fuente institucional sugerida</th></tr></thead><tbody>
-              <tr><td>Nombre oficial y capital</td><td>Identidad constitucional y sede de poderes federales.</td><td>Constitución Política de los Estados Unidos Mexicanos.</td></tr>
-              <tr><td>Población</td><td>Tamaño y estructura demográfica.</td><td>INEGI y proyecciones de CONAPO.</td></tr>
-              <tr><td>Lenguas</td><td>Diversidad lingüística y derechos de pueblos indígenas.</td><td>Constitución, INALI y legislación lingüística.</td></tr>
-              <tr><td>Moneda</td><td>Peso mexicano y marco monetario.</td><td>Banco de México y Ley Monetaria.</td></tr>
-              <tr><td>PIB</td><td>Valor total producido en la economía.</td><td>INEGI, Banco Mundial o FMI.</td></tr>
-              <tr><td>PIB per cápita</td><td>PIB dividido entre población; no equivale a ingreso individual ni a distribución justa.</td><td>INEGI, Banco Mundial o FMI.</td></tr>
+            <div class="card-top"><div><p class="topic-tag">México</p><h2>Qué dicen los datos de un país</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Cada dato responde una pregunta distinta. El tamaño de la economía, el número de habitantes y el ingreso de una persona no son la misma medida.</p>
+            <div class="table-wrap"><table><thead><tr><th>Dato</th><th>Qué significa</th></tr></thead><tbody>
+              <tr><td>Nombre oficial y capital</td><td>El país se llama Estados Unidos Mexicanos. Su capital es la Ciudad de México.</td></tr>
+              <tr><td>Población</td><td>Cuántas personas viven en el país y cómo se distribuyen.</td></tr>
+              <tr><td>Lenguas</td><td>Muestran la diversidad de idiomas hablados en el país.</td></tr>
+              <tr><td>Moneda</td><td>Unidad utilizada para expresar precios y realizar pagos: el peso mexicano.</td></tr>
+              <tr><td>Producto interno bruto (PIB)</td><td>Valor de los bienes y servicios finales producidos dentro del país en un periodo, por ejemplo un año.</td></tr>
+              <tr><td>PIB per cápita</td><td>PIB dividido entre el número de habitantes. Es un promedio, no el sueldo de cada persona.</td></tr>
             </tbody></table></div>
-            <div class="warning"><strong>Consideración metodológica</strong>Un PIB alto no demuestra por sí solo un bienestar elevado; se deben considerar población, distribución, precios y estructura productiva.</div>
+            <div class="case-box"><strong>Ejemplo con cifras ficticias</strong>Si una economía produce 1,000 unidades monetarias y tiene 10 habitantes, su PIB per cápita es 100. Eso no significa que cada habitante reciba 100: la distribución puede ser desigual.</div>
+            <div class="memory-hook"><strong>Al comparar cifras</strong>Revisa el año, la moneda y si los valores se ajustaron por cambios de precios. Un PIB mayor, por sí solo, no demuestra mayor bienestar.</div>
+
           </article>
 
           <article class="study-card" id="block-13" data-block="13">
             <span class="step-number">13</span>
-            <div class="card-top"><div><p class="topic-tag">México y comercio</p><h2>Especialización, exportación e importación</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <p class="core-idea">Para analizar ventajas mexicanas, distingue entre productividad absoluta, costo de oportunidad y competitividad construida mediante cadenas productivas, ubicación, acuerdos e infraestructura.</p>
+            <div class="card-top"><div><p class="topic-tag">México y comercio</p><h2>Exportar, importar y especializarse</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
             <ul class="clean-list">
-              <li><strong>Ventaja absoluta:</strong> México usa menos recursos que otro país para un producto concreto.</li>
-              <li><strong>Ventaja comparativa:</strong> México sacrifica menos producción alternativa al especializarse.</li>
-              <li><strong>Ventaja competitiva:</strong> empresas, clústeres, innovación, talento e infraestructura sostienen el desempeño.</li>
-              <li><strong>Importar racionalmente:</strong> permite acceder a bienes que otro país produce con menor costo de oportunidad.</li>
+              <li><strong>Exportar:</strong> vender a otro país.</li>
+              <li><strong>Importar:</strong> comprar a otro país.</li>
+              <li><strong>Especializarse:</strong> concentrar más recursos en ciertos productos o actividades.</li>
             </ul>
-            <div class="exam-clue"><strong>Cómo contestar un caso</strong>No afirmes que “exportar siempre es bueno” o “importar siempre es malo”. Compara costos de oportunidad, empleo, encadenamientos, resiliencia y distribución de beneficios.</div>
+            <div class="case-box"><strong>Ejemplo hipotético</strong>Una fábrica mexicana importa una máquina, fabrica piezas y las exporta. Importar y exportar no son opuestos: la compra de la máquina puede facilitar las ventas al exterior.</div>
+            <p class="core-idea">Para explicar por qué una actividad puede destacar en México, distingue tres ideas:</p>
+            <ul class="clean-list">
+              <li><strong>Ventaja absoluta:</strong> producir una pieza con menos horas de trabajo que otro país.</li>
+              <li><strong>Ventaja comparativa:</strong> producirla renunciando a menos de otro bien.</li>
+              <li><strong>Ventaja competitiva:</strong> mejorar gracias a personal capacitado, proveedores, tecnología e infraestructura.</li>
+            </ul>
+            <div class="memory-hook"><strong>Una venta no demuestra toda la explicación</strong>Exportar mucho no prueba, por sí solo, una ventaja comparativa. Hay que comparar costos de oportunidad.</div>
+
           </article>
 
           <article class="study-card" id="block-14" data-block="14">
             <span class="step-number">14</span>
-            <div class="card-top"><div><p class="topic-tag">Evaluación crítica</p><h2>Beneficios y perjuicios de la integración</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <div class="card-top"><div><p class="topic-tag">Integración económica</p><h2>Por qué los beneficios no llegan igual a todos</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Comerciar y recibir inversión puede generar beneficios, pero también obliga a algunas empresas y trabajadores a adaptarse.</p>
             <div class="contrast-grid">
-              <div class="contrast"><h3>Beneficios posibles</h3><p>Estabilidad financiera, confianza, inversión, acceso a capital, mercados de exportación, empleo, tecnología y reglas previsibles.</p></div>
-              <div class="contrast"><h3>Costos o riesgos</h3><p>Condicionalidad, menor margen de política, competencia desigual, vulnerabilidad externa y concentración regional de ganancias.</p></div>
+              <div class="contrast"><h3>Beneficios posibles</h3><p>Más compradores para las empresas, acceso a financiamiento y tecnología, y más variedad de productos.</p></div>
+              <div class="contrast"><h3>Costos posibles</h3><p>Negocios que pierden ventas frente a nuevos competidores, empleos que desaparecen y mayor dependencia de otros mercados.</p></div>
             </div>
-            <p class="core-idea">Una respuesta fuerte evita extremos: reconoce que FMI, Banco Mundial y OMC pueden ampliar capacidad y certidumbre, pero exige políticas internas para proteger sectores vulnerables y convertir apertura en desarrollo.</p>
-            <div class="memory-hook"><strong>Fórmula para conclusión</strong>Beneficio institucional + riesgo distributivo + condición de política interna = análisis equilibrado.</div>
+            <div class="case-box"><strong>Ejemplo</strong>Una fábrica consigue vender más al extranjero y contrata personal. Al mismo tiempo, otro productor local pierde clientes frente a productos importados más baratos. Ambos efectos pueden ocurrir en el mismo país.</div>
+            <p class="core-idea">Las políticas internas influyen en el resultado: capacitación para trabajadores, infraestructura y apoyo a empresas pueden ayudar a aprovechar las oportunidades y reducir los costos.</p>
+
           </article>
 
           <article class="study-card" id="block-15" data-block="15">
             <span class="step-number">15</span>
-            <div class="card-top"><div><p class="topic-tag">Acuerdos comerciales</p><h2>Qué revisar en un acuerdo actual</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <p class="core-idea">El proyecto integrador menciona acuerdos del año actual. La evidencia más clara para 2026 es la firma, el 22 de mayo, del <strong>Acuerdo Global Modernizado México–Unión Europea</strong> y su acuerdo comercial interino.</p>
-            <div class="fact-grid">
-              <div class="mini-fact"><h3>Acceso</h3><p>Aranceles, servicios, contratación pública y facilitación para empresas.</p></div>
-              <div class="mini-fact"><h3>Reglas</h3><p>Origen, propiedad intelectual, inversión y mecanismos de cumplimiento.</p></div>
-              <div class="mini-fact"><h3>Sostenibilidad</h3><p>Compromisos laborales, ambientales y cooperación.</p></div>
-            </div>
-            <div class="warning"><strong>Precisión temporal</strong>“Firmado” no equivale necesariamente a “plenamente vigente”. Distingue negociación, firma, aprobación, ratificación y entrada en vigor.</div>
+            <div class="card-top"><div><p class="topic-tag">Acuerdos comerciales</p><h2>Qué cambia un acuerdo y cuándo se aplica</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <p class="core-idea">Un acuerdo comercial establece condiciones para intercambiar productos y servicios. Puede reducir impuestos a la importación y fijar reglas que deben cumplir las empresas.</p>
+            <ul class="clean-list">
+              <li><strong>Acceso:</strong> qué productos o servicios pueden entrar y con qué impuestos.</li>
+              <li><strong>Origen:</strong> qué requisitos determinan si un producto puede recibir el trato preferencial.</li>
+              <li><strong>Otros compromisos:</strong> pueden incluir inversión, derechos laborales o protección ambiental.</li>
+            </ul>
+            <div class="case-box"><strong>Ejemplo: México y la Unión Europea</strong>El 22 de mayo de 2026 firmaron el Acuerdo Global Modernizado y un acuerdo comercial interino. La firma es una etapa del proceso; no significa que todas las disposiciones se apliquen desde ese día. <a href="https://www.consilium.europa.eu/en/meetings/international-summit/2026/05/22/" target="_blank" rel="noreferrer">Registro de la cumbre</a>.</div>
+            <ol class="clean-list">
+              <li><strong>Negociación:</strong> las partes acuerdan el contenido.</li>
+              <li><strong>Firma:</strong> formalizan el texto acordado.</li>
+              <li><strong>Aprobaciones y ratificación:</strong> se cumplen los procedimientos requeridos.</li>
+              <li><strong>Entrada en vigor:</strong> empieza a aplicarse según sus condiciones. Algunos acuerdos prevén una aplicación provisional antes.</li>
+            </ol>
+
           </article>
 
           <article class="study-card" id="block-16" data-block="16">
             <span class="step-number">16</span>
-            <div class="card-top"><div><p class="topic-tag">Aplicación</p><h2>Matriz para resolver casos</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <div class="table-wrap"><table><thead><tr><th>Si el caso menciona…</th><th>Piensa primero en…</th></tr></thead><tbody>
-              <tr><td>Oro, inflación y corrección automática del superávit</td><td>Hume</td></tr>
-              <tr><td>Menos recursos o mayor productividad física</td><td>Ventaja absoluta</td></tr>
-              <tr><td>Menor sacrificio de otro bien</td><td>Ventaja comparativa</td></tr>
-              <tr><td>Demanda mutua y términos de intercambio</td><td>Mill</td></tr>
-              <tr><td>Clúster, rivalidad, innovación y proveedores</td><td>Porter</td></tr>
-              <tr><td>Variedades, escala y comercio entre países similares</td><td>Krugman</td></tr>
-              <tr><td>Estabilidad cambiaria o respaldo precautorio</td><td>FMI / LCF</td></tr>
-              <tr><td>Proyecto público, empresa privada o riesgo político</td><td>BIRF, CFI o MIGA</td></tr>
-              <tr><td>Reglas comerciales y solución de diferencias</td><td>OMC</td></tr>
+            <div class="card-top"><div><p class="topic-tag">Resumen</p><h2>Conceptos y ejemplos</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
+            <div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Ejemplo o significado</th></tr></thead><tbody>
+              <tr><td>Hume</td><td>La entrada de oro aumenta los precios y reduce la ventaja de vender al exterior.</td></tr>
+              <tr><td>Smith: ventaja absoluta</td><td>Hacer la misma camisa en 2 horas en vez de 4.</td></tr>
+              <tr><td>Ricardo: ventaja comparativa</td><td>Fabricar un auto sacrificando 2 toneladas de trigo en vez de 5.</td></tr>
+              <tr><td>Mill: demanda recíproca</td><td>Cuánto café quiere un país y cuánta tela quiere el otro influye en cómo los intercambian.</td></tr>
+              <tr><td>Porter: ventaja competitiva</td><td>Mejores trabajadores, proveedores y competencia ayudan a una fábrica a mejorar.</td></tr>
+              <tr><td>Krugman: comercio intraindustrial</td><td>Dos países se venden distintos modelos de automóvil.</td></tr>
+              <tr><td>FMI y LCF</td><td>Respaldo financiero disponible para un país, aunque no lo haya utilizado.</td></tr>
+              <tr><td>BIRF</td><td>Préstamo al gobierno para escuelas.</td></tr>
+              <tr><td>CFI</td><td>Financiamiento para una empresa privada.</td></tr>
+              <tr><td>MIGA</td><td>Garantía ante riesgos políticos de una inversión.</td></tr>
+              <tr><td>OMC</td><td>Reglas comerciales y procedimientos para tratar desacuerdos.</td></tr>
             </tbody></table></div>
-          </article>
 
-          <article class="study-card" id="block-17" data-block="17">
-            <span class="step-number">17</span>
-            <div class="card-top"><div><p class="topic-tag">Cierre</p><h2>Estrategia para el examen</h2></div><button class="complete-button" aria-pressed="false">Marcar listo</button></div>
-            <ol class="clean-list">
-              <li><strong>Subraya el actor:</strong> gobierno, empresa privada, inversionista o país.</li>
-              <li><strong>Ubica el problema:</strong> eficiencia, oportunidad, precios, financiamiento, riesgo político o reglas.</li>
-              <li><strong>Identifica los conceptos de referencia</strong> en la matriz anterior.</li>
-              <li><strong>Descarta por función:</strong> la OMC no financia; MIGA no construye la escuela; el FMI no sustituye a la CFI.</li>
-              <li><strong>En preguntas críticas, equilibra:</strong> beneficio, riesgo y política interna necesaria.</li>
-            </ol>
-            <div class="exam-clue"><strong>Listo para simular</strong>Cuando puedas explicar la diferencia entre Ricardo y Smith, y elegir BIRF/CFI/MIGA sin mirar, pasa a la pantalla Examen.</div>
           </article>
         </div>
       </div>
 
-      <details class="sources">
-        <summary>Alcance y fuentes de la guía</summary>
-        <p>El temario se infirió de los seis trabajos proporcionados; no sustituye un temario oficial del docente. Se priorizaron los conceptos repetidos y los tipos de aplicación presentes en las actividades.</p>
-        <ul>
-          <li>Cuadro comparativo de empresa multinacional y globalizada.</li>
-          <li>Cuadro sinóptico de teorías económicas internacionales.</li>
-          <li>Caso sobre la Línea de Crédito Flexible.</li>
-          <li>Tabla de proyectos con BIRF, CFI y MIGA.</li>
-          <li>Proyecto integrador sobre características socioeconómicas y globalización de México.</li>
-          <li>Ensayo sobre México, FMI, Banco Mundial y OMC.</li>
-          <li><a href="https://www.worldbank.org/en/who-we-are/ibrd" target="_blank" rel="noreferrer">Banco Mundial: función del BIRF</a>.</li>
-          <li><a href="https://policy.trade.ec.europa.eu/eu-trade-relationships-country-and-region/countries-and-regions/mexico/eu-mexico-agreement/factsheet-eu-mexico-modernised-global-agreement-general-benefits_en" target="_blank" rel="noreferrer">Unión Europea: Acuerdo Global Modernizado con México</a>.</li>
-        </ul>
-      </details>
     </section>
 
     <section id="exam-view" class="page exam-shell" role="tabpanel" aria-labelledby="exam-tab" hidden>
@@ -977,23 +994,31 @@
 
     const completeButtons = [...document.querySelectorAll('.complete-button')];
     const progressKey = `atlasCompleted:${location.pathname.replace(/\/index\.html$/, '/')}`;
-    let completed = new Set();
-    try { completed = new Set(JSON.parse(localStorage.getItem(progressKey) || '[]')); } catch (_) {}
+    const validBlockIds = new Set(completeButtons.map(button => Number(button.closest('.study-card').dataset.block)));
+    function readStudyProgress(validIds) {
+      try {
+        const saved = JSON.parse(localStorage.getItem(progressKey) || '[]');
+        return new Set(Array.isArray(saved) ? saved.filter(id => validIds.has(id)) : []);
+      } catch (_) {
+        return new Set();
+      }
+    }
+    const completed = readStudyProgress(validBlockIds);
     function renderStudyProgress() {
-      completeButtons.forEach((button, index) => {
-        const done = completed.has(index + 1);
+      completeButtons.forEach(button => {
+        const done = completed.has(Number(button.closest('.study-card').dataset.block));
         button.setAttribute('aria-pressed', String(done));
         button.textContent = done ? 'Listo ✓' : 'Marcar listo';
         button.closest('.study-card').classList.toggle('completed', done);
       });
       const n = completed.size;
-      const pct = Math.round(n / completeButtons.length * 100);
+      const pct = completeButtons.length ? Math.round(n / completeButtons.length * 100) : 0;
       document.getElementById('study-progress-fill').style.width = pct + '%';
       document.getElementById('study-progress-text').textContent = `${n} de ${completeButtons.length}`;
       document.getElementById('study-progress-percent').textContent = pct + '%';
     }
-    completeButtons.forEach((button, index) => button.addEventListener('click', () => {
-      const id = index + 1;
+    completeButtons.forEach(button => button.addEventListener('click', () => {
+      const id = Number(button.closest('.study-card').dataset.block);
       completed.has(id) ? completed.delete(id) : completed.add(id);
       try { localStorage.setItem(progressKey, JSON.stringify([...completed])); } catch (_) {}
       renderStudyProgress();
