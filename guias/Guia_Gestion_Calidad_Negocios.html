@@ -1,0 +1,3163 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Guía de estudio y autoevaluación de Gestión de la Calidad en los Negocios."
+    />
+    <title>Gestión de la Calidad en los Negocios | Guía</title>
+    <style>
+      :root {
+        --ink: #202629;
+        --ink2: #384247;
+        --teal: #176d68;
+        --tealSoft: #e8f1ef;
+        --amber: #946b28;
+        --amberSoft: #f7f0df;
+        --paper: #fffefa;
+        --ground: #e9ecea;
+        --line: #cdd3d0;
+        --muted: #667074;
+        --bad: #9d493f;
+        --good: #176d68;
+        --radius: 4px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        min-width: 0;
+        background: var(--ground);
+        color: var(--ink);
+        font:
+          16px/1.65 Georgia,
+          "Times New Roman",
+          serif;
+      }
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      a,
+      button,
+      summary,
+      td,
+      th {
+        overflow-wrap: anywhere;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+      }
+      a {
+        color: var(--teal);
+      }
+      [hidden] {
+        display: none !important;
+      }
+      .skip {
+        position: fixed;
+        top: 8px;
+        left: 8px;
+        z-index: 90;
+        padding: 10px 14px;
+        border: 1px solid var(--ink);
+        background: #fff;
+        color: var(--ink);
+        transform: translateY(-160%);
+      }
+      .skip:focus {
+        transform: translateY(0);
+      }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: var(--paper);
+        border-bottom: 3px solid var(--ink);
+      }
+      .topin {
+        width: min(1080px, calc(100% - 40px));
+        min-height: 62px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--ink);
+      }
+      .mark {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        flex: none;
+        border: 1px solid var(--ink);
+        border-radius: 50%;
+        color: var(--ink);
+        font:
+          700 0.78rem/1 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .brand strong {
+        display: block;
+        font:
+          700 0.95rem/1.1 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .brand span {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font:
+          400 0.73rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .tabs {
+        display: flex;
+        gap: 0;
+        border: 1px solid var(--ink);
+      }
+      .tab {
+        min-height: 34px;
+        padding: 5px 13px;
+        border: 0;
+        border-right: 1px solid var(--ink);
+        background: #fff;
+        color: var(--ink);
+        font:
+          800 0.78rem/1.1 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .tab:last-child {
+        border-right: 0;
+      }
+      .tab[aria-selected="true"] {
+        background: var(--ink);
+        color: #fff;
+      }
+      .page {
+        width: min(1080px, calc(100% - 40px));
+        margin: auto;
+        padding: 28px 0 70px;
+      }
+      .head {
+        padding: 0 0 23px;
+        border-bottom: 3px solid var(--ink);
+        color: var(--ink);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--teal);
+        font:
+          800 0.73rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .head h1 {
+        max-width: 760px;
+        margin: 0;
+        font:
+          clamp(2rem, 4vw, 3.3rem)/1.08 Georgia,
+          "Times New Roman",
+          serif;
+        letter-spacing: -0.025em;
+      }
+      .head .intro {
+        max-width: 780px;
+        margin: 14px 0 0;
+        color: var(--ink2);
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 17px;
+      }
+      .pill {
+        padding: 4px 8px;
+        border: 1px solid var(--line);
+        color: var(--ink2);
+        font:
+          700 0.75rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 230px minmax(0, 1fr);
+        gap: 30px;
+        align-items: start;
+        margin-top: 24px;
+      }
+      .rail {
+        position: sticky;
+        top: 82px;
+        padding: 0 14px 16px 0;
+        border-right: 1px solid var(--line);
+      }
+      .rail h2 {
+        margin: 0 0 4px;
+        font:
+          800 0.78rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .rail p {
+        margin: 0 0 11px;
+        color: var(--muted);
+        font:
+          400 0.8rem/1.4 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .prog {
+        height: 5px;
+        overflow: hidden;
+        background: #d9ddda;
+      }
+      .prog i {
+        display: block;
+        width: 0;
+        height: 100%;
+        background: var(--teal);
+        transition: width 0.25s;
+      }
+      .proglabel {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 6px;
+        color: var(--muted);
+        font:
+          800 0.73rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .navlinks {
+        display: grid;
+        gap: 0;
+        margin-top: 14px;
+      }
+      .navlinks a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 0;
+        border-bottom: 1px solid #e1e4e2;
+        color: var(--ink2);
+        text-decoration: none;
+        font:
+          700 0.78rem/1.25 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .navlinks a:hover,
+      .navlinks a:focus {
+        color: var(--teal);
+      }
+      .navlinks b {
+        width: 5px;
+        height: 5px;
+        flex: none;
+        background: var(--teal);
+        border-radius: 50%;
+      }
+      .cards {
+        display: grid;
+        gap: 18px;
+      }
+      .card {
+        scroll-margin-top: 82px;
+        padding: 24px 0 0;
+        border-top: 1px solid var(--line);
+        background: transparent;
+      }
+      .card:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+      .card.done {
+        border-color: var(--teal);
+      }
+      .cardtop {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .label {
+        margin: 0 0 5px;
+        color: var(--teal);
+        font:
+          800 0.71rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .card h2 {
+        margin: 0;
+        font:
+          1.65rem/1.18 Georgia,
+          "Times New Roman",
+          serif;
+      }
+      .card h3 {
+        margin: 0 0 5px;
+        font:
+          800 0.92rem/1.25 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .card p {
+        margin: 11px 0 0;
+      }
+      .donebtn {
+        flex: none;
+        min-height: 31px;
+        padding: 5px 8px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--teal);
+        font:
+          800 0.72rem/1 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .donebtn[aria-pressed="true"] {
+        border-color: var(--teal);
+        background: var(--teal);
+        color: #fff;
+      }
+      .grid2,
+      .grid3 {
+        display: grid;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      .grid2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .grid3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .tile {
+        padding: 12px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+      }
+      .tile p {
+        margin: 0;
+        color: var(--ink2);
+        font-size: 0.9rem;
+      }
+      .callout,
+      .example,
+      .caution {
+        margin-top: 15px;
+        padding: 11px 13px;
+        border-left: 3px solid;
+      }
+      .callout {
+        border-color: var(--teal);
+        background: var(--tealSoft);
+      }
+      .example {
+        border-color: var(--amber);
+        background: var(--amberSoft);
+      }
+      .caution {
+        border-color: var(--bad);
+        background: #f8ebe8;
+      }
+      .callout strong,
+      .example strong,
+      .caution strong {
+        display: block;
+        margin-bottom: 2px;
+        font:
+          800 0.72rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      .tablewrap {
+        overflow: auto;
+        margin-top: 15px;
+        border: 1px solid var(--line);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--paper);
+        font-size: 0.9rem;
+      }
+      th,
+      td {
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid var(--line);
+      }
+      th {
+        background: #eef0ee;
+        color: var(--ink);
+        font:
+          800 0.72rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      tr:last-child td {
+        border-bottom: 0;
+      }
+      .list {
+        margin: 14px 0 0;
+        padding-left: 20px;
+      }
+      .list li + li {
+        margin-top: 6px;
+      }
+      .cycle {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 15px;
+      }
+      .cycle div {
+        padding: 10px;
+        border-top: 3px solid var(--teal);
+        background: #f4f6f4;
+      }
+      .cycle strong {
+        display: block;
+        font:
+          800 0.82rem/1.25 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .cycle span {
+        color: var(--muted);
+        font:
+          400 0.78rem/1.35 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .check {
+        margin-top: 16px;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+      }
+      .check > p {
+        margin: 0 0 9px;
+        font-weight: 700;
+      }
+      .opts {
+        display: grid;
+        gap: 7px;
+      }
+      .opt {
+        width: 100%;
+        min-height: 40px;
+        padding: 9px 11px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink);
+        text-align: left;
+      }
+      .opt:hover:not(:disabled) {
+        border-color: var(--teal);
+        background: var(--tealSoft);
+      }
+      .opt.right {
+        border-color: var(--good);
+        background: #e4f1ea;
+        color: #155b48;
+      }
+      .opt.wrong {
+        border-color: #c7837c;
+        background: #f8ebe8;
+        color: #7b332e;
+      }
+      .feedback {
+        margin: 9px 0 0;
+        padding: 9px 11px;
+        background: #edf1ef;
+        font-size: 0.88rem;
+      }
+      .lab {
+        margin-top: 15px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        background: #f8f9f7;
+      }
+      .labhead {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: start;
+      }
+      .lab h3 {
+        margin: 0;
+      }
+      .lab p {
+        margin: 5px 0 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .scenario {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 15px 0 12px;
+      }
+      .scenario button {
+        min-height: 34px;
+        padding: 6px 10px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        font:
+          800 0.78rem/1 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .scenario button.active {
+        background: var(--ink2);
+        border-color: var(--ink2);
+        color: #fff;
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .metric {
+        padding: 9px;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+      .metric b {
+        display: block;
+        font:
+          700 1rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .metric span {
+        color: var(--muted);
+        font:
+          400 0.72rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .chartbox {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+        gap: 12px;
+      }
+      .plot {
+        min-width: 0;
+        padding: 11px;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+      .plot h4 {
+        margin: 0 0 8px;
+        font:
+          800 0.72rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .hist {
+        height: 160px;
+        display: flex;
+        align-items: end;
+        gap: 4px;
+        padding: 9px 7px 0;
+        border-bottom: 2px solid #9eaaa6;
+      }
+      .bar {
+        flex: 1;
+        min-width: 5px;
+        border-radius: 2px 2px 0 0;
+        background: var(--teal);
+      }
+      .curve {
+        width: 100%;
+        height: 160px;
+        display: block;
+      }
+      .key {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 8px;
+        color: var(--muted);
+        font:
+          400 0.72rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .key i {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        margin-right: 4px;
+        background: var(--teal);
+      }
+      .key .spec {
+        background: var(--bad);
+      }
+      .insight {
+        margin: 12px 0 0;
+        padding: 10px;
+        background: #edf3f1;
+        color: #254b4d;
+        font-size: 0.86rem;
+      }
+      .sources {
+        margin-top: 18px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+      }
+      .sources summary {
+        cursor: pointer;
+        font:
+          800 0.84rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .sources ul {
+        margin: 10px 0 0;
+        padding-left: 20px;
+      }
+      .sources li + li {
+        margin-top: 6px;
+      }
+      .examstart {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        border: 1px solid var(--line);
+        background: var(--paper);
+      }
+      .examcopy {
+        padding: clamp(26px, 6vw, 52px);
+      }
+      .examcopy h1,
+      .result h1 {
+        margin: 0;
+        font:
+          clamp(2.1rem, 4.5vw, 3.35rem)/1.08 Georgia,
+          "Times New Roman",
+          serif;
+        letter-spacing: -0.025em;
+      }
+      .examcopy > p {
+        color: var(--muted);
+      }
+      .specs {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin: 20px 0;
+      }
+      .spec {
+        padding: 11px;
+        border: 1px solid var(--line);
+      }
+      .spec b {
+        display: block;
+        font:
+          700 1.2rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .spec span {
+        color: var(--muted);
+        font:
+          400 0.72rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .primary,
+      .secondary,
+      .finish {
+        min-height: 40px;
+        padding: 8px 14px;
+        border-radius: 0;
+        font:
+          800 0.8rem/1 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .primary {
+        border: 1px solid var(--teal);
+        background: var(--teal);
+        color: #fff;
+      }
+      .secondary {
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+      }
+      .finish {
+        width: 100%;
+        border: 1px solid #bd837d;
+        background: #f8ebe8;
+        color: #7b332e;
+      }
+      .examart {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        padding: 32px;
+        border-left: 1px solid var(--line);
+        color: var(--ink);
+        background: #edf1ef;
+      }
+      .examart .stamp {
+        width: 72px;
+        height: 72px;
+        display: grid;
+        place-items: center;
+        margin-bottom: auto;
+        border: 1px solid var(--ink);
+        border-radius: 50%;
+        color: var(--ink);
+        font: 1.35rem Georgia;
+      }
+      .examart h2 {
+        margin: 0;
+        font: 1.45rem/1.2 Georgia;
+      }
+      .examart p {
+        color: var(--ink2);
+      }
+      .work {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 238px;
+        gap: 18px;
+      }
+      .question,
+      .side,
+      .result {
+        border: 1px solid var(--line);
+        background: var(--paper);
+      }
+      .status {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 11px 15px;
+        color: #fff;
+        background: var(--ink2);
+        font:
+          800 0.78rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .qprog {
+        height: 4px;
+        background: #d9ddda;
+      }
+      .qprog i {
+        display: block;
+        width: 0;
+        height: 100%;
+        background: var(--teal);
+      }
+      .qbody {
+        padding: clamp(24px, 5vw, 42px);
+      }
+      .qcat {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 3px 7px;
+        border: 1px solid #b4cbc5;
+        color: var(--teal);
+        font:
+          800 0.68rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      .qbody h2 {
+        margin: 0 0 19px;
+        font: clamp(1.3rem, 2.8vw, 1.85rem)/1.32 Georgia;
+      }
+      .qoptions {
+        display: grid;
+        gap: 7px;
+      }
+      .qopt {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 30px minmax(0, 1fr);
+        align-items: start;
+        gap: 10px;
+        padding: 10px 11px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        text-align: left;
+      }
+      .qopt:hover {
+        border-color: var(--teal);
+        background: var(--tealSoft);
+      }
+      .qopt.sel {
+        border-color: var(--teal);
+        background: var(--tealSoft);
+        box-shadow: inset 3px 0 var(--teal);
+      }
+      .letter {
+        width: 27px;
+        height: 27px;
+        display: grid;
+        place-items: center;
+        border: 1px solid #b6c1be;
+        background: #fff;
+        font:
+          800 0.74rem/1 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 9px;
+        margin-top: 22px;
+        padding-top: 15px;
+        border-top: 1px solid var(--line);
+      }
+      .actionset {
+        display: flex;
+        gap: 8px;
+      }
+      .markq[aria-pressed="true"] {
+        border-color: var(--amber);
+        background: var(--amberSoft);
+        color: #69501d;
+      }
+      .side {
+        position: sticky;
+        top: 80px;
+        padding: 15px;
+      }
+      .side h3 {
+        margin: 0 0 11px;
+        font:
+          800 0.82rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .qgrid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+      }
+      .jump {
+        aspect-ratio: 1;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        font:
+          800 0.72rem/1 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .jump.answered {
+        background: var(--teal);
+        border-color: var(--teal);
+        color: #fff;
+      }
+      .jump.marked {
+        outline: 2px solid var(--amberSoft);
+        border-color: var(--amber);
+      }
+      .jump.current {
+        box-shadow: 0 0 0 2px var(--ink2);
+      }
+      .legend {
+        display: grid;
+        gap: 6px;
+        margin: 13px 0;
+        color: var(--muted);
+        font:
+          400 0.72rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .legend span {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .square {
+        width: 12px;
+        height: 12px;
+        border: 1px solid var(--line);
+      }
+      .square.yes {
+        background: var(--teal);
+      }
+      .square.flag {
+        border-color: var(--amber);
+        box-shadow: 0 0 0 2px var(--amberSoft);
+      }
+      .result {
+        padding: clamp(24px, 5vw, 46px);
+      }
+      .scoreline {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 22px;
+        margin: 23px 0;
+      }
+      .ring {
+        width: 106px;
+        height: 84px;
+        display: grid;
+        place-items: center;
+        border: 2px solid var(--teal);
+        background: #f4f8f7;
+      }
+      .ring:before {
+        content: attr(data-score) "%";
+        font:
+          800 1.55rem/1 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .sum h2 {
+        margin: 0;
+        font-size: 1.28rem;
+      }
+      .sum p {
+        margin: 3px 0 0;
+        color: var(--muted);
+      }
+      .breakdown {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .bcard {
+        padding: 11px;
+        border: 1px solid var(--line);
+      }
+      .bcard b {
+        display: block;
+        font:
+          700 1.12rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .bcard span {
+        color: var(--muted);
+        font:
+          400 0.72rem/1.2 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .review {
+        display: grid;
+        gap: 8px;
+        margin-top: 18px;
+      }
+      .review details {
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+      .review summary {
+        padding: 11px;
+        cursor: pointer;
+        font:
+          700 0.85rem/1.3 ui-sans-serif,
+          system-ui,
+          sans-serif;
+      }
+      .review div {
+        padding: 0 12px 12px;
+        color: #4b626a;
+        font-size: 0.88rem;
+      }
+      .resultactions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 20px;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .rail {
+          position: static;
+          padding: 0 0 14px;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .navlinks {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          column-gap: 12px;
+        }
+        .work {
+          grid-template-columns: 1fr;
+        }
+        .side {
+          position: static;
+          order: 2;
+        }
+        .qgrid {
+          grid-template-columns: repeat(10, 1fr);
+        }
+        .breakdown {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 620px) {
+        body {
+          font-size: 16px;
+        }
+        .topin {
+          width: calc(100% - 24px);
+          min-height: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 9px;
+          padding: 11px 0;
+        }
+        .brand span {
+          display: none;
+        }
+        .tabs {
+          width: 100%;
+        }
+        .tab {
+          flex: 1;
+          min-height: 39px;
+          font-size: 0.86rem;
+        }
+        .page {
+          width: calc(100% - 24px);
+          padding: 20px 0 42px;
+        }
+        .head {
+          padding-bottom: 18px;
+        }
+        .head h1,
+        .examcopy h1,
+        .result h1 {
+          font-size: clamp(1.7rem, 7.5vw, 2.35rem);
+          line-height: 1.15;
+        }
+        .head .intro {
+          font-size: 0.98rem;
+        }
+        .meta {
+          gap: 6px;
+        }
+        .pill {
+          font-size: 0.75rem;
+        }
+        .layout {
+          margin-top: 18px;
+        }
+        .rail {
+          padding-bottom: 11px;
+        }
+        .navlinks {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 0 10px;
+        }
+        .navlinks a {
+          min-height: 35px;
+          padding: 6px 0;
+          font-size: 0.77rem;
+        }
+        .card {
+          scroll-margin-top: 122px;
+          padding-top: 20px;
+        }
+        .cardtop {
+          display: block;
+        }
+        .card h2 {
+          font-size: 1.4rem;
+        }
+        .donebtn {
+          margin-top: 11px;
+          min-height: 40px;
+          font-size: 0.82rem;
+        }
+        .grid2,
+        .grid3,
+        .cycle {
+          grid-template-columns: 1fr;
+        }
+        .callout,
+        .example,
+        .caution {
+          padding: 11px 12px;
+        }
+        .tablewrap {
+          overflow: visible;
+          border: 0;
+        }
+        .tablewrap table,
+        .tablewrap tbody {
+          display: block;
+          background: transparent;
+        }
+        .tablewrap thead {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip-path: inset(50%);
+          white-space: nowrap;
+        }
+        .tablewrap tr {
+          display: block;
+          margin-bottom: 10px;
+          padding: 11px;
+          border: 1px solid var(--line);
+          background: #fff;
+        }
+        .tablewrap td {
+          display: block;
+          padding: 0;
+          border: 0;
+        }
+        .tablewrap td:first-child {
+          font-weight: 700;
+        }
+        .tablewrap td + td {
+          margin-top: 9px;
+          padding-top: 8px;
+          border-top: 1px solid var(--line);
+        }
+        .tablewrap td[data-label]:before {
+          content: attr(data-label);
+          display: block;
+          margin-bottom: 2px;
+          color: var(--teal);
+          font:
+            800 0.72rem/1.2 ui-sans-serif,
+            system-ui,
+            sans-serif;
+        }
+        .lab {
+          padding: 13px;
+        }
+        .labhead {
+          display: block;
+        }
+        .metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .chartbox {
+          grid-template-columns: 1fr;
+        }
+        .examstart {
+          grid-template-columns: 1fr;
+        }
+        .examcopy,
+        .qbody,
+        .result {
+          padding: 22px 15px;
+        }
+        .examart {
+          min-height: 0;
+          padding: 18px 15px;
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+        .examart .stamp {
+          display: none;
+        }
+        .examart h2 {
+          font-size: 1.25rem;
+        }
+        .specs {
+          grid-template-columns: 1fr;
+        }
+        .spec {
+          display: flex;
+          align-items: baseline;
+          gap: 10px;
+        }
+        .spec span {
+          font-size: 0.83rem;
+        }
+        .status {
+          padding: 11px 13px;
+          flex-wrap: wrap;
+        }
+        .qbody h2 {
+          font-size: 1.32rem;
+        }
+        .qopt {
+          padding: 11px;
+        }
+        .actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .actionset {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .actionset button {
+          min-width: 0;
+          padding: 9px 5px;
+          font-size: 0.8rem;
+        }
+        .qgrid {
+          grid-template-columns: repeat(auto-fit, minmax(42px, 1fr));
+        }
+        .jump {
+          min-height: 42px;
+          aspect-ratio: auto;
+          font-size: 0.82rem;
+        }
+        .scoreline {
+          grid-template-columns: 1fr;
+        }
+        .breakdown {
+          grid-template-columns: 1fr;
+        }
+        .resultactions {
+          flex-direction: column;
+        }
+        .resultactions button {
+          width: 100%;
+        }
+      }
+      @media (max-width: 350px) {
+        .navlinks,
+        .actionset {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+      body{background:#f0f1f2;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
+      .page{width:min(1020px,calc(100% - 24px))}.head h1{font-size:2rem}.meta{display:none}.head{border-bottom:1px solid var(--line)}
+      .layout{display:block}.rail{position:static;border:1px solid var(--line);padding:16px;background:#fff;margin-bottom:24px}.rail>h2,.rail>p{display:none}
+      .index-menu{margin-bottom:16px}.index-menu>summary{cursor:pointer;font-weight:700;min-height:44px;padding:8px 0}.navlinks{grid-template-columns:1fr}.navlinks a{font-size:.9rem;min-height:44px;padding:10px 0}.navlinks b{display:none}
+      .cards{display:block}.unit{margin-bottom:36px;min-width:0}.unit-heading{border-top:3px solid var(--ink);padding:17px 0 20px}.unit-heading p{font-size:.8rem;text-transform:uppercase;color:var(--teal);margin:0 0 5px;font-weight:700}.unit-heading h2{font:700 1.35rem/1.3 system-ui,sans-serif;margin:0}.unit-heading span{display:block;margin-top:6px;color:var(--muted);font-size:.95rem}
+      .card,.card:first-child{background:#fff;border:1px solid #ccd1d3;padding:20px;margin:0 0 16px;scroll-margin-top:80px;border-radius:4px}.cardtop{display:block;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:16px}.cardtop .label{margin:0 0 9px!important;font-size:.8rem;line-height:1.4}.card h2{font:700 1.3rem/1.35 system-ui,sans-serif}.card h3{font-size:1rem}.card .donebtn{display:block;margin:20px 0 0;min-height:44px;width:100%;font-size:.9rem}
+      .grid2,.grid3,.cycle{grid-template-columns:1fr}.tile{border:0;border-left:2px solid #cbd9d6;background:#f7f8f8}.tile p{font-size:1rem}.cycle strong,.cycle span{font-size:.95rem;line-height:1.5}.callout,.example,.caution{font-size:1rem;padding:14px}.callout strong,.example strong,.caution strong{font-size:.8rem;line-height:1.5;margin-bottom:6px}
+      .tablewrap{overflow:visible;border:0}.tablewrap table,.tablewrap tbody{display:block;background:transparent;font-size:1rem}.tablewrap thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.tablewrap tr{display:block;background:#fafbfb;border:1px solid var(--line);padding:16px;margin:0 0 12px;border-radius:2px}.tablewrap td{display:block;padding:0;border:0}.tablewrap td:first-child{font-weight:750;font-size:1.05rem}.tablewrap td+td{margin-top:12px;padding-top:10px;border-top:1px solid #e2e5e5}.tablewrap td[data-label]:before{content:attr(data-label);display:block;color:var(--muted);font-size:.8rem;font-weight:700;line-height:1.4;margin-bottom:4px}
+      .chartbox{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.metric span,.key,.plot h4{font-size:.875rem;line-height:1.45}.scenario button,.primary,.secondary,.finish,.tab{min-height:44px;font-size:.9rem}.scenario button{flex:1 1 120px;line-height:1.3}.work{grid-template-columns:1fr}.side{position:static}.qgrid{grid-template-columns:repeat(auto-fit,minmax(44px,1fr))}.jump{min-height:44px}.qcat,.status,.legend{font-size:.875rem}.brand{display:none}.topin{min-height:0;padding:10px 0;gap:8px}.tabs{width:100%}.tab{flex:1}.topbar{border-bottom:1px solid var(--line)}
+      @media(min-width:760px){.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px}.rail{position:sticky;top:82px}.card{padding:26px}.brand{display:flex}.tabs{width:auto}.topin .tab{min-width:130px}}
+      @media(max-width:380px){.card,.card:first-child{padding:16px}.lab{padding:10px}.tablewrap tr{padding:12px}.card h2{font-size:1.2rem}}
+      @media print{body{background:#fff}.topbar,.rail,.donebtn,.check,.scenario{display:none!important}.layout{display:block}.page{width:100%;padding:0}.card{border:0;border-top:1px solid #aaa;padding:16px 0}.unit-heading{break-after:avoid}.tablewrap tr,.tile,.example{break-inside:avoid}}
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <header class="topbar">
+      <div class="topin">
+        <div class="brand">
+          <div class="mark">QC</div>
+          <div>
+            <strong>Gestión de la Calidad</strong
+            ><span>Guía de estudio y autoevaluación</span>
+          </div>
+        </div>
+        <nav class="tabs" role="tablist" aria-label="Vistas de la guía">
+          <button
+            class="tab"
+            id="study-tab"
+            role="tab"
+            aria-selected="true"
+            aria-controls="study"
+            data-view="study"
+          >
+            Estudiar</button
+          ><button
+            class="tab"
+            id="exam-tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="exam"
+            data-view="exam"
+          >
+            Simulador
+          </button>
+        </nav>
+      </div>
+    </header>
+    <main id="contenido">
+      <section
+        id="study"
+        class="page"
+        role="tabpanel"
+        aria-labelledby="study-tab"
+      >
+        <header class="head">
+          <p class="eyebrow">Gestión de la Calidad en los Negocios</p>
+          <h1>Guía de estudio</h1>
+          <p class="intro">
+            Guía de consulta organizada a partir de situaciones de operación:
+            una queja, un pedido equivocado, un área desordenada o un proceso
+            que varía demasiado. Cada bloque lleva el concepto a una decisión
+            concreta.
+          </p>
+          <div class="meta">
+            <span class="pill">14 bloques de estudio</span
+            ><span class="pill">Ejemplos de negocio</span
+            ><span class="pill">Herramientas de calidad</span
+            ><span class="pill">Simulador de 25 reactivos</span>
+          </div>
+        </header>
+        <div class="layout">
+          <aside class="rail">
+            <h2>Contenidos</h2>
+            <p>Marca un bloque cuando puedas explicarlo con un ejemplo.</p>
+            <div class="prog"><i id="pfill"></i></div>
+            <div class="proglabel">
+              <span id="ptext">0 de 14</span><span id="ppct">0%</span>
+            </div>
+            <nav class="navlinks">
+              <a href="#b1"><b></b>Fundamentos</a
+              ><a href="#b2"><b></b>Gestión y administración</a
+              ><a href="#b3"><b></b>Proceso administrativo</a
+              ><a href="#b4"><b></b>Procesos</a
+              ><a href="#b5"><b></b>Mejora continua</a
+              ><a href="#b6"><b></b>Six Sigma</a><a href="#b7"><b></b>Kaizen</a
+              ><a href="#b8"><b></b>5S y 9S</a
+              ><a href="#b9"><b></b>7 herramientas</a
+              ><a href="#b10"><b></b>7 desperdicios</a
+              ><a href="#b11"><b></b>ISO</a
+              ><a href="#b12"><b></b>Datos y variación</a
+              ><a href="#b13"><b></b>Laboratorio</a
+              ><a href="#b14"><b></b>Decisión</a>
+            </nav>
+          </aside>
+          <div class="cards">
+            <article class="card" id="b1">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Fundamentos</p>
+                  <h2>Calidad: cumplir de forma consistente</h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <p>
+                En un negocio, calidad no significa “lujoso”. Significa que un
+                producto, servicio o proceso cumple los requisitos definidos y
+                responde de manera confiable a lo que el cliente espera.
+              </p>
+              <div class="grid3">
+                <div class="tile">
+                  <h3>Requisito</h3>
+                  <p>Lo que debe ocurrir: “entregar el pedido completo”.</p>
+                </div>
+                <div class="tile">
+                  <h3>Evidencia</h3>
+                  <p>Cómo se revisa: pedidos completos / pedidos totales.</p>
+                </div>
+                <div class="tile">
+                  <h3>Mejora</h3>
+                  <p>Qué se cambia si falla: verificación antes de despacho.</p>
+                </div>
+              </div>
+              <div class="example">
+                <strong>Ejemplo</strong>Una cafetería sirve el café caliente,
+                correcto y dentro del tiempo prometido. La calidad está en la
+                repetibilidad, no sólo en que un día salga bien.
+              </div>
+            </article>
+            <article class="card" id="b2">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Conceptos de gestión</p>
+                  <h2>
+                    Gestión y administración: cercanas, pero con énfasis
+                    distinto
+                  </h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <p>
+                En la práctica se solapan. Para estudiar, es útil distinguir que
+                la <strong>administración</strong> ordena recursos y estructura
+                el trabajo, mientras la <strong>gestión</strong> dirige la
+                ejecución hacia resultados, mide el desempeño y corrige el
+                proceso.
+              </p>
+              <div class="tablewrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Pregunta</th>
+                      <th>Administración</th>
+                      <th>Gestión</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>¿Qué prioriza?</td>
+                      <td>Recursos, roles, presupuesto y reglas.</td>
+                      <td>Resultados, ejecución, indicadores y mejora.</td>
+                    </tr>
+                    <tr>
+                      <td>Ejemplo</td>
+                      <td>Asignar turnos y presupuesto de empaques.</td>
+                      <td>Reducir pedidos equivocados del 8% al 2%.</td>
+                    </tr>
+                    <tr>
+                      <td>Producto visible</td>
+                      <td>Plan, organigrama, política o procedimiento.</td>
+                      <td>Proceso controlado con una mejora verificable.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="callout">
+                <strong>Idea práctica</strong>Administrar crea condiciones de
+                trabajo; gestionar verifica que esas condiciones produzcan el
+                resultado esperado.
+              </div>
+            </article>
+            <article class="card" id="b3">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Proceso administrativo</p>
+                  <h2>Planear, organizar, dirigir y controlar</h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <p>
+                Los pasos no son una lista para memorizar: se repiten como
+                ciclo. Cada paso responde a una pregunta operativa.
+              </p>
+              <div class="cycle">
+                <div>
+                  <strong>1. Planeación</strong
+                  ><span>¿Qué resultado, meta y método se busca?</span>
+                </div>
+                <div>
+                  <strong>2. Organización</strong
+                  ><span
+                    >¿Quién hace qué, con qué recursos y en qué secuencia?</span
+                  >
+                </div>
+                <div>
+                  <strong>3. Dirección</strong
+                  ><span>¿Cómo se coordina, comunica y ejecuta?</span>
+                </div>
+                <div>
+                  <strong>4. Control</strong
+                  ><span
+                    >¿El resultado coincide con la meta? ¿Qué se corrige?</span
+                  >
+                </div>
+              </div>
+              <div class="example">
+                <strong>Ejemplo: devoluciones en e-commerce</strong>Planear:
+                bajar devoluciones de 12% a 6%. Organizar: responsables y
+                revisión de inventario. Dirigir: capacitar en surtido.
+                Controlar: medir devoluciones por causa cada semana.
+              </div>
+            </article>
+            <article class="card" id="b4">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Enfoque a procesos</p>
+                  <h2>Un proceso transforma entradas en salidas</h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <div class="grid3">
+                <div class="tile">
+                  <h3>Entrada</h3>
+                  <p>Información, materiales, solicitud, personal y tiempo.</p>
+                </div>
+                <div class="tile">
+                  <h3>Actividad</h3>
+                  <p>
+                    Pasos que transforman la entrada: verificar, preparar,
+                    entregar.
+                  </p>
+                </div>
+                <div class="tile">
+                  <h3>Salida</h3>
+                  <p>
+                    Producto o servicio para el siguiente proceso o cliente.
+                  </p>
+                </div>
+              </div>
+              <ul class="list">
+                <li>
+                  Todo proceso de calidad debe tener responsable, criterio de
+                  aceptación e indicador.
+                </li>
+                <li>
+                  Cuando el resultado falla, primero localiza el paso donde nace
+                  el error; no culpes sólo a la persona que lo detectó.
+                </li>
+                <li>
+                  La mejora busca reducir variación y desperdicio sin crear
+                  controles innecesarios.
+                </li>
+              </ul>
+              <div class="callout">
+                <strong>Ejemplo</strong>“Preparar un envío” incluye pedido
+                confirmado → surtido → revisión → empaque → guía → entrega a
+                paquetería. Un pedido equivocado puede venir de inventario,
+                etiqueta o verificación final.
+              </div>
+            </article>
+            <article class="card" id="b5">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Métodos</p>
+                  <h2>Mejora continua: PDCA como base</h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <p>
+                PDCA o PHVA ordena la mejora en una secuencia breve: planear un
+                cambio, probarlo, verificar datos y estandarizar o ajustar.
+              </p>
+              <div class="cycle">
+                <div>
+                  <strong>Plan</strong
+                  ><span>Define problema, causa posible, meta y prueba.</span>
+                </div>
+                <div>
+                  <strong>Do / Hacer</strong
+                  ><span>Aplica la prueba en un alcance controlado.</span>
+                </div>
+                <div>
+                  <strong>Check / Verificar</strong
+                  ><span>Compara resultados con la meta.</span>
+                </div>
+                <div>
+                  <strong>Act / Actuar</strong
+                  ><span>Estandariza si funcionó o ajusta la hipótesis.</span>
+                </div>
+              </div>
+              <div class="example">
+                <strong>Ejemplo</strong>Un restaurante prueba una lista de
+                verificación antes de cerrar bolsas de delivery. Después mide
+                durante una semana si bajaron los faltantes. Si funciona,
+                integra la lista al procedimiento.
+              </div>
+            </article>
+            <article class="card" id="b6">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Métodos de calidad</p>
+                  <h2>Six Sigma: decidir con datos y reducir defectos</h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <p>
+                Six Sigma es un enfoque de mejora para reducir defectos y
+                variación. Su pregunta central es:
+                <strong
+                  >¿qué entradas del proceso explican el resultado que el
+                  cliente percibe?</strong
+                >
+                Combina definición clara del problema, medición y análisis
+                estadístico.
+              </p>
+              <div class="tablewrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>DMAIC</th>
+                      <th>Qué se hace</th>
+                      <th>Ejemplo de pedidos equivocados</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Definir</td>
+                      <td>Delimitar cliente, problema, alcance y meta.</td>
+                      <td>
+                        Los pedidos con artículos erróneos son 8%; meta: 2%.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Medir</td>
+                      <td>Confirmar el dato y la línea base.</td>
+                      <td>Registrar error por turno, artículo y etapa.</td>
+                    </tr>
+                    <tr>
+                      <td>Analizar</td>
+                      <td>Buscar causas con evidencia.</td>
+                      <td>Los errores se concentran al cambiar de turno.</td>
+                    </tr>
+                    <tr>
+                      <td>Mejorar</td>
+                      <td>Diseñar y probar una solución.</td>
+                      <td>Escaneo de código + conciliación de turno.</td>
+                    </tr>
+                    <tr>
+                      <td>Controlar</td>
+                      <td>Sostener la mejora con indicador y estándar.</td>
+                      <td>Tablero semanal y auditoría de muestreo.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="caution">
+                <strong>Uso correcto</strong>Six Sigma no es “usar fórmulas
+                difíciles”. Es evitar decidir por intuición cuando el proceso
+                puede medirse.
+              </div>
+            </article>
+            <article class="card" id="b7">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Métodos de calidad</p>
+                  <h2>Kaizen: mejoras pequeñas, frecuentes y sostenidas</h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <p>
+                Kaizen busca eliminar desperdicios y fricciones mediante ajustes
+                incrementales realizados cerca del trabajo real. No necesita
+                esperar a una gran transformación.
+              </p>
+              <div class="grid2">
+                <div class="tile">
+                  <h3>Kaizen funciona bien cuando…</h3>
+                  <p>
+                    Hay pasos repetitivos, tiempos muertos, recorridos
+                    innecesarios, búsqueda de materiales o errores simples que
+                    se repiten.
+                  </p>
+                </div>
+                <div class="tile">
+                  <h3>No sustituye…</h3>
+                  <p>
+                    Un rediseño profundo cuando el proceso completo está mal
+                    planteado. En ese caso se requiere una intervención mayor.
+                  </p>
+                </div>
+              </div>
+              <div class="example">
+                <strong>Ejemplo</strong>En una clínica, las enfermeras buscan
+                formatos en tres cajones distintos. Reubicar y etiquetar los
+                formatos reduce minutos por atención. Es pequeño, pero ocurre
+                cientos de veces al mes.
+              </div>
+            </article>
+            <article class="card" id="b8">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Orden y disciplina operativa</p>
+                  <h2>5S y 9S: un estándar visible en el lugar de trabajo</h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <div class="tablewrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>5S</th>
+                      <th>Acción concreta</th>
+                      <th>Ejemplo en oficina de compras</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Seiri · Clasificar</td>
+                      <td>Separar lo necesario de lo innecesario.</td>
+                      <td>Eliminar versiones obsoletas de formatos.</td>
+                    </tr>
+                    <tr>
+                      <td>Seiton · Ordenar</td>
+                      <td>Asignar lugar y señalización a cada elemento.</td>
+                      <td>Carpetas y nomenclatura única para cotizaciones.</td>
+                    </tr>
+                    <tr>
+                      <td>Seiso · Limpiar</td>
+                      <td>Limpiar e inspeccionar para detectar anomalías.</td>
+                      <td>Revisar diariamente bandejas de pendientes.</td>
+                    </tr>
+                    <tr>
+                      <td>Seiketsu · Estandarizar</td>
+                      <td>Definir la forma normal de mantener el orden.</td>
+                      <td>Plantilla única y lista semanal de revisión.</td>
+                    </tr>
+                    <tr>
+                      <td>Shitsuke · Disciplina</td>
+                      <td>Sostener el estándar por hábito y seguimiento.</td>
+                      <td>Auditoría breve y retroalimentación mensual.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="callout">
+                <strong>Sobre las 9S</strong>Las cuatro S adicionales cambian
+                según el material didáctico. Una versión frecuente agrega
+                constancia, compromiso, coordinación y estandarización. Confirma
+                la nomenclatura exacta usada en tu clase, pero conserva la
+                lógica: el orden sólo sirve si se mantiene y se coordina.
+              </div>
+            </article>
+            <article class="card" id="b9">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Herramientas básicas de la calidad</p>
+                  <h2>Siete formas de hacer visible un problema</h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <p>
+                Estas herramientas no resuelven por sí solas un problema: ayudan
+                a describirlo, priorizarlo y encontrar dónde investigar.
+                Conviene empezar por datos simples y una pregunta concreta.
+              </p>
+              <div class="tablewrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Herramienta</th>
+                      <th>Pregunta que responde</th>
+                      <th>Ejemplo práctico</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Hoja de verificación</td>
+                      <td>¿Cuántas veces y en qué condición ocurre?</td>
+                      <td>Registrar faltantes por turno y tipo de artículo.</td>
+                    </tr>
+                    <tr>
+                      <td>Histograma</td>
+                      <td>¿Cómo se distribuyen las mediciones?</td>
+                      <td>Ver la variación de tiempos de entrega.</td>
+                    </tr>
+                    <tr>
+                      <td>Diagrama de Pareto</td>
+                      <td>
+                        ¿Qué pocas causas explican la mayor parte del problema?
+                      </td>
+                      <td>
+                        Ordenar las causas de devolución de mayor a menor
+                        frecuencia.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Causa–efecto (Ishikawa)</td>
+                      <td>¿Qué causas posibles se deben investigar?</td>
+                      <td>
+                        Separar causas de un pedido incorrecto: método, persona,
+                        material, sistema.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Diagrama de dispersión</td>
+                      <td>¿Dos variables parecen relacionarse?</td>
+                      <td>
+                        Comparar volumen de pedidos y tiempo de preparación.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Gráfica de control</td>
+                      <td>
+                        ¿El proceso se comporta establemente en el tiempo?
+                      </td>
+                      <td>
+                        Observar el porcentaje diario de pedidos completos.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Estratificación</td>
+                      <td>¿El problema cambia al separar los datos?</td>
+                      <td>Analizar errores por sucursal, turno o proveedor.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="example">
+                <strong>Secuencia útil</strong>Primero usa una hoja de
+                verificación; después estratifica o aplica Pareto. Sólo entonces
+                vale la pena investigar causas con Ishikawa o dispersión. Evita
+                saltar directo a una solución.
+              </div>
+              <div class="caution">
+                <strong>Nota de clase</strong>Algunos materiales sustituyen la
+                estratificación por el diagrama de flujo dentro de las “siete
+                herramientas”. La lógica no cambia: verifica la lista que use tu
+                docente.
+              </div>
+            </article>
+            <article class="card" id="b10">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Lean · desperdicios</p>
+                  <h2>
+                    Siete desperdicios: trabajo que consume recursos sin crear
+                    valor
+                  </h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <p>
+                En Lean se llama <em>muda</em> a las actividades que consumen
+                tiempo, esfuerzo o materiales sin aportar valor para el cliente.
+                Identificarlas permite priorizar mejoras Kaizen.
+              </p>
+              <div class="tablewrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Desperdicio</th>
+                      <th>Qué ocurre</th>
+                      <th>Ejemplo en un negocio</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Sobreproducción</td>
+                      <td>Hacer antes, más o diferente de lo necesario.</td>
+                      <td>Preparar reportes que nadie consulta.</td>
+                    </tr>
+                    <tr>
+                      <td>Espera</td>
+                      <td>Personas, pedidos o información detenidos.</td>
+                      <td>
+                        Un pedido espera autorización porque falta una firma.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Transporte</td>
+                      <td>
+                        Mover materiales o información sin transformar valor.
+                      </td>
+                      <td>Enviar expedientes físicos entre tres oficinas.</td>
+                    </tr>
+                    <tr>
+                      <td>Sobreprocesamiento</td>
+                      <td>
+                        Agregar pasos o revisiones que el requisito no necesita.
+                      </td>
+                      <td>Capturar la misma información en dos sistemas.</td>
+                    </tr>
+                    <tr>
+                      <td>Inventario</td>
+                      <td>
+                        Acumular más materiales o trabajo en proceso del
+                        necesario.
+                      </td>
+                      <td>Compras detenidas en una bandeja durante semanas.</td>
+                    </tr>
+                    <tr>
+                      <td>Movimiento</td>
+                      <td>Desplazamientos innecesarios de la persona.</td>
+                      <td>Caminar a otro archivero para cada cotización.</td>
+                    </tr>
+                    <tr>
+                      <td>Defectos</td>
+                      <td>Errores, retrabajo, correcciones o devoluciones.</td>
+                      <td>
+                        Reenviar una factura por datos fiscales incorrectos.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="callout">
+                <strong>Lectura práctica</strong>Un mismo síntoma puede contener
+                varios desperdicios. Un dato capturado dos veces es
+                sobreprocesamiento; si además se captura mal, crea defectos y
+                retrabajo.
+              </div>
+            </article>
+            <article class="card" id="b11">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Normas ISO</p>
+                  <h2>
+                    ISO: estándares acordados para trabajar de forma consistente
+                  </h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <p>
+                <strong>ISO</strong> es la International Organization for
+                Standardization, una organización internacional independiente
+                que reúne expertos para elaborar estándares. No es un
+                certificado en sí mismo; publica normas que una organización
+                puede usar como referencia o frente a las cuales puede
+                certificarse.
+              </p>
+              <div class="grid2">
+                <div class="tile">
+                  <h3>ISO 9000</h3>
+                  <p>
+                    Fundamentos y vocabulario para sistemas de gestión de la
+                    calidad.
+                  </p>
+                </div>
+                <div class="tile">
+                  <h3>ISO 9001</h3>
+                  <p>
+                    Requisitos para establecer y operar un sistema de gestión de
+                    la calidad.
+                  </p>
+                </div>
+              </div>
+              <div class="example">
+                <strong>Ejemplo</strong>Una empresa no “hace ISO” por redactar
+                un manual. Debe demostrar que define procesos, atiende
+                requisitos, controla información, evalúa resultados y mejora.
+              </div>
+              <div class="caution">
+                <strong>Precisión</strong>La certificación la realizan
+                organismos de certificación; ISO desarrolla y publica las
+                normas. Las ediciones se actualizan, así que para una actividad
+                formal conviene indicar la versión que pide el docente.
+              </div>
+            </article>
+            <article class="card" id="b12">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Herramientas cuantitativas</p>
+                  <h2>Media, desviación estándar e histograma</h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <p>
+                La calidad necesita datos porque dos procesos pueden tener el
+                mismo promedio y comportarse de forma muy diferente.
+              </p>
+              <div class="grid3">
+                <div class="tile">
+                  <h3>Media (x̄)</h3>
+                  <p>
+                    El centro promedio de las mediciones. Indica si el proceso
+                    está cerca del objetivo.
+                  </p>
+                </div>
+                <div class="tile">
+                  <h3>Desviación estándar (s o σ)</h3>
+                  <p>
+                    Cuánto se dispersan los resultados. Una desviación alta
+                    significa mayor variación.
+                  </p>
+                </div>
+                <div class="tile">
+                  <h3>Histograma</h3>
+                  <p>
+                    Barras que muestran cuántas observaciones caen en cada
+                    intervalo; permite ver forma, concentración y extremos.
+                  </p>
+                </div>
+              </div>
+              <div class="callout">
+                <strong>Curva de distribución</strong>La curva con forma de
+                campana y sus colas representa un patrón normal idealizado. La
+                media se ubica en el centro y la desviación estándar describe
+                qué tan ancha es la curva. Las colas concentran los valores
+                menos frecuentes, donde pueden aparecer incumplimientos de
+                especificación.
+              </div>
+              <div class="example">
+                <strong>Ejemplo</strong>Dos líneas llenan botellas con promedio
+                de 500 mL. Si una tiene s = 1 mL y la otra s = 5 mL, la segunda
+                generará muchos más envases debajo de 495 mL o arriba de 505 mL,
+                aunque ambas promedien 500.
+              </div>
+            </article>
+            <article class="card" id="b13">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Laboratorio de variación</p>
+                  <h2>Observa el proceso antes de decidir</h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <p>
+                Elige tres escenarios de llenado. La especificación del cliente
+                es <strong>500 ± 5 mL</strong>. El gráfico compara la
+                distribución de las mediciones con los límites aceptables.
+              </p>
+              <div class="lab">
+                <div class="labhead">
+                  <div>
+                    <h3>Proceso de llenado de botellas</h3>
+                    <p>
+                      Datos simulados para ilustrar cómo cambia el riesgo de
+                      defecto.
+                    </p>
+                  </div>
+                </div>
+                <div class="scenario" id="scenarios">
+                  <button data-case="stable" class="active">
+                    Centrado y estable</button
+                  ><button data-case="shifted">Desplazado</button
+                  ><button data-case="spread">Muy variable</button>
+                </div>
+                <div class="metrics">
+                  <div class="metric">
+                    <b id="mean">500.0</b><span>media mL</span>
+                  </div>
+                  <div class="metric">
+                    <b id="std">1.1</b><span>desv. estándar</span>
+                  </div>
+                  <div class="metric">
+                    <b id="defects">0/60</b><span>fuera de especificación</span>
+                  </div>
+                  <div class="metric">
+                    <b id="reading">Apto</b><span>lectura del proceso</span>
+                  </div>
+                </div>
+                <div class="chartbox">
+                  <div class="plot">
+                    <h4>Histograma de 60 botellas</h4>
+                    <div class="hist" id="hist"></div>
+                    <div class="key">
+                      <span><i></i>Frecuencia por intervalo</span
+                      ><span><i class="spec"></i>Límites: 495 y 505 mL</span>
+                    </div>
+                  </div>
+                  <div class="plot">
+                    <h4>Curva con media y variación</h4>
+                    <svg
+                      class="curve"
+                      id="curve"
+                      viewBox="0 0 360 160"
+                      role="img"
+                      aria-label="Curva de distribución con media y límites de especificación"
+                    ></svg>
+                    <div class="key">
+                      <span><i></i>Distribución estimada</span
+                      ><span><i class="spec"></i>Especificación</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="insight" id="insight"></p>
+              </div>
+              <div
+                class="check"
+                data-correct="1"
+                data-feedback="La media muestra dónde se centra el proceso; la desviación estándar muestra cuánta variación tiene. Se necesitan ambas para juzgar el riesgo de incumplimiento."
+              >
+                <p>
+                  Si la media es exactamente 500 mL, ¿puede seguir existiendo un
+                  problema de calidad?
+                </p>
+                <div class="opts">
+                  <button class="opt">
+                    No; el promedio correcto garantiza que todas las botellas
+                    cumplen.</button
+                  ><button class="opt">
+                    Sí; una desviación estándar alta puede producir muchas
+                    botellas fuera de los límites.
+                  </button>
+                </div>
+                <p class="feedback" hidden></p>
+              </div>
+            </article>
+            <article class="card" id="b14">
+              <div class="cardtop">
+                <div>
+                  <p class="label">Integración</p>
+                  <h2>Qué herramienta usar ante cada problema</h2>
+                </div>
+                <button class="donebtn" aria-pressed="false">
+                  Marcar listo
+                </button>
+              </div>
+              <div class="tablewrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Situación</th>
+                      <th>Herramienta inicial</th>
+                      <th>Primer paso útil</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Los clientes reciben pedidos incompletos.</td>
+                      <td>DMAIC / proceso</td>
+                      <td>
+                        Medir dónde se origina el faltante y clasificar causas.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>El área pierde tiempo buscando materiales.</td>
+                      <td>5S + Kaizen</td>
+                      <td>
+                        Clasificar, ordenar y probar una ubicación visual.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Hay muchas causas de devolución, pero no se sabe por
+                        cuál empezar.
+                      </td>
+                      <td>Hoja de verificación + Pareto</td>
+                      <td>
+                        Contar y ordenar las causas por frecuencia antes de
+                        intervenir.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>El trámite se retrasa y se recaptura información.</td>
+                      <td>Siete desperdicios</td>
+                      <td>
+                        Ubicar espera y sobreprocesamiento; retirar el paso que
+                        no agrega valor.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        El promedio está bien, pero hay muchas devoluciones por
+                        tamaño.
+                      </td>
+                      <td>Histograma + desviación estándar</td>
+                      <td>Comparar variación con límites de especificación.</td>
+                    </tr>
+                    <tr>
+                      <td>Se requiere consistencia documentada entre áreas.</td>
+                      <td>Sistema de gestión / ISO 9001</td>
+                      <td>
+                        Mapear proceso, responsables, controles y evidencia.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Una mejora funcionó sólo una semana.</td>
+                      <td>Control + estandarización</td>
+                      <td>
+                        Definir indicador, responsable y rutina de seguimiento.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="callout">
+                <strong>Criterio de elección</strong>Empieza por el problema
+                observable y el dato disponible. La herramienta correcta es la
+                que permite entender la causa, probar una solución y comprobar
+                que el resultado se mantiene.
+              </div>
+            </article>
+          </div>
+        </div>
+        <details class="sources">
+          <summary>Fuentes y alcance</summary>
+          <p>
+            La guía presenta fundamentos académicos y ejemplos didácticos; las
+            nomenclaturas de 9S pueden variar entre instituciones y materiales.
+          </p>
+          <ul>
+            <li>
+              <a
+                href="https://www.iso.org/about"
+                target="_blank"
+                rel="noreferrer"
+                >ISO: About ISO</a
+              >.
+            </li>
+            <li>
+              <a
+                href="https://www.iso.org/quality-management/what-is-qms"
+                target="_blank"
+                rel="noreferrer"
+                >ISO: Quality management systems</a
+              >.
+            </li>
+            <li>
+              <a
+                href="https://asq.org/quality-resources/six-sigma"
+                target="_blank"
+                rel="noreferrer"
+                >ASQ: Six Sigma definition and tools</a
+              >.
+            </li>
+            <li>
+              <a
+                href="https://asq.org/quality-resources/seven-basic-quality-tools"
+                target="_blank"
+                rel="noreferrer"
+                >ASQ: Seven Basic Quality Tools</a
+              >.
+            </li>
+            <li>
+              <a
+                href="https://www.lean.org/lexicon-terms/seven-wastes/"
+                target="_blank"
+                rel="noreferrer"
+                >Lean Enterprise Institute: Seven Wastes</a
+              >.
+            </li>
+            <li>
+              <a
+                href="https://www.itl.nist.gov/div898/handbook/ppc/section1/ppc132.htm"
+                target="_blank"
+                rel="noreferrer"
+                >NIST: Process variability and standard deviation</a
+              >.
+            </li>
+          </ul>
+        </details>
+      </section>
+      <section
+        id="exam"
+        class="page"
+        role="tabpanel"
+        aria-labelledby="exam-tab"
+        hidden
+      >
+        <div class="examstart" id="examstart">
+          <div class="examcopy">
+            <p class="label">Autoevaluación de contenidos</p>
+            <h1>Simulador de gestión de la calidad</h1>
+            <p>
+              La selección combina definiciones, ejemplos de operación y lectura
+              de datos. Los resultados se muestran al finalizar para identificar
+              qué concepto conviene repasar.
+            </p>
+            <div class="specs">
+              <div class="spec"><b>25</b><span>reactivos</span></div>
+              <div class="spec">
+                <b>35 min</b><span>duración sugerida</span>
+              </div>
+              <div class="spec">
+                <b>70%</b><span>referencia de dominio</span>
+              </div>
+            </div>
+            <button class="primary" id="start">Iniciar simulador</button>
+          </div>
+          <aside class="examart" aria-hidden="true">
+            <div class="stamp">σ</div>
+            <h2>Primero observa el proceso; después elige la herramienta.</h2>
+            <p>Podrás marcar preguntas y volver a ellas antes de entregar.</p>
+          </aside>
+        </div>
+        <div class="work" id="work" hidden>
+          <section class="question">
+            <div class="status">
+              <span id="counter">Pregunta 1 de 25</span
+              ><span id="timer">35:00</span>
+            </div>
+            <div class="qprog"><i id="qfill"></i></div>
+            <div class="qbody">
+              <span class="qcat" id="qcat"></span>
+              <h2 id="qtext"></h2>
+              <div class="qoptions" id="qopts"></div>
+              <div class="actions">
+                <button class="secondary markq" id="markq" aria-pressed="false">
+                  Marcar para revisar
+                </button>
+                <div class="actionset">
+                  <button class="secondary" id="prev">Anterior</button
+                  ><button class="primary" id="next">Siguiente</button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <aside class="side">
+            <h3>Navegación</h3>
+            <div class="qgrid" id="qgrid"></div>
+            <div class="legend">
+              <span><i class="square yes"></i>Respondida</span
+              ><span><i class="square flag"></i>Marcada</span>
+            </div>
+            <button class="finish" id="finish">Entregar examen</button>
+          </aside>
+        </div>
+        <section class="result" id="result" hidden>
+          <p class="label">Resultado</p>
+          <h1>Resultados de la autoevaluación</h1>
+          <div class="scoreline">
+            <div class="ring" id="ring" data-score="0"></div>
+            <div class="sum">
+              <h2 id="sumtitle"></h2>
+              <p id="sumdetail"></p>
+            </div>
+          </div>
+          <div class="breakdown" id="breakdown"></div>
+          <h2>Revisión de reactivos</h2>
+          <div class="review" id="review"></div>
+          <div class="resultactions">
+            <button class="primary" id="retry">Nuevo simulador</button
+            ><button class="secondary" id="tostudy">Volver a estudiar</button>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script>
+      const units=[
+        ["Fundamentos","Comprender qué se administra y qué se mejora.",["b1","b2","b3","b4"]],
+        ["Mejora y organización del trabajo","Del ciclo de mejora a la identificación del desperdicio.",["b5","b7","b10","b8","b6"]],
+        ["Herramientas y medición","Recoger datos, interpretar la variación y tomar decisiones.",["b9","b12","b13"]],
+        ["Sistema de calidad y aplicación","Integrar normas, procesos y selección de herramientas.",["b11","b14"]]
+      ];
+      const cardList=document.querySelector(".cards"), links=document.querySelector(".navlinks");
+      const oldButtons=[...document.querySelectorAll(".donebtn")];
+      oldButtons.forEach((b,i)=>b.dataset.progressId=i);
+      links.innerHTML="";
+      let topicNumber=0;
+      units.forEach(([title,description,ids],i)=>{
+        const section=document.createElement("section");
+        section.className="unit"; section.id="unit-"+(i+1);
+        section.innerHTML='<header class="unit-heading"><p>Unidad '+(i+1)+' · '+ids.length+' temas</p><h2>'+title+'</h2><span>'+description+'</span></header>';
+        const link=document.createElement("a");link.href="#"+section.id;link.textContent=(i+1)+". "+title;links.append(link);
+        ids.forEach(id=>{
+          const card=document.getElementById(id);
+          card.querySelector(".label").textContent="Tema "+String(++topicNumber).padStart(2,"0")+" · "+card.querySelector(".label").textContent;
+          card.append(card.querySelector(".donebtn"));section.append(card);
+        });
+        cardList.append(section);
+      });
+      const indexMenu=document.createElement("details");indexMenu.className="index-menu";
+      indexMenu.innerHTML="<summary>Índice de las cuatro unidades</summary>";
+      links.before(indexMenu);indexMenu.append(links);
+      indexMenu.open=window.innerWidth>=760;
+      links.addEventListener("click",()=>{if(window.innerWidth<760)indexMenu.open=false});
+      const tabs = document.querySelectorAll(".tab"),
+        study = document.getElementById("study"),
+        exam = document.getElementById("exam");
+      function view(v) {
+        const s = v === "study";
+        study.hidden = !s;
+        exam.hidden = s;
+        tabs.forEach((t) =>
+          t.setAttribute("aria-selected", String(t.dataset.view === v)),
+        );
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      tabs.forEach((t) =>
+        t.addEventListener("click", () => view(t.dataset.view)),
+      );
+      const complete = oldButtons;
+      let done = new Set();
+      try {
+        done = new Set(
+          JSON.parse(localStorage.getItem("qualityGuideDone") || "[]"),
+        );
+      } catch (e) {}
+      function progress() {
+        complete.forEach((b, i) => {
+          const x = done.has(i);
+          b.setAttribute("aria-pressed", x);
+          b.textContent = x ? "Listo ✓" : "Marcar listo";
+          b.closest(".card").classList.toggle("done", x);
+        });
+        const p = Math.round((done.size / complete.length) * 100);
+        document.getElementById("pfill").style.width = p + "%";
+        document.getElementById("ptext").textContent =
+          done.size + " de " + complete.length;
+        document.getElementById("ppct").textContent = p + "%";
+      }
+      complete.forEach((b, i) =>
+        b.addEventListener("click", () => {
+          done.has(i) ? done.delete(i) : done.add(i);
+          try {
+            localStorage.setItem("qualityGuideDone", JSON.stringify([...done]));
+          } catch (e) {}
+          progress();
+        }),
+      );
+      progress();
+      document.querySelectorAll(".check").forEach((c) => {
+        const os = [...c.querySelectorAll(".opt")];
+        os.forEach((o, i) =>
+          o.addEventListener("click", () => {
+            const correct = +c.dataset.correct;
+            os.forEach((x, j) => {
+              x.disabled = true;
+              if (j === correct) x.classList.add("right");
+              if (j === i && j !== correct) x.classList.add("wrong");
+            });
+            const f = c.querySelector(".feedback");
+            f.hidden = false;
+            f.textContent =
+              (i === correct ? "Correcto. " : "Revisa esta idea. ") +
+              c.dataset.feedback;
+          }),
+        );
+      });
+      document.querySelectorAll(".tablewrap table").forEach((t) => {
+        const heads = [...t.querySelectorAll("thead th")];
+        t.querySelectorAll("tbody tr").forEach((r) =>
+          [...r.cells].forEach((c, i) => {
+            if (i > 0 && heads[i])
+              c.dataset.label = heads[i].textContent.trim();
+          }),
+        );
+      });
+      const data = {
+        stable: {
+          mu: 500,
+          sd: 1.1,
+          def: 0,
+          read: "Apto",
+          txt: "El proceso está centrado y presenta poca dispersión. La mayor parte de las botellas cae holgadamente dentro de 495–505 mL.",
+        },
+        shifted: {
+          mu: 503.7,
+          sd: 1.1,
+          def: 8,
+          read: "Desplazado",
+          txt: "La variación es parecida, pero el proceso se movió hacia arriba. La media alerta que el ajuste del equipo debe revisarse.",
+        },
+        spread: {
+          mu: 500,
+          sd: 3.3,
+          def: 11,
+          read: "Variable",
+          txt: "El promedio luce correcto, pero la dispersión es amplia. El riesgo está en los extremos: hay botellas fuera de la especificación.",
+        },
+      };
+      const seq = [
+        -2.4, -1.9, -1.7, -1.55, -1.42, -1.28, -1.15, -1.04, -0.95, -0.87, -0.8,
+        -0.72, -0.65, -0.59, -0.53, -0.47, -0.42, -0.37, -0.31, -0.26, -0.21,
+        -0.16, -0.11, -0.06, -0.02, 0.02, 0.06, 0.11, 0.16, 0.21, 0.26, 0.31,
+        0.37, 0.42, 0.47, 0.53, 0.59, 0.65, 0.72, 0.8, 0.87, 0.95, 1.04, 1.15,
+        1.28, 1.42, 1.55, 1.7, 1.9, 2.4, -2.1, 2.1, -1.34, 1.34, -0.48, 0.48,
+        -0.76, 0.76, -1.02, 1.02,
+      ];
+      function renderLab(k) {
+        const d = data[k];
+        document
+          .querySelectorAll("#scenarios button")
+          .forEach((b) => b.classList.toggle("active", b.dataset.case === k));
+        document.getElementById("mean").textContent = d.mu.toFixed(1);
+        document.getElementById("std").textContent = d.sd.toFixed(1);
+        document.getElementById("defects").textContent = d.def + "/60";
+        document.getElementById("reading").textContent = d.read;
+        document.getElementById("insight").textContent = d.txt;
+        const values = seq.map((x) => d.mu + x * d.sd),
+          bins = Array(14).fill(0);
+        values.forEach((v) => {
+          let i = Math.max(0, Math.min(13, Math.floor((v - 493) / 1)));
+          bins[i]++;
+        });
+        const max = Math.max(...bins);
+        document.getElementById("hist").innerHTML = bins
+          .map(
+            (n) =>
+              '<i class="bar" style="height:' +
+              Math.max(4, (n / max) * 100) +
+              '%"></i>',
+          )
+          .join("");
+        const sx = (x) => 20 + ((x - 492) / 16) * 320,
+          sy = (y) => 140 - y * 115;
+        let path = "";
+        for (let i = 0; i <= 100; i++) {
+          let x = 492 + (i / 100) * 16,
+            z = (x - d.mu) / d.sd,
+            y = Math.exp(-0.5 * z * z);
+          path += (i ? "L" : "M") + sx(x).toFixed(1) + " " + sy(y).toFixed(1);
+        }
+        const meanX = sx(d.mu),
+          l = sx(495),
+          u = sx(505);
+        document.getElementById("curve").innerHTML =
+          '<line x1="20" y1="140" x2="340" y2="140" stroke="#9eb6b0" stroke-width="2"/><line x1="' +
+          l +
+          '" y1="12" x2="' +
+          l +
+          '" y2="140" stroke="#b64c43" stroke-width="2" stroke-dasharray="4 4"/><line x1="' +
+          u +
+          '" y1="12" x2="' +
+          u +
+          '" y2="140" stroke="#b64c43" stroke-width="2" stroke-dasharray="4 4"/><line x1="' +
+          meanX +
+          '" y1="25" x2="' +
+          meanX +
+          '" y2="140" stroke="#c98425" stroke-width="2"/><path d="' +
+          path +
+          '" fill="none" stroke="#187d77" stroke-width="4" stroke-linecap="round"/><text x="' +
+          l +
+          '" y="155" text-anchor="middle" font-size="10" fill="#a33e36">495</text><text x="' +
+          meanX +
+          '" y="22" text-anchor="middle" font-size="10" fill="#8a5b14">x̄</text><text x="' +
+          u +
+          '" y="155" text-anchor="middle" font-size="10" fill="#a33e36">505</text>';
+      }
+      document
+        .querySelectorAll("#scenarios button")
+        .forEach((b) =>
+          b.addEventListener("click", () => renderLab(b.dataset.case)),
+        );
+      renderLab("stable");
+      const bank = [
+        [
+          "Fundamentos",
+          "¿Qué describe mejor la calidad en un negocio?",
+          [
+            "Ofrecer siempre el producto más caro.",
+            "Cumplir requisitos y expectativas de manera consistente.",
+            "Eliminar toda revisión humana.",
+            "Aumentar el número de formatos.",
+          ],
+          1,
+          "La calidad se relaciona con requisitos, cliente y consistencia, no con lujo.",
+        ],
+        [
+          "Fundamentos",
+          "¿Cuál es una evidencia útil de calidad en un proceso de entrega?",
+          [
+            "Pedidos completos / pedidos totales.",
+            "Número de escritorios en la oficina.",
+            "Color del uniforme.",
+            "Antigüedad del edificio.",
+          ],
+          0,
+          "Un indicador compara el resultado observable con el resultado esperado.",
+        ],
+        [
+          "Gestión",
+          "¿Qué énfasis distingue a la gestión de la administración en esta guía?",
+          [
+            "La gestión dirige resultados y usa indicadores; la administración ordena recursos y estructura.",
+            "La administración no usa personas.",
+            "La gestión sólo redacta políticas.",
+            "No existe ningún punto de contacto entre ambas.",
+          ],
+          0,
+          "En la práctica se solapan, pero esta distinción ayuda a estudiar su función.",
+        ],
+        [
+          "Proceso administrativo",
+          "¿Qué paso responde “quién hará qué, con qué recursos y en qué secuencia”?",
+          ["Planeación.", "Organización.", "Dirección.", "Control."],
+          1,
+          "La organización asigna responsabilidades y recursos.",
+        ],
+        [
+          "Proceso administrativo",
+          "Una empresa compara devoluciones reales con la meta mensual y ajusta su procedimiento. ¿Qué paso realiza?",
+          ["Planeación.", "Organización.", "Dirección.", "Control."],
+          3,
+          "Controlar es medir contra una meta y corregir cuando hay diferencia.",
+        ],
+        [
+          "Procesos",
+          "¿Cuál secuencia representa un proceso?",
+          [
+            "Salida → actividad → entrada.",
+            "Entrada → actividad → salida.",
+            "Cliente → salida → presupuesto.",
+            "Indicador → dirección → producto.",
+          ],
+          1,
+          "Un proceso transforma entradas mediante actividades para generar salidas.",
+        ],
+        [
+          "Mejora continua",
+          "En PDCA, ¿qué ocurre después de verificar que una prueba redujo errores?",
+          [
+            "Estandarizar o ajustar la solución.",
+            "Eliminar toda medición.",
+            "Volver al problema sin registrar datos.",
+            "Cambiar el objetivo sin motivo.",
+          ],
+          0,
+          "Actuar permite sostener la mejora si funcionó o ajustar si no funcionó.",
+        ],
+        [
+          "Six Sigma",
+          "¿Cuál es el propósito principal de Six Sigma?",
+          [
+            "Hacer los procesos más complejos.",
+            "Reducir defectos y variación mediante datos.",
+            "Sustituir a todo el personal.",
+            "Obtener una certificación ISO automática.",
+          ],
+          1,
+          "Six Sigma busca conocer las causas que afectan la salida del proceso y reducir variación.",
+        ],
+        [
+          "Six Sigma",
+          "En DMAIC, registrar errores por turno y por etapa pertenece a:",
+          ["Definir.", "Medir.", "Mejorar.", "Controlar."],
+          1,
+          "Medir establece la línea base y asegura que el problema está bien cuantificado.",
+        ],
+        [
+          "Six Sigma",
+          "Encontrar que los errores se concentran al cambio de turno corresponde a:",
+          ["Definir.", "Analizar.", "Mejorar.", "Controlar."],
+          1,
+          "Analizar busca relaciones y causas con evidencia.",
+        ],
+        [
+          "Kaizen",
+          "¿Cuál situación es un buen caso para Kaizen?",
+          [
+            "Una búsqueda repetitiva de formatos que añade minutos a cada atención.",
+            "Cerrar un negocio completo sin análisis.",
+            "Cambiar de giro empresarial.",
+            "Ignorar un error pequeño porque no es grave.",
+          ],
+          0,
+          "Kaizen actúa sobre pequeñas fricciones repetidas que, acumuladas, generan desperdicio.",
+        ],
+        [
+          "5S",
+          "Seiri consiste en:",
+          [
+            "Limpiar e inspeccionar.",
+            "Clasificar y retirar lo innecesario.",
+            "Auditar certificaciones externas.",
+            "Calcular la desviación estándar.",
+          ],
+          1,
+          "Seiri separa lo necesario de lo innecesario.",
+        ],
+        [
+          "5S",
+          "¿Qué S convierte el orden en una forma normal y repetible de trabajo?",
+          ["Seiton.", "Seiso.", "Seiketsu.", "Shitsuke."],
+          2,
+          "Seiketsu estandariza la forma de mantener condiciones correctas.",
+        ],
+        [
+          "5S",
+          "¿Cuál es la función de Shitsuke?",
+          [
+            "Asignar un lugar a cada objeto.",
+            "Sostener el estándar por disciplina y seguimiento.",
+            "Eliminar inventario.",
+            "Diseñar una norma ISO.",
+          ],
+          1,
+          "La disciplina evita que el área vuelva gradualmente al desorden.",
+        ],
+        [
+          "9S",
+          "¿Por qué conviene confirmar la versión de 9S usada en clase?",
+          [
+            "Porque las cuatro S adicionales pueden variar por fuente e institución.",
+            "Porque 9S elimina las primeras 5S.",
+            "Porque ISO prohíbe las 9S.",
+            "Porque sólo se aplican en fábricas.",
+          ],
+          0,
+          "La expansión de 5S no tiene una única nomenclatura universal en materiales didácticos.",
+        ],
+        [
+          "ISO",
+          "¿Qué es ISO?",
+          [
+            "Una empresa que certifica directamente a todas las organizaciones.",
+            "Una organización internacional que desarrolla estándares.",
+            "Un tipo de histograma.",
+            "Un método de cálculo de media.",
+          ],
+          1,
+          "ISO publica normas internacionales; la certificación la realizan organismos de certificación.",
+        ],
+        [
+          "ISO",
+          "¿Cuál relación es correcta?",
+          [
+            "ISO 9000: fundamentos y vocabulario; ISO 9001: requisitos del sistema de gestión de la calidad.",
+            "ISO 9000: auditorías financieras; ISO 9001: limpieza de oficinas.",
+            "ISO 9001: garantiza que nunca habrá defectos.",
+            "ISO: sin relación con procesos.",
+          ],
+          0,
+          "La familia ISO 9000 reúne estándares de gestión de la calidad.",
+        ],
+        [
+          "ISO",
+          "Una empresa afirma estar “certificada ISO” sólo porque tiene un manual. ¿Qué falta revisar?",
+          [
+            "Que el manual tenga muchas páginas.",
+            "Que el sistema opere: procesos, evidencia, evaluación y mejora.",
+            "Que el logo sea azul.",
+            "Que todos los empleados memoricen la norma.",
+          ],
+          1,
+          "Un sistema de gestión debe demostrarse en la operación, no sólo documentarse.",
+        ],
+        [
+          "Datos",
+          "¿Qué indica la media de un conjunto de mediciones?",
+          [
+            "La dispersión de los resultados.",
+            "El valor central promedio.",
+            "El límite inferior de especificación.",
+            "El número de defectos exacto.",
+          ],
+          1,
+          "La media indica dónde se centra el proceso.",
+        ],
+        [
+          "Datos",
+          "¿Qué indica una desviación estándar alta?",
+          [
+            "Que los datos están más dispersos.",
+            "Que la media es necesariamente incorrecta.",
+            "Que no existe variación.",
+            "Que todos los productos cumplen.",
+          ],
+          0,
+          "La desviación estándar resume la dispersión respecto a la media.",
+        ],
+        [
+          "Datos",
+          "¿Para qué sirve un histograma en calidad?",
+          [
+            "Mostrar cómo se distribuyen las observaciones por intervalos.",
+            "Definir el organigrama.",
+            "Asignar presupuestos.",
+            "Certificar una norma.",
+          ],
+          0,
+          "Un histograma permite detectar concentración, dispersión, forma y valores extremos.",
+        ],
+        [
+          "Datos",
+          "Dos líneas tienen media de 500 mL. A tiene s=1 y B tiene s=5. ¿Cuál enfrenta mayor riesgo de incumplir 495–505 mL?",
+          [
+            "A, porque está más cerca de 500.",
+            "B, porque tiene mayor dispersión.",
+            "Ambas exactamente igual.",
+            "No se puede analizar con datos.",
+          ],
+          1,
+          "Con igual media, la desviación estándar permite distinguir cuál proceso se abre más hacia los límites.",
+        ],
+        [
+          "Datos",
+          "En una curva normal idealizada, ¿qué representan las colas?",
+          [
+            "Los valores menos frecuentes, alejados de la media.",
+            "La media exacta.",
+            "Sólo productos conformes.",
+            "El presupuesto del proceso.",
+          ],
+          0,
+          "Las colas representan observaciones extremas; allí puede concentrarse riesgo si hay límites de especificación.",
+        ],
+        [
+          "Aplicación",
+          "Hay pedidos incompletos. ¿Cuál es el primer enfoque más útil?",
+          [
+            "Aplicar 5S sin observar el proceso.",
+            "Medir en qué etapa aparecen y clasificar causas.",
+            "Cambiar todo el sistema de ventas.",
+            "Calcular una media sin datos.",
+          ],
+          1,
+          "Primero delimita y mide el problema antes de elegir una solución.",
+        ],
+        [
+          "Aplicación",
+          "Un equipo pierde tiempo buscando materiales. ¿Qué combinación encaja mejor?",
+          [
+            "5S y Kaizen.",
+            "ISO y media únicamente.",
+            "Six Sigma sin datos.",
+            "Eliminar el proceso.",
+          ],
+          0,
+          "Orden visual y pequeñas mejoras reducen búsqueda y recorridos innecesarios.",
+        ],
+        [
+          "Aplicación",
+          "Una mejora redujo errores esta semana. ¿Qué evita que desaparezca el siguiente mes?",
+          [
+            "Estandarizar, asignar responsable y dar seguimiento al indicador.",
+            "Dejar de medir para no presionar al equipo.",
+            "Cambiar el objetivo cada día.",
+            "Eliminar el procedimiento.",
+          ],
+          0,
+          "La fase de control sostiene la mejora.",
+        ],
+        [
+          "Aplicación",
+          "El proceso promedia dentro de especificación, pero el histograma tiene barras fuera de los límites. ¿Qué conclusión es válida?",
+          [
+            "El promedio basta y no hay problema.",
+            "Existe variación que genera incumplimientos.",
+            "La media no sirve nunca.",
+            "El histograma debe eliminarse.",
+          ],
+          1,
+          "La media no describe por sí sola la dispersión ni el riesgo de defectos.",
+        ],
+        [
+          "Aplicación",
+          "Una organización quiere que varias sucursales trabajen con procesos definidos, evidencia y mejora. ¿Qué marco orienta mejor el sistema?",
+          [
+            "ISO 9001.",
+            "Sólo Seiri.",
+            "Un histograma aislado.",
+            "La media aritmética.",
+          ],
+          0,
+          "ISO 9001 establece requisitos para un sistema de gestión de la calidad.",
+        ],
+        [
+          "Aplicación",
+          "¿Qué frase expresa mejor la relación entre gestión de calidad y cliente?",
+          [
+            "La calidad se decide sólo al final del proceso.",
+            "La calidad traduce requisitos del cliente en procesos medibles y mejorables.",
+            "La calidad consiste en inspeccionar sin prevenir.",
+            "La calidad es responsabilidad exclusiva del director.",
+          ],
+          1,
+          "La gestión de calidad busca diseñar y controlar procesos que cumplan requisitos de forma consistente.",
+        ],
+        [
+          "Herramientas básicas",
+          "¿Qué herramienta permite priorizar las causas de devolución de mayor a menor frecuencia?",
+          [
+            "Diagrama de Pareto.",
+            "Histograma.",
+            "Diagrama de dispersión.",
+            "Gráfica de control.",
+          ],
+          0,
+          "Pareto ayuda a concentrar la atención en las categorías que explican la mayor parte de los casos.",
+        ],
+        [
+          "Herramientas básicas",
+          "Se sospecha que los errores aumentan durante el turno nocturno. ¿Cuál uso inicial aclara si la hipótesis tiene sentido?",
+          [
+            "Estratificar los errores por turno.",
+            "Cambiar todo el proceso de inmediato.",
+            "Calcular sólo la media global.",
+            "Eliminar los registros previos.",
+          ],
+          0,
+          "La estratificación separa los datos por una condición relevante, como turno, sucursal o proveedor.",
+        ],
+        [
+          "Desperdicios",
+          "Capturar el mismo dato de un cliente en dos sistemas diferentes es principalmente: ",
+          ["Sobreprocesamiento.", "Transporte.", "Inventario.", "Movimiento."],
+          0,
+          "Duplicar pasos que no agregan valor para el cliente es sobreprocesamiento.",
+        ],
+        [
+          "Desperdicios",
+          "Un pedido queda detenido hasta que un gerente responda un correo de autorización. ¿Qué desperdicio se observa de forma directa?",
+          ["Espera.", "Sobreproducción.", "Movimiento.", "Defecto."],
+          0,
+          "La espera aparece cuando personas, información o trabajo quedan detenidos sin transformarse.",
+        ],
+        [
+          "Aplicación",
+          "¿Cuál es un ejemplo de “controlar” dentro del proceso administrativo?",
+          [
+            "Definir meta de entregas.",
+            "Asignar personal a empaque.",
+            "Capacitar al equipo.",
+            "Comparar pedidos completos contra la meta y ajustar el proceso.",
+          ],
+          3,
+          "Controlar compara resultado con meta y corrige.",
+        ],
+      ].map(([cat, q, o, a, r]) => ({ cat, q, o, a, r }));
+      const state = {
+        qs: [],
+        ans: [],
+        marks: [],
+        current: 0,
+        seconds: 2100,
+        timer: null,
+      };
+      function shuffle(a) {
+        a = [...a];
+        for (let i = a.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+      function makeExam() {
+        const groups = [
+          "Fundamentos",
+          "Gestión",
+          "Proceso administrativo",
+          "Procesos",
+          "Mejora continua",
+          "Six Sigma",
+          "Kaizen",
+          "5S",
+          "9S",
+          "Herramientas básicas",
+          "Desperdicios",
+          "ISO",
+          "Datos",
+          "Aplicación",
+        ];
+        let picks = [];
+        groups.forEach((g) => {
+          const x = shuffle(bank.filter((q) => q.cat === g));
+          if (x[0]) picks.push(x[0]);
+        });
+        return shuffle([
+          ...picks,
+          ...shuffle(bank.filter((q) => !picks.includes(q))).slice(0, 11),
+        ]);
+      }
+      function startExam() {
+        clearInterval(state.timer);
+        state.qs = makeExam();
+        state.ans = Array(25).fill(null);
+        state.marks = Array(25).fill(false);
+        state.current = 0;
+        state.seconds = 2100;
+        document.getElementById("examstart").hidden = true;
+        document.getElementById("result").hidden = true;
+        document.getElementById("work").hidden = false;
+        grid();
+        renderQ();
+        tick();
+        state.timer = setInterval(() => {
+          state.seconds--;
+          tick();
+          if (state.seconds <= 0) finish(true);
+        }, 1000);
+      }
+      function tick() {
+        const m = Math.floor(Math.max(0, state.seconds) / 60)
+            .toString()
+            .padStart(2, "0"),
+          s = (Math.max(0, state.seconds) % 60).toString().padStart(2, "0");
+        const t = document.getElementById("timer");
+        t.textContent = m + ":" + s;
+        t.style.color = state.seconds < 300 ? "#ffe0a5" : "#fff";
+      }
+      function grid() {
+        const h = document.getElementById("qgrid");
+        h.innerHTML = "";
+        state.qs.forEach((_, i) => {
+          const b = document.createElement("button");
+          b.className = "jump";
+          b.textContent = i + 1;
+          b.setAttribute("aria-label", "Ir a la pregunta " + (i + 1));
+          b.addEventListener("click", () => {
+            state.current = i;
+            renderQ();
+          });
+          h.appendChild(b);
+        });
+      }
+      function gridState() {
+        [...document.querySelectorAll(".jump")].forEach((b, i) => {
+          b.classList.toggle("answered", state.ans[i] !== null);
+          b.classList.toggle("marked", state.marks[i]);
+          b.classList.toggle("current", state.current === i);
+        });
+      }
+      function renderQ() {
+        const q = state.qs[state.current];
+        document.getElementById("counter").textContent =
+          "Pregunta " + (state.current + 1) + " de 25";
+        document.getElementById("qfill").style.width =
+          ((state.current + 1) / 25) * 100 + "%";
+        document.getElementById("qcat").textContent = q.cat;
+        document.getElementById("qtext").textContent = q.q;
+        const h = document.getElementById("qopts");
+        h.innerHTML = "";
+        q.o.forEach((x, i) => {
+          const b = document.createElement("button");
+          b.className = "qopt" + (state.ans[state.current] === i ? " sel" : "");
+          b.innerHTML =
+            '<span class="letter">' +
+            String.fromCharCode(65 + i) +
+            "</span><span>" +
+            x +
+            "</span>";
+          b.addEventListener("click", () => {
+            state.ans[state.current] = i;
+            renderQ();
+          });
+          h.appendChild(b);
+        });
+        const m = document.getElementById("markq");
+        m.setAttribute("aria-pressed", state.marks[state.current]);
+        m.textContent = state.marks[state.current]
+          ? "Marcada para revisar ★"
+          : "Marcar para revisar";
+        document.getElementById("prev").disabled = state.current === 0;
+        document.getElementById("next").textContent =
+          state.current === 24 ? "Ir a entregar" : "Siguiente";
+        gridState();
+      }
+      function nav(d) {
+        if (d > 0 && state.current === 24) {
+          document.getElementById("finish").focus();
+          return;
+        }
+        state.current = Math.max(0, Math.min(24, state.current + d));
+        renderQ();
+      }
+      function finish(auto = false) {
+        const empty = state.ans.filter((x) => x === null).length;
+        if (
+          !auto &&
+          !confirm(
+            empty
+              ? "Quedan " +
+                  empty +
+                  " preguntas sin responder. ¿Entregar de todas formas?"
+              : "¿Entregar el examen y ver resultados?",
+          )
+        )
+          return;
+        clearInterval(state.timer);
+        const correct = state.qs.reduce(
+            (n, q, i) => n + (state.ans[i] === q.a),
+            0,
+          ),
+          pct = Math.round((correct / 25) * 100);
+        document.getElementById("work").hidden = true;
+        const r = document.getElementById("result");
+        r.hidden = false;
+        const ring = document.getElementById("ring");
+        ring.style.setProperty("--score", pct);
+        ring.dataset.score = pct;
+        document.getElementById("sumtitle").textContent =
+          pct >= 85
+            ? "Dominio sólido"
+            : pct >= 70
+              ? "Base suficiente; conviene afinar conceptos"
+              : pct >= 50
+                ? "Hay conceptos que conviene repasar"
+                : "Conviene recorrer la guía antes de repetir";
+        document.getElementById("sumdetail").textContent =
+          correct +
+          " respuestas correctas de 25." +
+          (auto ? " El tiempo terminó y se entregó automáticamente." : "");
+        breakdown();
+        review();
+        r.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      function breakdown() {
+        const h = document.getElementById("breakdown");
+        h.innerHTML = "";
+        [...new Set(state.qs.map((q) => q.cat))].forEach((c) => {
+          const ids = state.qs
+              .map((q, i) => (q.cat === c ? i : -1))
+              .filter((i) => i >= 0),
+            ok = ids.filter((i) => state.ans[i] === state.qs[i].a).length;
+          h.innerHTML +=
+            '<div class="bcard"><b>' +
+            ok +
+            "/" +
+            ids.length +
+            "</b><span>" +
+            c +
+            "</span></div>";
+        });
+      }
+      function review() {
+        const h = document.getElementById("review");
+        h.innerHTML = "";
+        state.qs.forEach((q, i) => {
+          const ok = state.ans[i] === q.a,
+            you = state.ans[i] === null ? "Sin respuesta" : q.o[state.ans[i]];
+          h.innerHTML +=
+            "<details><summary>" +
+            (ok ? "✓" : "✕") +
+            " " +
+            (i + 1) +
+            ". " +
+            q.q +
+            "</summary><div><p><strong>Tu respuesta:</strong> " +
+            you +
+            "</p><p><strong>Respuesta correcta:</strong> " +
+            q.o[q.a] +
+            "</p><p>" +
+            q.r +
+            "</p></div></details>";
+        });
+      }
+      document.getElementById("start").addEventListener("click", startExam);
+      document.getElementById("retry").addEventListener("click", startExam);
+      document
+        .getElementById("tostudy")
+        .addEventListener("click", () => view("study"));
+      document.getElementById("prev").addEventListener("click", () => nav(-1));
+      document.getElementById("next").addEventListener("click", () => nav(1));
+      document.getElementById("markq").addEventListener("click", () => {
+        state.marks[state.current] = !state.marks[state.current];
+        renderQ();
+      });
+      document
+        .getElementById("finish")
+        .addEventListener("click", () => finish());
+      window.addEventListener("beforeunload", () => clearInterval(state.timer));
+    </script>
+  </body>
+</html>
